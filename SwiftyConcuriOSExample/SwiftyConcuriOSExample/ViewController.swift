@@ -7,12 +7,13 @@
 //
 
 import UIKit
-import SwiftyConcuriOS
+import SwiftyConcur
 
 class ViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        var test = Client()
         // Do any additional setup after loading the view, typically from a nib.
         
     }
