@@ -1,15 +1,15 @@
 //
-//  SwiftyConcurMacTests.swift
-//  SwiftyConcurMacTests
+//  SwiftyConcuriOSExampleTests.swift
+//  SwiftyConcuriOSExampleTests
 //
 //  Created by Brennick, Conner on 7/10/15.
 //  Copyright (c) 2015 Concur. All rights reserved.
 //
 
-import Cocoa
+import UIKit
 import XCTest
 
-class SwiftyConcurMacTests: XCTestCase {
+class SwiftyConcuriOSExampleTests: XCTestCase {
     
     override func setUp() {
         super.setUp()

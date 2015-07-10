@@ -1,5 +1,5 @@
 import Foundation
 
-class Client {
-    
+public class Client : NSObject {
+  
 }

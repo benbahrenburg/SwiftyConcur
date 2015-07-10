@@ -2,10 +2,7 @@
 <Workspace
    version = "1.0">
    <FileRef
-      location = "group:SwiftyConcurMac/SwiftyConcurMac.xcodeproj">
-   </FileRef>
-   <FileRef
-      location = "group:SwiftyConcuriOS/SwiftyConcuriOS.xcodeproj">
+      location = "group:SwiftyConcuriOSExample/SwiftyConcuriOSExample.xcodeproj">
    </FileRef>
    <Group
       location = "container:"
