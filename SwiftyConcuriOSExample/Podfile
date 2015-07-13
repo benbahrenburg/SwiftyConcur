@@ -2,5 +2,5 @@ platform :ios, '8.0'
 use_frameworks!
 
 target 'SwiftyConcuriOSExample' do
-  pod 'SwiftyConcur', :git => 'git@github.com:concurlabs/SwiftyConcur.git', :tag => '0.0.1'
+  pod 'SwiftyConcur', :git => 'git@github.com:concurlabs/SwiftyConcur.git', :tag => '0.0.2'
 end
