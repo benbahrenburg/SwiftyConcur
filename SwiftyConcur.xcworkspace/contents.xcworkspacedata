@@ -5,6 +5,12 @@
       location = "container:"
       name = "Source">
       <FileRef
+         location = "group:Source/QuickExpenses.swift">
+      </FileRef>
+      <FileRef
+         location = "group:Source/Utilities.swift">
+      </FileRef>
+      <FileRef
          location = "group:/Users/connerb/Desktop/SwiftyConcur/Source/ConcurClient.swift">
       </FileRef>
    </Group>
