@@ -9,4 +9,5 @@ Pod::Spec.new do |spec|
   spec.source_files     = 'Source/*.swift'
   spec.ios.deployment_target = '8.0'
   spec.dependency 'Alamofire', '~> 1.2.3'
+  spec.dependency 'SwiftyJSON', '~> 2.2.0'
 end
