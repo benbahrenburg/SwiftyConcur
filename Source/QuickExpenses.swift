@@ -42,13 +42,9 @@ public class QuickExpense {
 
 public extension ConcurClient {
   
-  public func getAllQuickExpense(parameters: [String : String]!, callback: (error: String!, expenses: [QuickExpense]!, nextPage: String!) -> Void) {
-    if self.accessToken != nil {
-      var extraHeaders = [
-        "Authorization" : self.getAuthString()
-      ]
-      let request = Utilities.createHTTPRequest("/api/v3.0/expense/quickexpenses", headers: Utilities.buildHeaders(extraHeaders), method: "GET", body: nil)
-      Alamofire.ParameterEncoding.URL.encode(request, parameters: parameters)
+  public func getAllQuickExpense(options: [String : AnyObject?], callback: (error: String!, expenses: [QuickExpense]!, nextPage: String!) -> Void) {
+    if self.AccessToken != nil {
+      let request = ConcurClient.getHTTPRequest("/api/v3.0/expense/quickexpenses/", options: options)
       Alamofire.request(request).responseJSON { (req, res, json, error) in
         var jsonObject = JSON(json!)
         if let error = jsonObject["Message"].string {
@@ -63,17 +59,13 @@ public extension ConcurClient {
         }
       }
     } else {
-      callback(error: "Access Token Needed", expenses: nil, nextPage: nil)
+      callback(error: "Access Token Missing", expenses: nil, nextPage: nil)
     }
   }
   
-  public func getQuickExpenseById(id: String, parameters: [String : String]!, callback: (error: String!, expense: QuickExpense!) -> Void) {
-    if self.accessToken != nil {
-      var extraHeaders = [
-        "Authorization" : self.getAuthString()
-      ]
-      let request = Utilities.createHTTPRequest("/api/v3.0/expense/quickexpenses/".stringByAppendingString(id), headers: Utilities.buildHeaders(extraHeaders), method: "GET", body: nil)
-      Alamofire.ParameterEncoding.URL.encode(request, parameters: parameters)
+  public func getQuickExpenseById(options: [String : AnyObject?], callback: (error: String!, expense: QuickExpense!) -> Void) {
+    if self.AccessToken != nil {
+      let request = ConcurClient.getHTTPRequest("/api/v3.0/expense/quickexpenses/", options: options)
       Alamofire.request(request).responseJSON { (req, res, json, error) in
         var jsonObject = JSON(json!)
         if let error = jsonObject["Message"].string {
@@ -84,86 +76,60 @@ public extension ConcurClient {
         }
       }
     } else {
-      callback(error: "Access Token Needed", expense: nil)
+      callback(error: "Access Token Missing", expense: nil)
     }
   }
   
-  public func createQuickExpense(currencyCode: String, transactionAmount: String, transactionDate: String, additionalParameters: [String : String]!, callback: (error: String!, id: String!, uri: String!) -> Void) {
-    if self.accessToken != nil {
-      var extraHeaders = [
-        "Authorization" : self.getAuthString()
-      ]
-      var bodyJSON = NSMutableDictionary()
-      if additionalParameters != nil {
-        for (key, value) in additionalParameters {
-          bodyJSON.setObject(value, forKey: key)
-        }
-      }
-      bodyJSON.setObject(currencyCode, forKey: "CurrencyCode")
-      bodyJSON.setObject(transactionAmount, forKey: "TransactionAmount")
-      bodyJSON.setObject(transactionDate, forKey: "TransactionDate")
-      var error: NSError?
-      var bodyData = NSJSONSerialization.dataWithJSONObject(bodyJSON, options: NSJSONWritingOptions.allZeros, error: &error)
-      let request = Utilities.createHTTPRequest("/api/v3.0/expense/quickexpenses", headers: Utilities.buildHeaders(extraHeaders), method: "POST", body: bodyData)
+  public func createQuickExpense(options: [String : AnyObject?], callback: (error: String!, expense: QuickExpense!) -> Void) {
+    if self.AccessToken != nil {
+      let request = ConcurClient.postHTTPRequest("/api/v3.0/expense/quickexpenses/", options: options)
       Alamofire.request(request).responseJSON { (req, res, json, error) in
         let jsonObject = JSON(json!)
         if let error = jsonObject["Message"].string {
-          callback(error: error, id: nil, uri: nil)
+          callback(error: error, expense: nil)
         } else {
-          callback(error: nil, id: jsonObject["ID"].string, uri: jsonObject["URI"].string)
+          var expense = QuickExpense(json: jsonObject)
+          callback(error: nil, expense: expense)
         }
       }
     } else {
-      callback(error: "Access Token Needed", id: nil, uri: nil)
+      callback(error: "Access Token Missing", expense: nil)
     }
   }
   
-  public func updateQuickExpenseById(id: String, parameters: [String : String], callback: (error: String!) -> Void) {
-    if self.accessToken != nil {
-      var extraHeaders = [
-        "Authorization" : self.getAuthString()
-      ]
-      var bodyJSON = NSMutableDictionary()
-      for (key, value) in parameters {
-        bodyJSON.setObject(value, forKey: key)
-      }
-      var error: NSError?
-      var bodyData = NSJSONSerialization.dataWithJSONObject(bodyJSON, options: NSJSONWritingOptions.allZeros, error: &error)
-      let request = Utilities.createHTTPRequest("/api/v3.0/expense/quickexpenses/".stringByAppendingString(id), headers: Utilities.buildHeaders(extraHeaders), method: "PUT", body: bodyData)
+  public func updateQuickExpenseById(options: [String : AnyObject?], callback: (error: String!) -> Void) {
+    if self.AccessToken != nil {
+      let request = ConcurClient.putHTTPRequest("/api/v3.0/expense/quickexpenses/", options: options)
       Alamofire.request(request).responseJSON { (req, res, json, error) in
         if json != nil {
           let jsonObject = JSON(json!)
           if let error = jsonObject["Message"].string {
             callback(error: error)
+          } else {
+            callback(error: nil)
           }
-        } else {
-          callback(error: nil)
         }
       }
     } else {
-      callback(error: "Access Token Needed")
+      callback(error: "Access Token Missing")
     }
   }
   
-  public func deleteQuickExpenseById(id: String, parameters: [String : String]!, callback: (error: String!) -> Void) {
-    if self.accessToken != nil {
-      var extraHeaders = [
-        "Authorization" : self.getAuthString()
-      ]
-      let request = Utilities.createHTTPRequest("/api/v3.0/expense/quickexpenses/".stringByAppendingString(id), headers: Utilities.buildHeaders(extraHeaders), method: "DELETE", body: nil)
-      Alamofire.ParameterEncoding.URL.encode(request, parameters: parameters)
+  public func deleteQuickExpenseById(options: [String : AnyObject?], callback: (error: String!) -> Void) {
+    if self.AccessToken != nil {
+      let request = ConcurClient.deleteHTTPRequest("/api/v3.0/expense/quickexpenses/", options: options)
       Alamofire.request(request).responseJSON { (req, res, json, error) in
         if json != nil {
           let jsonObject = JSON(json!)
           if let error = jsonObject["Message"].string {
             callback(error: error)
+          } else {
+            callback(error: nil)
           }
-        } else {
-          callback(error: nil)
         }
       }
     } else {
-      callback(error: "Access Token Needed")
+      callback(error: "Access Token Missing")
     }
   }
   
