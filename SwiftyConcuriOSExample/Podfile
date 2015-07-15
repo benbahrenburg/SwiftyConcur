@@ -4,3 +4,7 @@ use_frameworks!
 target 'SwiftyConcuriOSExample' do
   pod 'SwiftyConcur', :git => 'git@github.com:concurlabs/SwiftyConcur.git', :tag => '0.0.4'
 end
+
+target 'SwiftyConcuriOSExampleTests' do
+  pod 'SwiftyConcur', :git => 'git@github.com:concurlabs/SwiftyConcur.git', :tag => '0.0.4'
+end
