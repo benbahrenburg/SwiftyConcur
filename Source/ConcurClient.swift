@@ -17,6 +17,9 @@ public class ConcurClient {
   
   public init(accessToken: ConcurAccessToken) {
     self.AccessToken = accessToken
+    if let token = accessToken.InstanceUrl {
+      ConcurClient.instanceUrl = token
+    }
   }
   
 }

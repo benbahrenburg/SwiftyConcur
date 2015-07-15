@@ -44,7 +44,7 @@ public extension ConcurClient {
   
   public func getAllQuickExpense(options: [String : AnyObject?], callback: (error: String!, expenses: [QuickExpense]!, nextPage: String!) -> Void) {
     if self.AccessToken != nil {
-      let request = ConcurClient.getHTTPRequest("/api/v3.0/expense/quickexpenses/", options: options)
+      let request = ConcurClient.getHTTPRequest("/api/v3.0/expense/quickexpenses/", options: options, authString: self.getAuthString())
       Alamofire.request(request).responseJSON { (req, res, json, error) in
         var jsonObject = JSON(json!)
         if let error = jsonObject["Message"].string {
@@ -65,7 +65,7 @@ public extension ConcurClient {
   
   public func getQuickExpenseById(options: [String : AnyObject?], callback: (error: String!, expense: QuickExpense!) -> Void) {
     if self.AccessToken != nil {
-      let request = ConcurClient.getHTTPRequest("/api/v3.0/expense/quickexpenses/", options: options)
+      let request = ConcurClient.getHTTPRequest("/api/v3.0/expense/quickexpenses/", options: options, authString: self.getAuthString())
       Alamofire.request(request).responseJSON { (req, res, json, error) in
         var jsonObject = JSON(json!)
         if let error = jsonObject["Message"].string {
@@ -82,7 +82,7 @@ public extension ConcurClient {
   
   public func createQuickExpense(options: [String : AnyObject?], callback: (error: String!, expense: QuickExpense!) -> Void) {
     if self.AccessToken != nil {
-      let request = ConcurClient.postHTTPRequest("/api/v3.0/expense/quickexpenses/", options: options)
+      let request = ConcurClient.postHTTPRequest("/api/v3.0/expense/quickexpenses/", options: options, authString: self.getAuthString())
       Alamofire.request(request).responseJSON { (req, res, json, error) in
         let jsonObject = JSON(json!)
         if let error = jsonObject["Message"].string {
@@ -99,7 +99,7 @@ public extension ConcurClient {
   
   public func updateQuickExpenseById(options: [String : AnyObject?], callback: (error: String!) -> Void) {
     if self.AccessToken != nil {
-      let request = ConcurClient.putHTTPRequest("/api/v3.0/expense/quickexpenses/", options: options)
+      let request = ConcurClient.putHTTPRequest("/api/v3.0/expense/quickexpenses/", options: options, authString: self.getAuthString())
       Alamofire.request(request).responseJSON { (req, res, json, error) in
         if json != nil {
           let jsonObject = JSON(json!)
@@ -117,7 +117,7 @@ public extension ConcurClient {
   
   public func deleteQuickExpenseById(options: [String : AnyObject?], callback: (error: String!) -> Void) {
     if self.AccessToken != nil {
-      let request = ConcurClient.deleteHTTPRequest("/api/v3.0/expense/quickexpenses/", options: options)
+      let request = ConcurClient.deleteHTTPRequest("/api/v3.0/expense/quickexpenses/", options: options, authString: self.getAuthString())
       Alamofire.request(request).responseJSON { (req, res, json, error) in
         if json != nil {
           let jsonObject = JSON(json!)

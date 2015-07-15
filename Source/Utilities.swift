@@ -1,10 +1,10 @@
 import Alamofire
 
 public extension ConcurClient {
-    
+  
   internal static var instanceUrl = "https://www.concursolutions.com"
   
-  internal class func getHTTPRequest(endpoint: String, options: [String : AnyObject?]) -> NSURLRequest! {
+  internal class func getHTTPRequest(endpoint: String, options: [String : AnyObject?], authString: String!) -> NSURLRequest! {
     let urlString = self.instanceUrl.stringByAppendingString(endpoint)
     if let id = options["id"] as? String {
       urlString.stringByAppendingString(id)
@@ -12,10 +12,12 @@ public extension ConcurClient {
     if let url = NSURL(string: urlString) {
       let request = NSMutableURLRequest(URL: url)
       request.HTTPMethod = "GET"
-      if let body = options["body"] as? NSData {
-        request.HTTPBody = body
+      if let body = options["Body"] as? NSMutableDictionary {
+        var error: NSError?
+        var bodyData = NSJSONSerialization.dataWithJSONObject(body, options: NSJSONWritingOptions.allZeros, error: &error)
+        request.HTTPBody = bodyData
       }
-      if let headers = options["headers"] as? [String : String] {
+      if let headers = options["Headers"] as? [String : String] {
         for (header, value) in headers {
           request.setValue(value, forHTTPHeaderField: header)
         }
@@ -23,7 +25,10 @@ public extension ConcurClient {
       for (header, value) in self.addHeaders() {
         request.setValue(value, forHTTPHeaderField: header)
       }
-      if let parameters = options["parameters"] as? [String : String] {
+      if authString != nil {
+        request.setValue(authString, forHTTPHeaderField: "Authorization")
+      }
+      if let parameters = options["Parameters"] as? [String : String] {
         Alamofire.ParameterEncoding.URL.encode(request, parameters: parameters)
       }
       return request
@@ -32,14 +37,16 @@ public extension ConcurClient {
     }
   }
   
-  internal class func postHTTPRequest(endpoint: String, options: [String : AnyObject?]) -> NSURLRequest! {
+  internal class func postHTTPRequest(endpoint: String, options: [String : AnyObject?], authString: String!) -> NSURLRequest! {
     if let url = NSURL(string: self.instanceUrl.stringByAppendingString(endpoint)) {
       let request = NSMutableURLRequest(URL: url)
       request.HTTPMethod = "POST"
-      if let body = options["body"] as? NSData {
-        request.HTTPBody = body
+      if let body = options["Body"] as? NSMutableDictionary {
+        var error: NSError?
+        var bodyData = NSJSONSerialization.dataWithJSONObject(body, options: NSJSONWritingOptions.allZeros, error: &error)
+        request.HTTPBody = bodyData
       }
-      if let headers = options["headers"] as? [String : String] {
+      if let headers = options["Headers"] as? [String : String] {
         for (header, value) in headers {
           request.setValue(value, forHTTPHeaderField: header)
         }
@@ -47,7 +54,10 @@ public extension ConcurClient {
       for (header, value) in self.addHeaders() {
         request.setValue(value, forHTTPHeaderField: header)
       }
-      if let parameters = options["parameters"] as? [String : String] {
+      if authString != nil {
+        request.setValue(authString, forHTTPHeaderField: "Authorization")
+      }
+      if let parameters = options["Parameters"] as? [String : String] {
         Alamofire.ParameterEncoding.URL.encode(request, parameters: parameters)
       }
       return request
@@ -56,15 +66,17 @@ public extension ConcurClient {
     }
   }
   
-  internal class func putHTTPRequest(endpoint: String, options: [String : AnyObject?]) -> NSURLRequest! {
+  internal class func putHTTPRequest(endpoint: String, options: [String : AnyObject?], authString: String!) -> NSURLRequest! {
     if let id = options["id"] as? String {
       if let url = NSURL(string: self.instanceUrl.stringByAppendingString(endpoint).stringByAppendingString(id)) {
         let request = NSMutableURLRequest(URL: url)
         request.HTTPMethod = "PUT"
-        if let body = options["body"] as? NSData {
-          request.HTTPBody = body
+        if let body = options["Body"] as? NSMutableDictionary {
+          var error: NSError?
+          var bodyData = NSJSONSerialization.dataWithJSONObject(body, options: NSJSONWritingOptions.allZeros, error: &error)
+          request.HTTPBody = bodyData
         }
-        if let headers = options["headers"] as? [String : String] {
+        if let headers = options["Headers"] as? [String : String] {
           for (header, value) in headers {
             request.setValue(value, forHTTPHeaderField: header)
           }
@@ -72,7 +84,10 @@ public extension ConcurClient {
         for (header, value) in self.addHeaders() {
           request.setValue(value, forHTTPHeaderField: header)
         }
-        if let parameters = options["parameters"] as? [String : String] {
+        if authString != nil {
+          request.setValue(authString, forHTTPHeaderField: "Authorization")
+        }
+        if let parameters = options["Parameters"] as? [String : String] {
           Alamofire.ParameterEncoding.URL.encode(request, parameters: parameters)
         }
         return request
@@ -84,15 +99,17 @@ public extension ConcurClient {
     }
   }
   
-  internal class func deleteHTTPRequest(endpoint: String, options: [String : AnyObject?]) -> NSURLRequest! {
+  internal class func deleteHTTPRequest(endpoint: String, options: [String : AnyObject?], authString: String!) -> NSURLRequest! {
     if let id = options["id"] as? String {
       if let url = NSURL(string: self.instanceUrl.stringByAppendingString(endpoint)) {
         let request = NSMutableURLRequest(URL: url)
         request.HTTPMethod = "DELETE"
-        if let body = options["body"] as? NSData {
-          request.HTTPBody = body
+        if let body = options["Body"] as? NSMutableDictionary {
+          var error: NSError?
+          var bodyData = NSJSONSerialization.dataWithJSONObject(body, options: NSJSONWritingOptions.allZeros, error: &error)
+          request.HTTPBody = bodyData
         }
-        if let headers = options["headers"] as? [String : String] {
+        if let headers = options["Headers"] as? [String : String] {
           for (header, value) in headers {
             request.setValue(value, forHTTPHeaderField: header)
           }
@@ -100,7 +117,10 @@ public extension ConcurClient {
         for (header, value) in self.addHeaders() {
           request.setValue(value, forHTTPHeaderField: header)
         }
-        if let parameters = options["parameters"] as? [String : String] {
+        if authString != nil {
+          request.setValue(authString, forHTTPHeaderField: "Authorization")
+        }
+        if let parameters = options["Parameters"] as? [String : String] {
           Alamofire.ParameterEncoding.URL.encode(request, parameters: parameters)
         }
         return request
@@ -141,5 +161,5 @@ internal extension Double {
   internal func toString() -> String {
     return String(format: "%.3f", self)
   }
-
+  
 }
