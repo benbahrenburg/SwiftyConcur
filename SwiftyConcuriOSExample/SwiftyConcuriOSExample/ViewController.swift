@@ -7,8 +7,8 @@ class ViewController: UIViewController {
     super.viewDidLoad()
     
     // Example of getting access token
-    var client = ConcurClient(consumerKey: "CONSUMER KEY", consumerSecret: "CONSUMER SECRET")
-    client.getNativeFlowAccessToken("EMAIL", password: "PASSWORD", callback: { (error, token) in
+    var client = ConcurClient(consumerKey: "", consumerSecret: "")
+    client.getNativeFlowAccessToken("", password: "", callback: { (error, token) in
       if error != nil {
         println(error)
       } else {
@@ -19,17 +19,18 @@ class ViewController: UIViewController {
         // Example of building the body for a POST request to Quick Expenses
         var expense = NSMutableDictionary()
         expense.setValue("USD", forKey: "CurrencyCode")
-        expense.setValue("TransactionAmount", forKey: "456.78")
-        expense.setValue("TransactionDate", forKey: "2015-07-12")
+        expense.setValue("123.45", forKey: "TransactionAmount")
+        expense.setValue("2015-07-12", forKey: "TransactionDate")
         var options : [String : AnyObject?] = [
-          "body" : expense
+          "Body" : expense
         ]
         
         // Example of creating a Quick Expense and receiving the ID and URI back in the callback
-        client.createQuickExpense(options, callback: { (error, expense) in
+        client.quickExpensesPost(options, callback: { (error, expense) in
           if error != nil {
             println(error)
           } else {
+            println(expense)
             println(expense.ID)
             println(expense.URI)
           }
