@@ -5,6 +5,12 @@
       location = "container:"
       name = "Source">
       <FileRef
+         location = "group:Source/ConcurAccessToken.swift">
+      </FileRef>
+      <FileRef
+         location = "group:Source/NativeFlow.swift">
+      </FileRef>
+      <FileRef
          location = "group:Source/QuickExpenses.swift">
       </FileRef>
       <FileRef
