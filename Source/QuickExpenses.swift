@@ -72,20 +72,22 @@ public extension ConcurClient {
     }
   }
   
-  public func quickExpensesPost(options: [String : AnyObject?], callback: (error: String!, expense: QuickExpense!) -> Void) {
+  public func quickExpensesPost(options: [String : AnyObject?], callback: (error: String!, returnValue: AnyObject!) -> Void) {
     if self.AccessToken != nil {
       let request = ConcurClient.postHTTPRequest("/api/v3.0/expense/quickexpenses", options: options, authString: self.getAuthString())
       Alamofire.request(request).responseJSON { (req, res, json, error) in
         let jsonObject = JSON(json!)
         if let error = jsonObject["Error"]["Message"].string {
-          callback(error: error, expense: nil)
+          callback(error: error, returnValue: nil)
+        } else if let error = jsonObject["Message"].string {
+          callback(error: error, returnValue: nil)
         } else {
           var expense = QuickExpense(json: jsonObject)
-          callback(error: nil, expense: expense)
+          callback(error: nil, returnValue: expense)
         }
       }
     } else {
-      callback(error: "Access Token Missing", expense: nil)
+      callback(error: "Access Token Missing", returnValue: nil)
     }
   }
   
@@ -96,6 +98,8 @@ public extension ConcurClient {
         if json != nil {
           let jsonObject = JSON(json!)
           if let error = jsonObject["Error"]["Message"].string {
+            callback(error: error)
+          } else if let error = jsonObject["Message"].string {
             callback(error: error)
           } else {
             callback(error: nil)
@@ -114,6 +118,8 @@ public extension ConcurClient {
         if json != nil {
           let jsonObject = JSON(json!)
           if let error = jsonObject["Error"]["Message"].string {
+            callback(error: error)
+          } else if let error = jsonObject["Message"].string {
             callback(error: error)
           } else {
             callback(error: nil)
