@@ -19,28 +19,14 @@ class UtilitiesTests: XCTestCase {
     super.tearDown()
   }
   
-  func testGetAccessTokenSuccess() {
-    let expectation = expectationWithDescription("should return access token")
+  func testNativeFlowHeadersRequest() {
+    let expectation = expectationWithDescription("should contain correct headers")
     OHHTTPStubs.stubRequestsPassingTest({ request in
-      // Check Headers
+      // Check headers for existence and correctness
       let headers: [String : String] = request.allHTTPHeaderFields as! [String : String]
-      if headers["Authorization"] == nil {
+      if headers["Authorization"] == nil || headers["X-ConsumerKey"] == nil || headers["Accept"] != "application/json" || headers["User-Agent"] != "SwiftyConcur" || headers["Content-Type"] != "application/json" {
         return false
       }
-      if headers["X-ConsumerKey"] == nil {
-        return false
-      }
-      if headers["Accept"] != "application/json" {
-        return false
-      }
-      if headers["User-Agent"] != "SwiftyConcur" {
-        return false
-      }
-      if headers["Content-Type"] != "application/json" {
-        return false
-      }
-      // URL
-      // Method
       return true
     }) { _ in
       let error : NSError?
@@ -60,7 +46,92 @@ class UtilitiesTests: XCTestCase {
       }
     })
     
-    waitForExpectationsWithTimeout(5, handler: nil)
+    waitForExpectationsWithTimeout(2, handler: nil)
+  }
+  
+  func testNativeFlowURLRequest() {
+    let expectation = expectationWithDescription("should contain correct headers")
+    OHHTTPStubs.stubRequestsPassingTest({ request in
+      // Check URL for existence and correctness
+      if request.URL!.absoluteString != "https://www.concursolutions.com/net2/oauth2/accesstoken.ashx" {
+        return false
+      }
+      return true
+      }) { _ in
+        let error : NSError?
+        let response = [
+          "Access_Token" : [
+            "Expiration_date" : "7/17/2016 9:59:11 PM",
+            "Instance_Url" : "https://www.concursolutions.com/",
+            "Refresh_Token" : "REFRESH",
+            "Token" : "TOKEN"
+          ]
+        ]
+        return OHHTTPStubsResponse(JSONObject: response, statusCode: 200, headers: nil)
+    }
+    self.client.getNativeFlowAccessToken("USERNAME", password: "PASSWORD", callback: { (error, token) in
+      if error == nil {
+        expectation.fulfill()
+      }
+    })
+    
+    waitForExpectationsWithTimeout(2, handler: nil)
+  }
+  
+  func testNativeFlowMethodRequest() {
+    let expectation = expectationWithDescription("should contain correct headers")
+    OHHTTPStubs.stubRequestsPassingTest({ request in
+      // Check method for existence and correctness
+      if request.HTTPMethod != "GET" {
+        return false
+      }
+      return true
+      }) { _ in
+        let error : NSError?
+        let response = [
+          "Access_Token" : [
+            "Expiration_date" : "7/17/2016 9:59:11 PM",
+            "Instance_Url" : "https://www.concursolutions.com/",
+            "Refresh_Token" : "REFRESH",
+            "Token" : "TOKEN"
+          ]
+        ]
+        return OHHTTPStubsResponse(JSONObject: response, statusCode: 200, headers: nil)
+    }
+    self.client.getNativeFlowAccessToken("USERNAME", password: "PASSWORD", callback: { (error, token) in
+      if error == nil {
+        expectation.fulfill()
+      }
+    })
+    
+    waitForExpectationsWithTimeout(2, handler: nil)
+  }
+  
+  func testNativeFlowResponse() {
+    let expectation = expectationWithDescription("should contain correct headers")
+    OHHTTPStubs.stubRequestsPassingTest({ _ in
+      return true
+      }) { _ in
+        let error : NSError?
+        let response = [
+          "Access_Token" : [
+            "Expiration_date" : "7/17/2016 9:59:11 PM",
+            "Instance_Url" : "https://www.concursolutions.com/",
+            "Refresh_Token" : "REFRESH",
+            "Token" : "TOKEN"
+          ]
+        ]
+        return OHHTTPStubsResponse(JSONObject: response, statusCode: 200, headers: nil)
+    }
+    self.client.getNativeFlowAccessToken("USERNAME", password: "PASSWORD", callback: { (error, token) in
+      if error == nil {
+        if token.Token == "TOKEN" && token.RefreshToken == "REFRESH" && token.InstanceUrl == "https://www.concursolutions.com/" && token.ExpirationDate == "7/17/2016 9:59:11 PM" {
+          expectation.fulfill()
+        }
+      }
+    })
+    
+    waitForExpectationsWithTimeout(2, handler: nil)
   }
   
 }
