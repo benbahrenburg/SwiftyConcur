@@ -50,7 +50,7 @@ class UtilitiesTests: XCTestCase {
   }
   
   func testNativeFlowURLRequest() {
-    let expectation = expectationWithDescription("should contain correct headers")
+    let expectation = expectationWithDescription("should contain correct url")
     OHHTTPStubs.stubRequestsPassingTest({ request in
       // Check URL for existence and correctness
       if request.URL!.absoluteString != "https://www.concursolutions.com/net2/oauth2/accesstoken.ashx" {
@@ -79,7 +79,7 @@ class UtilitiesTests: XCTestCase {
   }
   
   func testNativeFlowMethodRequest() {
-    let expectation = expectationWithDescription("should contain correct headers")
+    let expectation = expectationWithDescription("should contain correct method")
     OHHTTPStubs.stubRequestsPassingTest({ request in
       // Check method for existence and correctness
       if request.HTTPMethod != "GET" {
@@ -108,7 +108,7 @@ class UtilitiesTests: XCTestCase {
   }
   
   func testNativeFlowResponse() {
-    let expectation = expectationWithDescription("should contain correct headers")
+    let expectation = expectationWithDescription("should contain correct response")
     OHHTTPStubs.stubRequestsPassingTest({ _ in
       return true
       }) { _ in
