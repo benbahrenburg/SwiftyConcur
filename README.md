@@ -9,7 +9,7 @@ To get started with SwiftyConcur, you can add it your project using CocoaPods:
 platform :ios, '8.0'
 use_frameworks!
 
-pod 'SwiftyConcur', :git => 'git@github.com:concurlabs/SwiftyConcur.git', :tag => '0.0.4'
+pod 'SwiftyConcur', :git => 'https://github.com/concurlabs/SwiftyConcur.git', :tag => '0.0.4'
 ``` 
 
 ## Get Access to Concur APIs
