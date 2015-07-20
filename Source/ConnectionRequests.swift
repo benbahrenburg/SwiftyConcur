@@ -52,7 +52,7 @@ public extension ConcurClient {
     }
   }
   
-  public func entryAttendeeAssociationPost(options: [String : AnyObject?], callback: (error: String!, returnValue: AnyObject!) -> Void) {
+  public func connectionRequestsPost(options: [String : AnyObject?], callback: (error: String!, returnValue: AnyObject!) -> Void) {
     if self.AccessToken != nil {
       let request = ConcurClient.postHTTPRequest("/api/v3.0/common/connectionrequests", options: options)
       Alamofire.request(request).responseJSON { (req, res, json, error) in
@@ -71,7 +71,7 @@ public extension ConcurClient {
     }
   }
   
-  public func entryAttendeeAssociationPut(options: [String : AnyObject?], callback: (error: String!) -> Void) {
+  public func connectionRequestsPut(options: [String : AnyObject?], callback: (error: String!) -> Void) {
     if self.AccessToken != nil {
       let request = ConcurClient.putHTTPRequest("/api/v3.0/common/connectionrequests", options: options)
       Alamofire.request(request).responseJSON { (req, res, json, error) in
@@ -93,7 +93,7 @@ public extension ConcurClient {
     }
   }
   
-  public func entryAttendeeAssociationDelete(options: [String : AnyObject?], callback: (error: String!) -> Void) {
+  public func connectionRequestsDelete(options: [String : AnyObject?], callback: (error: String!) -> Void) {
     if self.AccessToken != nil {
       let request = ConcurClient.deleteHTTPRequest("/api/v3.0/common/connectionrequests", options: options)
       Alamofire.request(request).responseJSON { (req, res, json, error) in
