@@ -100,6 +100,8 @@ public extension ConcurClient {
           } else {
             callback(error: nil)
           }
+        } else {
+          callback(error: error?.description)
         }
       }
     } else {
@@ -120,6 +122,8 @@ public extension ConcurClient {
           } else {
             callback(error: nil)
           }
+        } else {
+          callback(error: error?.description)
         }
       }
     } else {
