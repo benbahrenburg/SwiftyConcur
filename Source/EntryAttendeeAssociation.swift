@@ -47,8 +47,8 @@ public extension ConcurClient {
         } else if let error = jsonObject["Message"].string {
           callback(error: error, returnValue: nil)
         } else {
-          var expenses = ConcurCollection<EntryAttendeeAssociation>(json: jsonObject)
-          callback(error: nil, returnValue: expenses)
+          var associations = ConcurCollection<EntryAttendeeAssociation>(json: jsonObject)
+          callback(error: nil, returnValue: associations)
         }
       }
     } else {
@@ -66,8 +66,8 @@ public extension ConcurClient {
         } else if let error = jsonObject["Message"].string {
           callback(error: error, returnValue: nil)
         } else {
-          var expense = EntryAttendeeAssociation(json: jsonObject)
-          callback(error: nil, returnValue: expense)
+          var association = EntryAttendeeAssociation(json: jsonObject)
+          callback(error: nil, returnValue: association)
         }
       }
     } else {
