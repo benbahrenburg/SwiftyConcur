@@ -16,18 +16,16 @@ public class ConcurCollection<T: ConcurObject> {
     self.nextPage = json["NextPage"].string
   }
   
-  public func getMoreItems(callback: Bool -> Void) {
+  public func getMoreItems(callback: (moreItems: ConcurCollection<T>!) -> Void) {
     if self.nextPage != nil {
       let request = ConcurClient.getMoreItems(self.nextPage)
       Alamofire.request(request).responseJSON { (req, res, json, error) in
         var jsonObject = JSON(json!)
         var newCollection = ConcurCollection<T>(json: jsonObject)
-        self.items = newCollection.items
-        self.nextPage = newCollection.nextPage
-        callback(true)
+        callback(moreItems: newCollection)
       }
     } else {
-      callback(false)
+      callback(moreItems: nil)
     }
   }
   
