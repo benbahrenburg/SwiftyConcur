@@ -7,13 +7,14 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		532492991B58170700735F6B /* NativeFlowTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 532492981B58170700735F6B /* NativeFlowTests.swift */; };
 		536D5A2D1B506523003B9ECC /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 536D5A2C1B506523003B9ECC /* AppDelegate.swift */; };
 		536D5A2F1B506523003B9ECC /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 536D5A2E1B506523003B9ECC /* ViewController.swift */; };
 		536D5A321B506523003B9ECC /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 536D5A301B506523003B9ECC /* Main.storyboard */; };
 		536D5A341B506523003B9ECC /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 536D5A331B506523003B9ECC /* Images.xcassets */; };
 		536D5A371B506523003B9ECC /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 536D5A351B506523003B9ECC /* LaunchScreen.xib */; };
-		536D5A431B506523003B9ECC /* SwiftyConcuriOSExampleTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 536D5A421B506523003B9ECC /* SwiftyConcuriOSExampleTests.swift */; };
 		74B3D0371A36F0C60BBAE2BA /* Pods_SwiftyConcuriOSExample.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1D202B87FE6101A3B6CF56C9 /* Pods_SwiftyConcuriOSExample.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
+		AA8343D6F93208106CF6A723 /* Pods_SwiftyConcuriOSExampleTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 468D5D2747DCE5B59342CE09 /* Pods_SwiftyConcuriOSExampleTests.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -28,6 +29,9 @@
 
 /* Begin PBXFileReference section */
 		1D202B87FE6101A3B6CF56C9 /* Pods_SwiftyConcuriOSExample.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SwiftyConcuriOSExample.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		468D5D2747DCE5B59342CE09 /* Pods_SwiftyConcuriOSExampleTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SwiftyConcuriOSExampleTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		532492981B58170700735F6B /* NativeFlowTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NativeFlowTests.swift; sourceTree = "<group>"; };
+		534D4658295DD71741973ACD /* Pods-SwiftyConcuriOSExampleTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SwiftyConcuriOSExampleTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-SwiftyConcuriOSExampleTests/Pods-SwiftyConcuriOSExampleTests.release.xcconfig"; sourceTree = "<group>"; };
 		536D5A271B506523003B9ECC /* SwiftyConcuriOSExample.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SwiftyConcuriOSExample.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		536D5A2B1B506523003B9ECC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		536D5A2C1B506523003B9ECC /* AppDelegate.swift */ = {isa = PBXFileReference; indentWidth = 2; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; tabWidth = 2; };
@@ -37,7 +41,7 @@
 		536D5A361B506523003B9ECC /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
 		536D5A3C1B506523003B9ECC /* SwiftyConcuriOSExampleTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SwiftyConcuriOSExampleTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		536D5A411B506523003B9ECC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		536D5A421B506523003B9ECC /* SwiftyConcuriOSExampleTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftyConcuriOSExampleTests.swift; sourceTree = "<group>"; };
+		855F5D05F296F47AD8EFC925 /* Pods-SwiftyConcuriOSExampleTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SwiftyConcuriOSExampleTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-SwiftyConcuriOSExampleTests/Pods-SwiftyConcuriOSExampleTests.debug.xcconfig"; sourceTree = "<group>"; };
 		9B2F352C601042F6BEF347A8 /* Pods-SwiftyConcuriOSExample.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SwiftyConcuriOSExample.debug.xcconfig"; path = "Pods/Target Support Files/Pods-SwiftyConcuriOSExample/Pods-SwiftyConcuriOSExample.debug.xcconfig"; sourceTree = "<group>"; };
 		E320A905985CF25F7BFBCC61 /* Pods-SwiftyConcuriOSExample.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SwiftyConcuriOSExample.release.xcconfig"; path = "Pods/Target Support Files/Pods-SwiftyConcuriOSExample/Pods-SwiftyConcuriOSExample.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -55,6 +59,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				AA8343D6F93208106CF6A723 /* Pods_SwiftyConcuriOSExampleTests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -105,7 +110,7 @@
 		536D5A3F1B506523003B9ECC /* SwiftyConcuriOSExampleTests */ = {
 			isa = PBXGroup;
 			children = (
-				536D5A421B506523003B9ECC /* SwiftyConcuriOSExampleTests.swift */,
+				532492981B58170700735F6B /* NativeFlowTests.swift */,
 				536D5A401B506523003B9ECC /* Supporting Files */,
 			);
 			path = SwiftyConcuriOSExampleTests;
@@ -124,6 +129,8 @@
 			children = (
 				9B2F352C601042F6BEF347A8 /* Pods-SwiftyConcuriOSExample.debug.xcconfig */,
 				E320A905985CF25F7BFBCC61 /* Pods-SwiftyConcuriOSExample.release.xcconfig */,
+				855F5D05F296F47AD8EFC925 /* Pods-SwiftyConcuriOSExampleTests.debug.xcconfig */,
+				534D4658295DD71741973ACD /* Pods-SwiftyConcuriOSExampleTests.release.xcconfig */,
 			);
 			name = Pods;
 			sourceTree = "<group>";
@@ -132,6 +139,7 @@
 			isa = PBXGroup;
 			children = (
 				1D202B87FE6101A3B6CF56C9 /* Pods_SwiftyConcuriOSExample.framework */,
+				468D5D2747DCE5B59342CE09 /* Pods_SwiftyConcuriOSExampleTests.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -163,9 +171,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 536D5A491B506523003B9ECC /* Build configuration list for PBXNativeTarget "SwiftyConcuriOSExampleTests" */;
 			buildPhases = (
+				6708CF6D32AD94001C192A13 /* Check Pods Manifest.lock */,
 				536D5A381B506523003B9ECC /* Sources */,
 				536D5A391B506523003B9ECC /* Frameworks */,
 				536D5A3A1B506523003B9ECC /* Resources */,
+				905785FE0FD48CF94C853DF3 /* Embed Pods Frameworks */,
+				A0E537A7D7ABFB8C9D508798 /* Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -235,6 +246,21 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
+		6708CF6D32AD94001C192A13 /* Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
 		6CDFD55F749F33AC6584A336 /* Copy Pods Resources */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -248,6 +274,36 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-SwiftyConcuriOSExample/Pods-SwiftyConcuriOSExample-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		905785FE0FD48CF94C853DF3 /* Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-SwiftyConcuriOSExampleTests/Pods-SwiftyConcuriOSExampleTests-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		A0E537A7D7ABFB8C9D508798 /* Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-SwiftyConcuriOSExampleTests/Pods-SwiftyConcuriOSExampleTests-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		D473E2BB14BD2724691D4DDB /* Check Pods Manifest.lock */ = {
@@ -296,7 +352,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				536D5A431B506523003B9ECC /* SwiftyConcuriOSExampleTests.swift in Sources */,
+				532492991B58170700735F6B /* NativeFlowTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -445,6 +501,7 @@
 		};
 		536D5A4A1B506523003B9ECC /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 855F5D05F296F47AD8EFC925 /* Pods-SwiftyConcuriOSExampleTests.debug.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				FRAMEWORK_SEARCH_PATHS = (
@@ -464,6 +521,7 @@
 		};
 		536D5A4B1B506523003B9ECC /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 534D4658295DD71741973ACD /* Pods-SwiftyConcuriOSExampleTests.release.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				FRAMEWORK_SEARCH_PATHS = (
