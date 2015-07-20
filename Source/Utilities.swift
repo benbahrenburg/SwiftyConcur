@@ -39,7 +39,7 @@ public extension ConcurClient {
   }
   
   internal class func getMoreItems(nextPage: String) -> NSURLRequest! {
-    var urlString = self.instanceUrl.stringByAppendingString(nextPage)
+    var urlString = nextPage
     if let url = NSURL(string: urlString) {
       let request = NSMutableURLRequest(URL: url)
       request.HTTPMethod = "GET"
