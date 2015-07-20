@@ -1,7 +1,7 @@
 import Alamofire
 import SwiftyJSON
 
-public class QuickExpense {
+public class QuickExpense: ConcurObject {
   private(set) public var Comment: String! // A comment that describes the expense. Max Length: 2000
   private(set) public var CurrencyCode: String! // The 3-letter ISO 4217 currency code for the expense transaction amount. Example: USD
   private(set) public var ExpenseTypeCode: String! // The code for the expense type in the company's expense management system.
@@ -36,7 +36,7 @@ public class QuickExpense {
     self.VendorDescription = vendorDescription
   }
   
-  internal convenience init(json: JSON) {
+  public required convenience init(json: JSON) {
     self.init(comment: json["Comment"].string, currencyCode: json["CurrencyCode"].string, expenseTypeCode: json["ExpenseTypeCode"].string, expenseTypeName: json["ExpenseTypeName"].string, id: json["ID"].string, locationName: json["LocationName"].string, ownerLoginID: json["OwnerLoginID"].string, ownerName: json["OwnerName"].string, paymentTypeCode: json["PaymentTypeCode"].string, receiptImageID: json["ReceiptImageID"].string, transactionAmount: json["TransactionAmount"].double, transactionDate: json["TransactionDate"].string, uri: json["URI"].string, vendorDescription: json["VendorDescription"].string)
   }
   
@@ -46,7 +46,7 @@ public extension ConcurClient {
   
   public func quickExpensesGet(options: [String : AnyObject?], callback: (error: String!, returnValue: AnyObject!) -> Void) {
     if self.AccessToken != nil {
-      let request = ConcurClient.getHTTPRequest("/api/v3.0/expense/quickexpenses", options: options, authString: self.getAuthString())
+      let request = ConcurClient.getHTTPRequest("/api/v3.0/expense/quickexpenses", options: options)
       Alamofire.request(request).responseJSON { (req, res, json, error) in
         var jsonObject = JSON(json!)
         if let error = jsonObject["Error"]["Message"].string {
@@ -55,11 +55,7 @@ public extension ConcurClient {
           callback(error: error, returnValue: nil)
         } else {
           if jsonObject["Items"] != nil {
-            var expenses: [QuickExpense] = []
-            for (index: String, subJson: JSON) in jsonObject["Items"] {
-              var expense = QuickExpense(json: subJson)
-              expenses.append(expense)
-            }
+            var expenses = ConcurCollection<QuickExpense>(json: jsonObject)
             callback(error: nil, returnValue: expenses)
           } else {
             var expense = QuickExpense(json: jsonObject)
@@ -74,7 +70,7 @@ public extension ConcurClient {
   
   public func quickExpensesPost(options: [String : AnyObject?], callback: (error: String!, returnValue: AnyObject!) -> Void) {
     if self.AccessToken != nil {
-      let request = ConcurClient.postHTTPRequest("/api/v3.0/expense/quickexpenses", options: options, authString: self.getAuthString())
+      let request = ConcurClient.postHTTPRequest("/api/v3.0/expense/quickexpenses", options: options)
       Alamofire.request(request).responseJSON { (req, res, json, error) in
         let jsonObject = JSON(json!)
         if let error = jsonObject["Error"]["Message"].string {
@@ -93,7 +89,7 @@ public extension ConcurClient {
   
   public func quickExpensesPut(options: [String : AnyObject?], callback: (error: String!) -> Void) {
     if self.AccessToken != nil {
-      let request = ConcurClient.putHTTPRequest("/api/v3.0/expense/quickexpenses", options: options, authString: self.getAuthString())
+      let request = ConcurClient.putHTTPRequest("/api/v3.0/expense/quickexpenses", options: options)
       Alamofire.request(request).responseJSON { (req, res, json, error) in
         if json != nil {
           let jsonObject = JSON(json!)
@@ -113,7 +109,7 @@ public extension ConcurClient {
   
   public func quickExpensesDelete(options: [String : AnyObject?], callback: (error: String!) -> Void) {
     if self.AccessToken != nil {
-      let request = ConcurClient.deleteHTTPRequest("/api/v3.0/expense/quickexpenses", options: options, authString: self.getAuthString())
+      let request = ConcurClient.deleteHTTPRequest("/api/v3.0/expense/quickexpenses", options: options)
       Alamofire.request(request).responseJSON { (req, res, json, error) in
         if json != nil {
           let jsonObject = JSON(json!)
