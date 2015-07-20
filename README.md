@@ -1,4 +1,4 @@
-# SwiftyConcur [![Build Status](https://travis-ci.org/concurlabs/SwiftyConcur.svg)](https://travis-ci.org/concurlabs/SwiftyConcur)
+# SwiftyConcur [![Build Status](https://travis-ci.org/concurlabs/SwiftyConcur.svg?branch=master)](https://travis-ci.org/concurlabs/SwiftyConcur)
 
 Swift SDK for the Concur APIs
 
@@ -9,7 +9,7 @@ To get started with SwiftyConcur, you can add it your project using CocoaPods:
 platform :ios, '8.0'
 use_frameworks!
 
-pod 'SwiftyConcur', :git => 'https://github.com/concurlabs/SwiftyConcur.git', :tag => '0.0.5'
+pod 'SwiftyConcur', :git => 'https://github.com/concurlabs/SwiftyConcur.git', :tag => '0.0.6'
 ``` 
 
 ## Tests
@@ -48,6 +48,7 @@ var client = ConcurClient(accessTokenString: tokenStr) // tokenStr is of type St
 Once the client is initialized, making requests can be made to the API. An example of posting a new Quick Expense can be seen below.
 
 ```
+// QuickExpenses POST
 var expense = NSMutableDictionary()
 expense.setValue("USD", forKey: "CurrencyCode")
 expense.setValue("20.15", forKey: "TransactionAmount")
@@ -56,10 +57,13 @@ expense.setValue("Concur Business", forKey: "VendorDescription")
 var options : [String : AnyObject?] = [
   "Body" : expense
 ]
-
 client.quickExpensesPost(options, callback: { (error, returnValue) in
   let expense = returnValue as! QuickExpense
 })
+
+// QuickExpenses GET
+client.quickExpensesGet([ : ], callback: { (error, returnValue) in
+  let expenses: ConcurCollection<QuickExpense> = returnValue as! ConcurCollection<QuickExpense>
 ```
 
 ## License
