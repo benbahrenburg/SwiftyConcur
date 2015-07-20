@@ -54,13 +54,8 @@ public extension ConcurClient {
         } else if let error = jsonObject["Message"].string {
           callback(error: error, returnValue: nil)
         } else {
-          if jsonObject["Items"] != nil {
-            var expenses = ConcurCollection<QuickExpense>(json: jsonObject)
-            callback(error: nil, returnValue: expenses)
-          } else {
-            var expense = QuickExpense(json: jsonObject)
-            callback(error: nil, returnValue: expense)
-          }
+          var expenses = ConcurCollection<QuickExpense>(json: jsonObject)
+          callback(error: nil, returnValue: expenses)
         }
       }
     } else {
