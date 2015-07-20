@@ -11,12 +11,14 @@ public class ConcurClient {
   }
   
   // Initialization with Access Token string
-  public init(accessToken: String) {
-    self.AccessToken = ConcurAccessToken(accessTokenString: accessToken)
+  public init(accessTokenString: String) {
+    self.AccessToken = ConcurAccessToken(accessTokenString: accessTokenString)
+    ConcurClient.authString = "OAuth ".stringByAppendingString(self.AccessToken.Token)
   }
   
   public init(accessToken: ConcurAccessToken) {
     self.AccessToken = accessToken
+    ConcurClient.authString = "OAuth ".stringByAppendingString(self.AccessToken.Token)
     if let token = accessToken.InstanceUrl {
       ConcurClient.instanceUrl = token
     }
