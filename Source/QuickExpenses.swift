@@ -100,10 +100,8 @@ public extension ConcurClient {
           } else {
             callback(error: nil)
           }
-        } else {
-          callback(error: nil)
         }
-      } 
+      }
     } else {
       callback(error: "Access Token Missing")
     }
@@ -122,8 +120,6 @@ public extension ConcurClient {
           } else {
             callback(error: nil)
           }
-        } else {
-          callback(error: nil)
         }
       }
     } else {
