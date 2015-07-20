@@ -1,4 +1,4 @@
-# SwiftyConcur
+# SwiftyConcur [![Build Status](https://travis-ci.org/concurlabs/SwiftyConcur.svg)](https://travis-ci.org/concurlabs/SwiftyConcur)
 
 Swift SDK for the Concur APIs
 
@@ -11,6 +11,10 @@ use_frameworks!
 
 pod 'SwiftyConcur', :git => 'https://github.com/concurlabs/SwiftyConcur.git', :tag => '0.0.5'
 ``` 
+
+## Tests
+
+To run unit tests on SwiftyConcur, open the SwiftyConcuriOSExample workspace and select `Product > Test` or press `CMD + U`
 
 ## Get Access to Concur APIs
 
@@ -57,3 +61,7 @@ client.quickExpensesPost(options, callback: { (error, returnValue) in
   let expense = returnValue as! QuickExpense
 })
 ```
+
+## License
+
+See LICENSE file for more info.
