@@ -64,6 +64,7 @@ client.quickExpensesPost(options, callback: { (error, returnValue) in
 // QuickExpenses GET
 client.quickExpensesGet([ : ], callback: { (error, returnValue) in
   let expenses: ConcurCollection<QuickExpense> = returnValue as! ConcurCollection<QuickExpense>
+})
 ```
 
 ## License
