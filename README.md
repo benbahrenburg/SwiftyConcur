@@ -45,7 +45,7 @@ var client = ConcurClient(accessToken: token) // token is of type ConcurAccessTo
 var client = ConcurClient(accessTokenString: tokenStr) // tokenStr is of type String
 ```
 
-Once the client is initialized, making requests can be made to the API. An example of posting a new Quick Expense can be seen below.
+Once the client is initialized, making requests can be made to the API. An example of the Quick Expense endpoint can be seen below.
 
 ```
 // QuickExpenses POST
@@ -57,12 +57,20 @@ var options : [String : AnyObject?] = [
   ]
 ]
 client.quickExpensesPost(options, callback: { (error, returnValue) in
-  let expense = returnValue as! QuickExpense
+  if error == nil {
+    let expense = returnValue as! ConcurCollection<QuickExpense>
+  } else {
+    // Handle error
+  }
 })
 
 // QuickExpenses GET
 client.quickExpensesGet([ : ], callback: { (error, returnValue) in
-  let expenses: ConcurCollection<QuickExpense> = returnValue as! ConcurCollection<QuickExpense>
+  if error == nil {
+    let expenses: ConcurCollection<QuickExpense> = returnValue as! ConcurCollection<QuickExpense>
+  } else {
+    // Handle error
+  }
 })
 ```
 
