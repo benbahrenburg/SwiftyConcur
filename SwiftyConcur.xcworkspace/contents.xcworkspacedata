@@ -5,6 +5,18 @@
       location = "container:"
       name = "Source">
       <FileRef
+         location = "group:Source/ConcurCollection.swift">
+      </FileRef>
+      <FileRef
+         location = "group:Source/ConnectionRequests.swift">
+      </FileRef>
+      <FileRef
+         location = "group:Source/Entries.swift">
+      </FileRef>
+      <FileRef
+         location = "group:Source/EntryAttendeeAssociation.swift">
+      </FileRef>
+      <FileRef
          location = "group:Source/ConcurAccessToken.swift">
       </FileRef>
       <FileRef
