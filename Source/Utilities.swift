@@ -10,10 +10,20 @@ public extension ConcurClient {
     if let id = options["id"] as? String {
       urlString = urlString.stringByAppendingString("/").stringByAppendingString(id)
     }
+    if let parameters = options["Parameters"] as? [String : String] {
+      urlString = urlString.stringByAppendingString("?")
+      var currentParamCount = 0
+      for (key, value) in parameters {
+        urlString = urlString.stringByAppendingString(key).stringByAppendingString("=").stringByAppendingString(value)
+        if parameters.count != ++currentParamCount {
+          urlString = urlString.stringByAppendingString("&")
+        }
+      }
+    }
     if let url = NSURL(string: urlString) {
       let request = NSMutableURLRequest(URL: url)
       request.HTTPMethod = "GET"
-      if let body = options["Body"] as? NSMutableDictionary {
+      if let body = options["Body"] as? [String : String] {
         var error: NSError?
         var bodyData = NSJSONSerialization.dataWithJSONObject(body, options: NSJSONWritingOptions.allZeros, error: &error)
         request.HTTPBody = bodyData
@@ -29,9 +39,7 @@ public extension ConcurClient {
       if self.authString != nil {
         request.setValue(self.authString, forHTTPHeaderField: "Authorization")
       }
-      if let parameters = options["Parameters"] as? [String : String] {
-        Alamofire.ParameterEncoding.URL.encode(request, parameters: parameters)
-      }
+      println(request.URLString)
       return request
     } else {
       return nil
@@ -56,10 +64,21 @@ public extension ConcurClient {
   }
   
   internal class func postHTTPRequest(endpoint: String, options: [String : AnyObject?]) -> NSURLRequest! {
-    if let url = NSURL(string: self.instanceUrl.stringByAppendingString(endpoint)) {
+    var urlString = self.instanceUrl.stringByAppendingString(endpoint)
+    if let parameters = options["Parameters"] as? [String : String] {
+      urlString = urlString.stringByAppendingString("?")
+      var currentParamCount = 0
+      for (key, value) in parameters {
+        urlString = urlString.stringByAppendingString(key).stringByAppendingString("=").stringByAppendingString(value)
+        if parameters.count != ++currentParamCount {
+          urlString = urlString.stringByAppendingString("&")
+        }
+      }
+    }
+    if let url = NSURL(string: urlString) {
       let request = NSMutableURLRequest(URL: url)
       request.HTTPMethod = "POST"
-      if let body = options["Body"] as? NSMutableDictionary {
+      if let body = options["Body"] as? [String : String] {
         var error: NSError?
         var bodyData = NSJSONSerialization.dataWithJSONObject(body, options: NSJSONWritingOptions.allZeros, error: &error)
         request.HTTPBody = bodyData
@@ -75,9 +94,6 @@ public extension ConcurClient {
       if self.authString != nil {
         request.setValue(self.authString, forHTTPHeaderField: "Authorization")
       }
-      if let parameters = options["Parameters"] as? [String : String] {
-        Alamofire.ParameterEncoding.URL.encode(request, parameters: parameters)
-      }
       return request
     } else {
       return nil
@@ -86,10 +102,21 @@ public extension ConcurClient {
   
   internal class func putHTTPRequest(endpoint: String, options: [String : AnyObject?]) -> NSURLRequest! {
     if let id = options["id"] as? String {
-      if let url = NSURL(string: self.instanceUrl.stringByAppendingString(endpoint).stringByAppendingString("/").stringByAppendingString(id)) {
+      var urlString = self.instanceUrl.stringByAppendingString(endpoint).stringByAppendingString("/").stringByAppendingString(id)
+      if let parameters = options["Parameters"] as? [String : String] {
+        urlString = urlString.stringByAppendingString("?")
+        var currentParamCount = 0
+        for (key, value) in parameters {
+          urlString = urlString.stringByAppendingString(key).stringByAppendingString("=").stringByAppendingString(value)
+          if parameters.count != ++currentParamCount {
+            urlString = urlString.stringByAppendingString("&")
+          }
+        }
+      }
+      if let url = NSURL(string: urlString) {
         let request = NSMutableURLRequest(URL: url)
         request.HTTPMethod = "PUT"
-        if let body = options["Body"] as? NSMutableDictionary {
+        if let body = options["Body"] as? [String : String] {
           var error: NSError?
           var bodyData = NSJSONSerialization.dataWithJSONObject(body, options: NSJSONWritingOptions.allZeros, error: &error)
           request.HTTPBody = bodyData
@@ -104,9 +131,6 @@ public extension ConcurClient {
         }
         if self.authString != nil {
           request.setValue(self.authString, forHTTPHeaderField: "Authorization")
-        }
-        if let parameters = options["Parameters"] as? [String : String] {
-          Alamofire.ParameterEncoding.URL.encode(request, parameters: parameters)
         }
         return request
       } else {
@@ -119,10 +143,21 @@ public extension ConcurClient {
   
   internal class func deleteHTTPRequest(endpoint: String, options: [String : AnyObject?]) -> NSURLRequest! {
     if let id = options["id"] as? String {
-      if let url = NSURL(string: self.instanceUrl.stringByAppendingString(endpoint).stringByAppendingString("/").stringByAppendingString(id)) {
+      var urlString = self.instanceUrl.stringByAppendingString(endpoint).stringByAppendingString("/").stringByAppendingString(id)
+      if let parameters = options["Parameters"] as? [String : String] {
+        urlString = urlString.stringByAppendingString("?")
+        var currentParamCount = 0
+        for (key, value) in parameters {
+          urlString = urlString.stringByAppendingString(key).stringByAppendingString("=").stringByAppendingString(value)
+          if parameters.count != ++currentParamCount {
+            urlString = urlString.stringByAppendingString("&")
+          }
+        }
+      }
+      if let url = NSURL(string: urlString) {
         let request = NSMutableURLRequest(URL: url)
         request.HTTPMethod = "DELETE"
-        if let body = options["Body"] as? NSMutableDictionary {
+        if let body = options["Body"] as? [String : String] {
           var error: NSError?
           var bodyData = NSJSONSerialization.dataWithJSONObject(body, options: NSJSONWritingOptions.allZeros, error: &error)
           request.HTTPBody = bodyData
@@ -137,9 +172,6 @@ public extension ConcurClient {
         }
         if self.authString != nil {
           request.setValue(self.authString, forHTTPHeaderField: "Authorization")
-        }
-        if let parameters = options["Parameters"] as? [String : String] {
-          Alamofire.ParameterEncoding.URL.encode(request, parameters: parameters)
         }
         return request
       } else {
