@@ -13,7 +13,7 @@ public extension ConcurClient {
     if let url = NSURL(string: urlString) {
       let request = NSMutableURLRequest(URL: url)
       request.HTTPMethod = "GET"
-      if let body = options["Body"] as? NSMutableDictionary {
+      if let body = options["Body"] as? [String : String] {
         var error: NSError?
         var bodyData = NSJSONSerialization.dataWithJSONObject(body, options: NSJSONWritingOptions.allZeros, error: &error)
         request.HTTPBody = bodyData
@@ -59,7 +59,7 @@ public extension ConcurClient {
     if let url = NSURL(string: self.instanceUrl.stringByAppendingString(endpoint)) {
       let request = NSMutableURLRequest(URL: url)
       request.HTTPMethod = "POST"
-      if let body = options["Body"] as? NSMutableDictionary {
+      if let body = options["Body"] as? [String : String] {
         var error: NSError?
         var bodyData = NSJSONSerialization.dataWithJSONObject(body, options: NSJSONWritingOptions.allZeros, error: &error)
         request.HTTPBody = bodyData
@@ -89,7 +89,7 @@ public extension ConcurClient {
       if let url = NSURL(string: self.instanceUrl.stringByAppendingString(endpoint).stringByAppendingString("/").stringByAppendingString(id)) {
         let request = NSMutableURLRequest(URL: url)
         request.HTTPMethod = "PUT"
-        if let body = options["Body"] as? NSMutableDictionary {
+        if let body = options["Body"] as? [String : String] {
           var error: NSError?
           var bodyData = NSJSONSerialization.dataWithJSONObject(body, options: NSJSONWritingOptions.allZeros, error: &error)
           request.HTTPBody = bodyData
@@ -122,7 +122,7 @@ public extension ConcurClient {
       if let url = NSURL(string: self.instanceUrl.stringByAppendingString(endpoint).stringByAppendingString("/").stringByAppendingString(id)) {
         let request = NSMutableURLRequest(URL: url)
         request.HTTPMethod = "DELETE"
-        if let body = options["Body"] as? NSMutableDictionary {
+        if let body = options["Body"] as? [String : String] {
           var error: NSError?
           var bodyData = NSJSONSerialization.dataWithJSONObject(body, options: NSJSONWritingOptions.allZeros, error: &error)
           request.HTTPBody = bodyData

@@ -49,13 +49,12 @@ Once the client is initialized, making requests can be made to the API. An examp
 
 ```
 // QuickExpenses POST
-var expense = NSMutableDictionary()
-expense.setValue("USD", forKey: "CurrencyCode")
-expense.setValue("20.15", forKey: "TransactionAmount")
-expense.setValue("2015-06-19", forKey: "TransactionDate")
-expense.setValue("Concur Business", forKey: "VendorDescription")
 var options : [String : AnyObject?] = [
-  "Body" : expense
+  "Body" : [
+    "CurrencyCode" : "USD",
+    "TransactionAmount" : "20.15",
+    "TransactionDate" : "2015-06-19"
+  ]
 ]
 client.quickExpensesPost(options, callback: { (error, returnValue) in
   let expense = returnValue as! QuickExpense
