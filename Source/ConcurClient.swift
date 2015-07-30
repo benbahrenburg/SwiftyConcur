@@ -13,20 +13,6 @@ public class ConcurClient {
     self.ConsumerSecret = consumerSecret
   }
   
-  // Initialization with Access Token string
-  public init(accessTokenString: String) {
-    self.AccessToken = ConcurAccessToken(accessTokenString: accessTokenString)
-    ConcurClient.authString = "OAuth ".stringByAppendingString(self.AccessToken.Token)
-  }
-  
-  public init(accessToken: ConcurAccessToken) {
-    self.AccessToken = accessToken
-    ConcurClient.authString = "OAuth ".stringByAppendingString(self.AccessToken.Token)
-    if let token = accessToken.InstanceUrl {
-      ConcurClient.instanceUrl = token
-    }
-  }
-  
   public init(consumerKey: String, consumerSecret: String, accessToken: ConcurAccessToken) {
     self.AccessToken = accessToken
     ConcurClient.authString = "OAuth ".stringByAppendingString(self.AccessToken.Token)
@@ -35,6 +21,10 @@ public class ConcurClient {
     }
     self.ConsumerKey = consumerKey
     self.ConsumerSecret = consumerSecret
+  }
+  
+  public func setAccessToken(accessToken: ConcurAccessToken) {
+    self.AccessToken = accessToken
   }
   
   public func refreshToken(callback: (error: String!, accessToken: ConcurAccessToken!) -> Void) {
