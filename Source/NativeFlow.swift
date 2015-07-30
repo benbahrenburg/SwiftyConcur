@@ -26,7 +26,6 @@ public extension ConcurClient {
           } else {
             jsonObject = jsonObject["Access_Token"]
             var token = ConcurAccessToken(json: jsonObject)
-            self.AccessToken = token
             callback(error: nil, accessToken: token)
           }
         } else {
