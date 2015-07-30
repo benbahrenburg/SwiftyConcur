@@ -47,7 +47,6 @@ public extension ConcurClient {
   public func quickExpensesGet(options: [String : AnyObject?], callback: (error: String!, returnValue: AnyObject!) -> Void) {
     if self.AccessToken != nil {
       let request = ConcurClient.getHTTPRequest("api/v3.0/expense/quickexpenses", options: options)
-      println(request.URL)
       Alamofire.request(request).responseJSON { (req, res, json, error) in
         var jsonObject = JSON(json!)
         if let error = jsonObject["Error"]["Message"].string {
