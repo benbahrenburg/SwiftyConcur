@@ -107,8 +107,6 @@ public extension ConcurClient {
       headers.updateValue(self.authString, forKey: "Authorization")
     }
     
-    println(headers)
-    
     return headers
   }
   
