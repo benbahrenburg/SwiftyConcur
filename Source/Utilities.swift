@@ -2,7 +2,7 @@ import Alamofire
 
 public extension ConcurClient {
   
-  internal static var instanceUrl = "https://www.concursolutions.com"
+  internal static var instanceUrl = "https://www.concursolutions.com/"
   internal static var authString: String!
   
   internal class func getHTTPRequest(endpoint: String, options: [String : AnyObject?]) -> NSURLRequest! {
@@ -39,7 +39,6 @@ public extension ConcurClient {
       if self.authString != nil {
         request.setValue(self.authString, forHTTPHeaderField: "Authorization")
       }
-      println(request.URLString)
       return request
     } else {
       return nil

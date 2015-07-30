@@ -27,7 +27,17 @@ public class ConcurClient {
     }
   }
   
-  public func refreshToken(callback: (error: String!, accessToken: String!) -> Void) {
+  public init(consumerKey: String, consumerSecret: String, accessToken: ConcurAccessToken) {
+    self.AccessToken = accessToken
+    ConcurClient.authString = "OAuth ".stringByAppendingString(self.AccessToken.Token)
+    if let token = accessToken.InstanceUrl {
+      ConcurClient.instanceUrl = token
+    }
+    self.ConsumerKey = consumerKey
+    self.ConsumerSecret = consumerSecret
+  }
+  
+  public func refreshToken(callback: (error: String!, accessToken: ConcurAccessToken!) -> Void) {
     if self.ConsumerKey != nil && self.ConsumerSecret != nil && self.AccessToken.RefreshToken != nil {
       var options: [String : AnyObject?] = [
         "Parameters" : [
@@ -36,7 +46,7 @@ public class ConcurClient {
           "client_secret" : self.ConsumerSecret!
         ]
       ]
-      var request = ConcurClient.getHTTPRequest("/net2/oauth2/accesstoken.ashx", options: options)
+      var request = ConcurClient.postHTTPRequest("net2/oauth2/accesstoken.ashx", options: options)
       
       Alamofire.request(request).responseJSON { (req, res, json, error) in
         if error == nil {

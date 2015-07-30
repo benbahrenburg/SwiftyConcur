@@ -39,7 +39,7 @@ public extension ConcurClient {
   
   public func entryAttendeeAssociationGet(options: [String : AnyObject?], callback: (error: String!, returnValue: AnyObject!) -> Void) {
     if self.AccessToken != nil {
-      let request = ConcurClient.getHTTPRequest("/api/v3.0/expense/entryattendeeassociations", options: options)
+      let request = ConcurClient.getHTTPRequest("api/v3.0/expense/entryattendeeassociations", options: options)
       Alamofire.request(request).responseJSON { (req, res, json, error) in
         var jsonObject = JSON(json!)
         if let error = jsonObject["Error"]["Message"].string {
@@ -58,7 +58,7 @@ public extension ConcurClient {
   
   public func entryAttendeeAssociationPost(options: [String : AnyObject?], callback: (error: String!, returnValue: AnyObject!) -> Void) {
     if self.AccessToken != nil {
-      let request = ConcurClient.postHTTPRequest("/api/v3.0/expense/entryattendeeassociations", options: options)
+      let request = ConcurClient.postHTTPRequest("api/v3.0/expense/entryattendeeassociations", options: options)
       Alamofire.request(request).responseJSON { (req, res, json, error) in
         let jsonObject = JSON(json!)
         if let error = jsonObject["Error"]["Message"].string {
@@ -77,7 +77,7 @@ public extension ConcurClient {
   
   public func entryAttendeeAssociationPut(options: [String : AnyObject?], callback: (error: String!) -> Void) {
     if self.AccessToken != nil {
-      let request = ConcurClient.putHTTPRequest("/api/v3.0/expense/entryattendeeassociations", options: options)
+      let request = ConcurClient.putHTTPRequest("api/v3.0/expense/entryattendeeassociations", options: options)
       Alamofire.request(request).responseJSON { (req, res, json, error) in
         if json != nil {
           let jsonObject = JSON(json!)
@@ -99,7 +99,7 @@ public extension ConcurClient {
   
   public func entryAttendeeAssociationDelete(options: [String : AnyObject?], callback: (error: String!) -> Void) {
     if self.AccessToken != nil {
-      let request = ConcurClient.deleteHTTPRequest("/api/v3.0/expense/entryattendeeassociations", options: options)
+      let request = ConcurClient.deleteHTTPRequest("api/v3.0/expense/entryattendeeassociations", options: options)
       Alamofire.request(request).responseJSON { (req, res, json, error) in
         if json != nil {
           let jsonObject = JSON(json!)
