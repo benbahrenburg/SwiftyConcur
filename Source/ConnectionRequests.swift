@@ -35,7 +35,7 @@ public extension ConcurClient {
   
   public func connectionRequestsGet(options: [String : AnyObject?], callback: (error: String!, returnValue: AnyObject!) -> Void) {
     if self.AccessToken != nil {
-      let request = ConcurClient.getHTTPRequest("/api/v3.0/common/connectionrequests", options: options)
+      let request = ConcurClient.getHTTPRequest("api/v3.0/common/connectionrequests", options: options)
       Alamofire.request(request).responseJSON { (req, res, json, error) in
         var jsonObject = JSON(json!)
         if let error = jsonObject["Error"]["Message"].string {
@@ -54,7 +54,7 @@ public extension ConcurClient {
   
   public func connectionRequestsPost(options: [String : AnyObject?], callback: (error: String!, returnValue: AnyObject!) -> Void) {
     if self.AccessToken != nil {
-      let request = ConcurClient.postHTTPRequest("/api/v3.0/common/connectionrequests", options: options)
+      let request = ConcurClient.postHTTPRequest("api/v3.0/common/connectionrequests", options: options)
       Alamofire.request(request).responseJSON { (req, res, json, error) in
         let jsonObject = JSON(json!)
         if let error = jsonObject["Error"]["Message"].string {
@@ -73,7 +73,7 @@ public extension ConcurClient {
   
   public func connectionRequestsPut(options: [String : AnyObject?], callback: (error: String!) -> Void) {
     if self.AccessToken != nil {
-      let request = ConcurClient.putHTTPRequest("/api/v3.0/common/connectionrequests", options: options)
+      let request = ConcurClient.putHTTPRequest("api/v3.0/common/connectionrequests", options: options)
       Alamofire.request(request).responseJSON { (req, res, json, error) in
         if json != nil {
           let jsonObject = JSON(json!)
@@ -95,7 +95,7 @@ public extension ConcurClient {
   
   public func connectionRequestsDelete(options: [String : AnyObject?], callback: (error: String!) -> Void) {
     if self.AccessToken != nil {
-      let request = ConcurClient.deleteHTTPRequest("/api/v3.0/common/connectionrequests", options: options)
+      let request = ConcurClient.deleteHTTPRequest("api/v3.0/common/connectionrequests", options: options)
       Alamofire.request(request).responseJSON { (req, res, json, error) in
         if json != nil {
           let jsonObject = JSON(json!)

@@ -151,7 +151,7 @@ public extension ConcurClient {
   
   public func expenseGroupConfigurationsGet(options: [String : AnyObject?], callback: (error: String!, returnValue: AnyObject!) -> Void) {
     if self.AccessToken != nil {
-      let request = ConcurClient.getHTTPRequest("/api/v3.0/expense/expensegroupconfigurations", options: options)
+      let request = ConcurClient.getHTTPRequest("api/v3.0/expense/expensegroupconfigurations", options: options)
       Alamofire.request(request).responseJSON { (req, res, json, error) in
         var jsonObject = JSON(json!)
         if let error = jsonObject["Error"]["Message"].string {
