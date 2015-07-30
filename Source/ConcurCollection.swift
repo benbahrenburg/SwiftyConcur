@@ -3,8 +3,8 @@ import Alamofire
 
 public class ConcurCollection<T: ConcurObject> {
   
-  public var items: [T]!
-  public var nextPage: String!
+  public var Items: [T]!
+  public var NextPage: String!
   
   internal init(json: JSON) {
     var objects: [T] = []
@@ -17,13 +17,13 @@ public class ConcurCollection<T: ConcurObject> {
       var object = T(json: json)
       objects.append(object)
     }
-    self.items = objects
-    self.nextPage = json["NextPage"].string
+    self.Items = objects
+    self.NextPage = json["NextPage"].string
   }
   
   public func getMoreItems(callback: (moreItems: ConcurCollection<T>!) -> Void) {
-    if self.nextPage != nil {
-      let request = ConcurClient.getMoreItems(self.nextPage)
+    if self.NextPage != nil {
+      let request = ConcurClient.getMoreItems(self.NextPage)
       Alamofire.request(request).responseJSON { (req, res, json, error) in
         var jsonObject = JSON(json!)
         var newCollection = ConcurCollection<T>(json: jsonObject)

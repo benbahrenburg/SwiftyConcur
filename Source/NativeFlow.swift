@@ -16,16 +16,17 @@ public extension ConcurClient {
           "X-ConsumerKey" : self.ConsumerKey!
         ]
       ]
-      var request = ConcurClient.getHTTPRequest("/net2/oauth2/accesstoken.ashx", options: options)
+      var request = ConcurClient.getHTTPRequest("net2/oauth2/accesstoken.ashx", options: options)
       
       Alamofire.request(request).responseJSON { (req, res, json, error) in
         if error == nil {
-          var jsonObject = JSON(json!)
+          var jsonObject = JSONd(json!)
           if let err = jsonObject["Error"]["Message"].string {
             callback(error: err, accessToken: nil)
           } else {
             jsonObject = jsonObject["Access_Token"]
-            callback(error: nil, accessToken: ConcurAccessToken(json: jsonObject))
+            var token = ConcurAccessToken(json: jsonObject)
+            callback(error: nil, accessToken: token)
           }
         } else {
           callback(error: error?.description, accessToken: nil)
