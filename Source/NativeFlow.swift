@@ -20,7 +20,7 @@ public extension ConcurClient {
       
       Alamofire.request(request).responseJSON { (req, res, json, error) in
         if error == nil {
-          var jsonObject = JSONd(json!)
+          var jsonObject = JSON(json!)
           if let err = jsonObject["Error"]["Message"].string {
             callback(error: err, accessToken: nil)
           } else {
