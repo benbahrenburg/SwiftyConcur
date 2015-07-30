@@ -1,11 +1,11 @@
-platform :ios, '8.0'
+]platform :ios, '8.0'
 use_frameworks!
 
 target 'SwiftyConcuriOSExample' do
-  pod 'SwiftyConcur', :git => 'https://github.com/concurlabs/SwiftyConcur.git', :tag => '0.0.8'
+  pod 'SwiftyConcur', :git => 'https://github.com/concurlabs/SwiftyConcur.git', :tag => '0.0.9'
 end
 
 target 'SwiftyConcuriOSExampleTests' do
-  pod 'SwiftyConcur', :git => 'https://github.com/concurlabs/SwiftyConcur.git', :tag => '0.0.8'
+  pod 'SwiftyConcur', :git => 'https://github.com/concurlabs/SwiftyConcur.git', :tag => '0.0.9'
   pod 'OHHTTPStubs'
 end

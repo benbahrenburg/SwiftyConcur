@@ -10,7 +10,7 @@ To get started with SwiftyConcur, you can add it your project using CocoaPods:
 platform :ios, '8.0'
 use_frameworks!
 
-pod 'SwiftyConcur', :git => 'https://github.com/concurlabs/SwiftyConcur.git', :tag => '0.0.8'
+pod 'SwiftyConcur', :git => 'https://github.com/concurlabs/SwiftyConcur.git', :tag => '0.0.9'
 ``` 
 
 ## Tests
@@ -26,31 +26,58 @@ To get access to Concur's APIs, you'll need a developer account with Concur. Get
 
 ## Authentication
 
-To obtain an access token, you can choose any of the following OAuth strategies:
+To use Concur's API, you must retrieve an access token. You can choose any of the following OAuth strategies to obtain and store an access token:
 
 ### Native Flow
 
 ```
-var client = ConcurClient(consumerKey: "", consumerSecret: "")
-client.getNativeFlowAccessToken("", password: "", callback: { (error, token) in
+var client = ConcurClient(consumerKey: "CONSUMER_KEY", consumerSecret: "CONSUMER_SECRET")
+client.getNativeFlowAccessToken("USERNAME", password: "PASSWORD", callback: { (error, token) in
   if error != nil {
     // Handle error
   } else {
-    // Save token as ConcurAccessToken for later use
+    // Do something with ConcurAccessToken
   }
 })
 ```
 
 ## Making Requests
 
-To make requests to Concur's API, you will need to initialize a ConcurClient with an access token. You can do this using the ConcurAccessToken object or just an access token string
+To make requests to Concur's API, your ConcurClient must contain an access token.
 
+##### If a ConcurClient has already been created, obtain a token using one of the Oauth flows above. Then, add it to your ConcurClient:
 ```
-var client = ConcurClient(accessToken: token) // token is of type ConcurAccessToken
-var client = ConcurClient(accessTokenString: tokenStr) // tokenStr is of type String
+client.setAccessToken(token)
+```
+
+##### If you have a token and are creating a new ConcurClient, you can initialize it with a ConcurAccessToken object:
+```
+var token = functionThatLoadsConcurAccessToken()
+var client = ConcurClient(consumerKey: "CONSUMER_KEY", consumerSecret: "CONSUMER_SECRET", accessToken: token)
+```
+
+##### You can also create a ConcurAccessToken with just the access token string, but this will limit some functions available for the ConcurAccessToken:
+```
+var token = ConcurAccessToken(accessTokenString: functionThatLoadsAccessTokenString())
 ```
 
 Once the client is initialized, making requests can be made to the API.
+
+## Refreshing Access Tokens
+
+If you need to refresh your access token and obtain a new one, you must have a ConcurClient with a ConcurAccessToken that contains a RefreshToken:
+
+```
+client.refreshToken({ (error, token) in
+  if error != nil {
+    // Handle error
+  } else {
+    // Do something with ConcurAccessToken
+  }
+})
+```
+
+This will invalidate your previous access token.
 
 ## License
 
