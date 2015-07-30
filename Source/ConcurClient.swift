@@ -41,13 +41,13 @@ public class ConcurClient {
     if self.ConsumerKey != nil && self.ConsumerSecret != nil && self.AccessToken.RefreshToken != nil {
       var options: [String : AnyObject?] = [
         "Parameters" : [
-          "refresh_token" : self.AccessToken.RefreshToken!,
-          "client_id" : self.ConsumerKey!,
-          "client_secret" : self.ConsumerSecret!
+          "refresh_token" : self.AccessToken.RefreshToken,
+          "client_id" : self.ConsumerKey,
+          "client_secret" : self.ConsumerSecret
         ]
       ]
-      var request = ConcurClient.postHTTPRequest("net2/oauth2/accesstoken.ashx", options: options)
-      
+      var request = ConcurClient.postHTTPRequest("net2/oauth2/getaccesstoken.ashx", options: options)
+      println(request.URLString)
       Alamofire.request(request).responseJSON { (req, res, json, error) in
         if error == nil {
           var jsonObject = JSON(json!)
