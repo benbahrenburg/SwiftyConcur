@@ -87,6 +87,103 @@ See LICENSE file.
 
 # Implemented Endpoints
 
+## AttendeeTypes
+
+### Get all attendee types - [Swagger](https://www.concursolutions.com/api/docs/index.html#!/AttendeeTypes/Get_offset_limit_get_0)
+```
+var options : [String : AnyObject?] = [
+  "Parameters" : [
+    "offset" : "string", // Optional
+    "limit" : "int" // Optional
+  ]
+]
+client.attendeeTypesGet(options, callback: { (error, returnValue) in
+  if error == nil {
+    let attendeeTypes = returnValue as! ConcurCollection<AttendeeType>
+  } else {
+    // Handle error
+  }
+})
+```
+
+### Get a single attendee type by ID - [Swagger](https://www.concursolutions.com/api/docs/index.html#!/AttendeeTypes/Get_id_get_1)
+```
+var options : [String : AnyObject?] = [
+  "id" : "string" // Required
+]
+client.attendeeTypesGet(options, callback: { (error, returnValue) in
+  if error == nil {
+    let attendeeType = returnValue as! ConcurCollection<AttendeeType>
+  } else {
+    // Handle error
+  }
+})
+```
+
+### Delete an attendee type by ID - [Swagger](https://www.concursolutions.com/api/docs/index.html#!/AttendeeTypes/Delete_id_delete_2)
+```
+var options : [String : AnyObject?] = [
+  "id" : "string" // Required
+]
+client.attendeeTypesDelete(options, callback: { (error) in
+  if error == nil {
+    // Delete was successful
+  } else {
+    // Handle error
+  }
+})
+```
+
+### Create a new attendee type - [Swagger](https://www.concursolutions.com/api/docs/index.html#!/AttendeeTypes/Post_content_post_3)
+```
+var options = [String : AnyObject?] = [
+  "Body" : [
+    "AllowAttendeeCountEditing" : "boolean", // Optional
+    "AllowManuallyEnteredAttendees" : "boolean", // Optional
+    "AttendeeFormID" : "string", // Required
+    "Code" : "string", // Required
+    "ConnectorID" : "string", // Optional
+    "DuplicateSearchFields" : [
+      "string", "string", "string"... // Required
+    ],
+    "Name" : "string" // Required
+  ]
+]
+client.attendeeTypesPost(options, callback: { (error, returnValue) in
+  if error == nil {
+    let attendeeType = returnValue as! AttendeeType
+  } else {
+    // Handle error
+  }
+})
+```
+
+### Update an attendee type by ID
+###### Note: At least one of the parameters in Body must be provided
+```
+var options = [String : AnyObject?] = [
+  "id" : "string", // Required
+  "Body" : [
+    "AllowAttendeeCountEditing" : "boolean", // Optional
+    "AllowManuallyEnteredAttendees" : "boolean", // Optional
+    "AttendeeFormID" : "string", // Optional
+    "Code" : "string", // Optional
+    "ConnectorID" : "string", // Optional
+    "DuplicateSearchFields" : [
+      "string", "string", "string"... // Optional
+    ],
+    "Name" : "string" // Required
+  ]
+]
+client.attendeeTypesPost(options, callback: { (error, returnValue) in
+  if error == nil {
+    let attendeeType = returnValue as! AttendeeType
+  } else {
+    // Handle error
+  }
+})
+```
+
 ## ConnectionRequests
 
 ### Get all connection requests - [Swagger](https://www.concursolutions.com/api/docs/index.html#!/ConnectionRequests/Get_offset_limit_status_get_0)
@@ -104,6 +201,7 @@ client.connectionRequestsGet(options, callback: { (error, returnValue) in
   } else {
     // Handle error
   }
+})
 ```
 
 ### Get a connection request by ID - [Swagger](https://www.concursolutions.com/api/docs/index.html#!/ConnectionRequests/Get_id_get_1)
@@ -117,6 +215,7 @@ client.connectionRequestsGet(options, callback: { (error, returnValue) in
   } else {
     // Handle error
   }
+})
 ```
 
 ### Create a connection request - [Swagger](https://www.concursolutions.com/api/docs/index.html#!/ConnectionRequests/Post_user_post_2)
@@ -128,7 +227,7 @@ var options : [String : AnyObject?] = [
 ]
 client.connectionRequestsPost(options, callback: { (error, returnValue) in
   if error == nil {
-    let connectionRequest = returnValue as! ConcurCollection<ConnectionRequest>
+    let connectionRequest = returnValue as! ConnectionRequest
   } else {
     // Handle error
   }
@@ -192,6 +291,7 @@ client.entriesGet(options, callback: { (error, returnValue) in
   } else {
     // Handle error
   }
+})
 ```
 
 ### Get a single expense entry by ID - [Swagger](https://www.concursolutions.com/api/docs/index.html#!/Entries/Get_id_user_get_1)
@@ -208,6 +308,7 @@ client.entriesGet(options, callback: { (error, returnValue) in
   } else {
     // Handle error
   }
+})
 ```
 
 ### Create a new expense entry - [Swagger](https://www.concursolutions.com/api/docs/index.html#!/Entries/Post_content_user_post_2)
@@ -293,7 +394,7 @@ var options : [String : AnyObject?] = [
 ]
 client.entriesPost(options, callback: { (error, returnValue) in
   if error == nil {
-    let entry = returnValue as! ConcurCollection<Entry>
+    let entry = returnValue as! Entry
   } else {
     // Handle error
   }
@@ -427,6 +528,7 @@ client.entryAttendeeAssociationsGet(options, callback: { (error, returnValue) in
   } else {
     // Handle error
   }
+})
 ```
 
 ### Get a single entry-attendee association by ID - [Swagger](https://www.concursolutions.com/api/docs/index.html#!/EntryAttendeeAssociations/Get_id_user_get_1)
@@ -443,6 +545,7 @@ client.entryAttendeeAssociationsGet(options, callback: { (error, returnValue) in
   } else {
     // Handle error
   }
+})
 ```
 
 ### Create a new entry attendee-association - [Swagger](https://www.concursolutions.com/api/docs/index.html#!/EntryAttendeeAssociations/Post_content_user_post_2)
@@ -465,7 +568,7 @@ var options : [String : AnyObject?] = [
 ]
 client.entryAttendeeAssociationsPost(options, callback: { (error, returnValue) in
   if error == nil {
-    let entryAttendeeAssociation = returnValue as! ConcurCollection<EntryAttendeeAssociation>
+    let entryAttendeeAssociation = returnValue as! EntryAttendeeAssociation
   } else {
     // Handle error
   }
@@ -518,6 +621,43 @@ client.entryAttendeeAssociationsDelete(options, callback: { (error) in
 })
 ```
 
+## ExpenseGroupConfigurations
+
+### Get an expense group configuration - [Swagger](https://www.concursolutions.com/api/docs/index.html#!/ExpenseGroupConfigurations/Get_user_offset_limit_get_0)
+```
+var options : [String : AnyObject?] = [
+  "Parameters" : [
+    "user" : "string", // Optional
+    "offset" : "string", // Optional
+    "limit" : "int" // Optional
+  ]
+]
+client.expenseGroupConfigurationsGet(options, callback: { (error, returnValue) in
+  if error == nil {
+    let configurations = returnValue as! ConcurCollection<ExpenseGroupConfiguration>
+  } else {
+    // Handle error
+  }
+})
+```
+
+### Get an expense group configuration by ID - [Swagger](https://www.concursolutions.com/api/docs/index.html#!/ExpenseGroupConfigurations/Get_id_user_get_1)
+```
+var options : [String : AnyObject?] = [
+  "id" : "string", // Required
+  "Parameters" : [
+    "user" : "string" // Optional
+  ]
+]
+client.expenseGroupConfigurationsGet(options, callback: { (error, returnValue) in
+  if error == nil {
+    let configuration = returnValue as! ConcurCollection<ExpenseGroupConfiguration>
+  } else {
+    // Handle error
+  }
+})
+```
+
 ## QuickExpenses
 
 ### Get all quick expenses - [Swagger](https://www.concursolutions.com/api/docs/index.html#!/QuickExpenses/Get_offset_limit_user_get_0)
@@ -535,6 +675,7 @@ client.quickExpensesGet(options, callback: { (error, returnValue) in
   } else {
     // Handle error
   }
+})
 ```
 
 ### Get a single quick expense by ID - [Swagger](https://www.concursolutions.com/api/docs/index.html#!/QuickExpenses/Get_id_user_get_1)
@@ -551,6 +692,7 @@ client.quickExpensesGet(options, callback: { (error, returnValue) in
   } else {
     // Handle error
   }
+})
 ```
 
 ### Create a new quick expense - [Swagger](https://www.concursolutions.com/api/docs/index.html#!/QuickExpenses/Post_content_user_post_2)
@@ -576,7 +718,7 @@ var options : [String : AnyObject?] = [
 ]
 client.quickExpensesPost(options, callback: { (error, returnValue) in
   if error == nil {
-    let expense = returnValue as! ConcurCollection<QuickExpense>
+    let expense = returnValue as! QuickExpense
   } else {
     // Handle error
   }
