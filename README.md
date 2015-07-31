@@ -144,7 +144,7 @@ var options = [String : AnyObject?] = [
     "Code" : "string", // Required
     "ConnectorID" : "string", // Optional
     "DuplicateSearchFields" : [
-      "string", "string", "string"... // Required
+      "string", "string", "string" // Required
     ],
     "Name" : "string" // Required
   ]
@@ -170,7 +170,7 @@ var options = [String : AnyObject?] = [
     "Code" : "string", // Optional
     "ConnectorID" : "string", // Optional
     "DuplicateSearchFields" : [
-      "string", "string", "string"... // Optional
+      "string", "string", "string" // Optional
     ],
     "Name" : "string" // Required
   ]
