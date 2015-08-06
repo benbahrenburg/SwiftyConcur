@@ -99,9 +99,9 @@ var options : [String : AnyObject?] = [
 ]
 client.attendeeTypesGet(options, callback: { (error, returnValue) in
   if error == nil {
-    let attendeeTypes = returnValue as! ConcurCollection<AttendeeType>
+    // returnValue is of type ConcurCollection<AttendeeType>!
   } else {
-    // Handle error
+    // error is of type String!
   }
 })
 ```
@@ -113,9 +113,9 @@ var options : [String : AnyObject?] = [
 ]
 client.attendeeTypesGet(options, callback: { (error, returnValue) in
   if error == nil {
-    let attendeeType = returnValue as! ConcurCollection<AttendeeType>
+    // returnValue is of type ConcurCollection<AttendeeType>!
   } else {
-    // Handle error
+    // error is of type String!
   }
 })
 ```
@@ -125,11 +125,11 @@ client.attendeeTypesGet(options, callback: { (error, returnValue) in
 var options : [String : AnyObject?] = [
   "id" : "string" // Required
 ]
-client.attendeeTypesDelete(options, callback: { (error) in
+client.attendeeTypesDelete(options, callback: { (error, returnValue) in
   if error == nil {
-    // Delete was successful
+    // returnValue is of type ConcurCollection<AttendeeType>!
   } else {
-    // Handle error
+    // error is of type String!
   }
 })
 ```
@@ -151,9 +151,9 @@ var options = [String : AnyObject?] = [
 ]
 client.attendeeTypesPost(options, callback: { (error, returnValue) in
   if error == nil {
-    let attendeeType = returnValue as! AttendeeType
+    // returnValue is of type ConcurCollection<AttendeeType>!
   } else {
-    // Handle error
+    // error is of type String!
   }
 })
 ```
@@ -175,11 +175,11 @@ var options = [String : AnyObject?] = [
     "Name" : "string" // Required
   ]
 ]
-client.attendeeTypesPost(options, callback: { (error, returnValue) in
+client.attendeeTypesPut(options, callback: { (error, returnValue) in
   if error == nil {
-    let attendeeType = returnValue as! AttendeeType
+    // returnValue is of type ConcurCollection<AttendeeType>!
   } else {
-    // Handle error
+    // error is of type String!
   }
 })
 ```
@@ -197,9 +197,9 @@ var options : [String : AnyObject?] = [
 ]
 client.connectionRequestsGet(options, callback: { (error, returnValue) in
   if error == nil {
-    let connectionRequests = returnValue as! ConcurCollection<ConnectionRequest>
+    // returnValue is of type ConcurCollection<ConnectionRequest>!
   } else {
-    // Handle error
+    // error is of type String!
   }
 })
 ```
@@ -211,9 +211,9 @@ var options : [String : AnyObject?] = [
 ]
 client.connectionRequestsGet(options, callback: { (error, returnValue) in
   if error == nil {
-    let connectionRequest = returnValue as! ConcurCollection<ConnectionRequest>
+    // returnValue is of type ConcurCollection<ConnectionRequest>!
   } else {
-    // Handle error
+    // error is of type String!
   }
 })
 ```
@@ -227,9 +227,9 @@ var options : [String : AnyObject?] = [
 ]
 client.connectionRequestsPost(options, callback: { (error, returnValue) in
   if error == nil {
-    let connectionRequest = returnValue as! ConnectionRequest
+    // returnValue is of type ConcurCollection<ConnectionRequest>!
   } else {
-    // Handle error
+    // error is of type String!
   }
 })
 ```
@@ -242,11 +242,11 @@ var options : [String : AnyObject?] = [
     "Status" : "string" // Required
   ]
 ]
-client.connectionRequestsPut(options, callback: { (error) in
+client.connectionRequestsPut(options, callback: { (error, returnValue) in
   if error == nil {
-    // Update was successful
+    // returnValue is of type ConcurCollection<ConnectionRequest>!
   } else {
-    // Handle error
+    // error is of type String!
   }
 })
 ```
@@ -256,11 +256,11 @@ client.connectionRequestsPut(options, callback: { (error) in
 var options : [String : AnyObject?] = [
   "id" : "string" // Required
 ]
-client.connectionRequestsDelete(options, callback: { (error) in
+client.connectionRequestsDelete(options, callback: { (error, returnValue) in
   if error == nil {
-    // Delete was successful
+    // returnValue is of type ConcurCollection<ConnectionRequest>!
   } else {
-    // Handle error
+    // error is of type String!
   }
 })
 ```
@@ -287,9 +287,9 @@ var options : [String : AnyObject?] = [
 ]
 client.entriesGet(options, callback: { (error, returnValue) in
   if error == nil {
-    let entries = returnValue as! ConcurCollection<Entry>
+    // returnValue is of type ConcurCollection<Entry>!
   } else {
-    // Handle error
+    // error is of type String!
   }
 })
 ```
@@ -304,9 +304,9 @@ var options : [String : AnyObject?] = [
 ]
 client.entriesGet(options, callback: { (error, returnValue) in
   if error == nil {
-    let entry = returnValue as! ConcurCollection<Entry>
+    // returnValue is of type ConcurCollection<Entry>!
   } else {
-    // Handle error
+    // error is of type String!
   }
 })
 ```
@@ -394,9 +394,9 @@ var options : [String : AnyObject?] = [
 ]
 client.entriesPost(options, callback: { (error, returnValue) in
   if error == nil {
-    let entry = returnValue as! Entry
+    // returnValue is of type ConcurCollection<Entry>!
   } else {
-    // Handle error
+    // error is of type String!
   }
 })
 ```
@@ -484,11 +484,11 @@ var options : [String : AnyObject?] = [
     "user" : "string" // Optional
   ]
 ]
-client.entriessPut(options, callback: { (error) in
+client.entriesPut(options, callback: { (error, returnValue) in
   if error == nil {
-    // Update was successful
+    // returnValue is of type ConcurCollection<Entry>!
   } else {
-    // Handle error
+    // error is of type String!
   }
 })
 ```
@@ -501,11 +501,11 @@ var options : [String : AnyObject?] = [
     "user" : "string" // Optional
   ]
 ]
-client.entriesDelete(options, callback: { (error) in
+client.entriesDelete(options, callback: { (error, returnValue) in
   if error == nil {
-    // Delete was successful
+    // returnValue is of type ConcurCollection<Entry>!
   } else {
-    // Handle error
+    // error is of type String!
   }
 })
 ```
@@ -524,9 +524,9 @@ var options : [String : AnyObject?] = [
 ]
 client.entryAttendeeAssociationsGet(options, callback: { (error, returnValue) in
   if error == nil {
-    let entryAttendeeAssociations = returnValue as! ConcurCollection<EntryAttendeeAssociation>
+    // returnValue is of type ConcurCollection<EntryAttendeeAssociation>!
   } else {
-    // Handle error
+    // error is of type String!
   }
 })
 ```
@@ -541,9 +541,9 @@ var options : [String : AnyObject?] = [
 ]
 client.entryAttendeeAssociationsGet(options, callback: { (error, returnValue) in
   if error == nil {
-    let entryAttendeeAssociation = returnValue as! ConcurCollection<EntryAttendeeAssociations>
+    // returnValue is of type ConcurCollection<EntryAttendeeAssociation>!
   } else {
-    // Handle error
+    // error is of type String!
   }
 })
 ```
@@ -568,11 +568,10 @@ var options : [String : AnyObject?] = [
 ]
 client.entryAttendeeAssociationsPost(options, callback: { (error, returnValue) in
   if error == nil {
-    let entryAttendeeAssociation = returnValue as! EntryAttendeeAssociation
+    // returnValue is of type ConcurCollection<EntryAttendeeAssociation>!
   } else {
-    // Handle error
+    // error is of type String!
   }
-})
 ```
 
 ### Update an entry-attendee association by ID - [Swagger](https://www.concursolutions.com/api/docs/index.html#!/EntryAttendeeAssociations/Put_id_content_user_put_3)
@@ -595,11 +594,11 @@ var options : [String : AnyObject?] = [
     "user" : "string" // Optional
   ]
 ]
-client.entryAttendeeAssociationsPut(options, callback: { (error) in
+client.entryAttendeeAssociationsPut(options, callback: { (error, returnValue) in
   if error == nil {
-    // Update was successful
+    // returnValue is of type ConcurCollection<EntryAttendeeAssociation>!
   } else {
-    // Handle error
+    // error is of type String!
   }
 })
 ```
@@ -612,11 +611,11 @@ var options : [String : AnyObject?] = [
     "user" : "string" // Optional
   ]
 ]
-client.entryAttendeeAssociationsDelete(options, callback: { (error) in
+client.entryAttendeeAssociationsDelete(options, callback: { (error, returnValue) in
   if error == nil {
-    // Delete was successful
+    // returnValue is of type ConcurCollection<EntryAttendeeAssociation>!
   } else {
-    // Handle error
+    // error is of type String!
   }
 })
 ```
@@ -634,9 +633,9 @@ var options : [String : AnyObject?] = [
 ]
 client.expenseGroupConfigurationsGet(options, callback: { (error, returnValue) in
   if error == nil {
-    let configurations = returnValue as! ConcurCollection<ExpenseGroupConfiguration>
+    // returnValue is of type ConcurCollection<ExpenseGroupConfiguration>!
   } else {
-    // Handle error
+    // error is of type String!
   }
 })
 ```
@@ -651,9 +650,9 @@ var options : [String : AnyObject?] = [
 ]
 client.expenseGroupConfigurationsGet(options, callback: { (error, returnValue) in
   if error == nil {
-    let configuration = returnValue as! ConcurCollection<ExpenseGroupConfiguration>
+    // returnValue is of type ConcurCollection<ExpenseGroupConfiguration>!
   } else {
-    // Handle error
+    // error is of type String!
   }
 })
 ```
@@ -671,9 +670,9 @@ var options : [String : AnyObject?] = [
 ]
 client.quickExpensesGet(options, callback: { (error, returnValue) in
   if error == nil {
-    let quickExpenses = returnValue as! ConcurCollection<QuickExpense>
+    // returnValue is of type ConcurCollection<QuickExpense>!
   } else {
-    // Handle error
+    // error is of type String!
   }
 })
 ```
@@ -688,9 +687,9 @@ var options : [String : AnyObject?] = [
 ]
 client.quickExpensesGet(options, callback: { (error, returnValue) in
   if error == nil {
-    let quickExpense = returnValue as! ConcurCollection<QuickExpense>
+    // returnValue is of type ConcurCollection<QuickExpense>!
   } else {
-    // Handle error
+    // error is of type String!
   }
 })
 ```
@@ -718,9 +717,9 @@ var options : [String : AnyObject?] = [
 ]
 client.quickExpensesPost(options, callback: { (error, returnValue) in
   if error == nil {
-    let expense = returnValue as! QuickExpense
+    // returnValue is of type ConcurCollection<QuickExpense>!
   } else {
-    // Handle error
+    // error is of type String!
   }
 })
 ```
@@ -748,11 +747,11 @@ var options : [String : AnyObject?] = [
     "user" : "string" // Optional
   ]
 ]
-client.quickExpensesPut(options, callback: { (error) in
+client.quickExpensesPut(options, callback: { (error, returnValue) in
   if error == nil {
-    // Update was successful
+    // returnValue is of type ConcurCollection<QuickExpense>!
   } else {
-    // Handle error
+    // error is of type String!
   }
 })
 ```
@@ -765,11 +764,11 @@ var options : [String : AnyObject?] = [
     "user" : "string" // Optional
   ]
 ]
-client.quickExpensesDelete(options, callback: { (error) in
+client.quickExpensesDelete(options, callback: { (error, returnValue) in
   if error == nil {
-    // Delete was successful
+    // returnValue is of type ConcurCollection<QuickExpense>!
   } else {
-    // Handle error
+    // error is of type String!
   }
 })
 ```

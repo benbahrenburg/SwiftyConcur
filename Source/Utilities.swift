@@ -1,4 +1,5 @@
 import Alamofire
+import SwiftyJSON
 
 public extension ConcurClient {
   
@@ -20,6 +21,53 @@ public extension ConcurClient {
     } else {
       return nil
     }
+  }
+  
+  internal class func getHTTPRequest(endpoint: String, options: [String : AnyObject?]) -> NSURLRequest! {
+    return self.createRequest("GET", endpoint: endpoint, options: options)
+  }
+  
+  internal class func postHTTPRequest(endpoint: String, options: [String : AnyObject?]) -> NSURLRequest! {
+    return self.createRequest("POST", endpoint: endpoint, options: options)
+  }
+  
+  internal class func putHTTPRequest(endpoint: String, options: [String : AnyObject?]) -> NSURLRequest! {
+    return self.createRequest("PUT", endpoint: endpoint, options: options)
+  }
+  
+  internal class func deleteHTTPRequest(endpoint: String, options: [String : AnyObject?]) -> NSURLRequest! {
+    return self.createRequest("DELETE", endpoint: endpoint, options: options)
+  }
+  
+  internal class func sendRequest<T>(request: NSURLRequest, callback: (error: String!, returnValue: ConcurCollection<T>!) -> Void) {
+    if self.authString != nil {
+      Alamofire.request(request).responseJSON { (req, res, json, error) in
+        if error == nil {
+          if json != nil {
+            var jsonObject = JSON(json!)
+            if let error = jsonObject["Error"]["Message"].string {
+              callback(error: error, returnValue: nil)
+            } else if let error = jsonObject["Message"].string {
+              callback(error: error, returnValue: nil)
+            } else {
+              callback(error: nil, returnValue: ConcurCollection<T>(json: jsonObject))
+            }
+          } else {
+            callback(error: nil, returnValue: nil)
+          }
+        } else {
+          callback(error: error?.description, returnValue: nil)
+        }
+      }
+    } else {
+      callback(error: "Access Token Missing", returnValue: nil)
+    }
+  }
+  
+  internal class func base64Encode(toEncode: String) -> String {
+    let utf8Encoded = toEncode.dataUsingEncoding(NSUTF8StringEncoding)
+    let base64Encoded = utf8Encoded?.base64EncodedStringWithOptions(NSDataBase64EncodingOptions.allZeros)
+    return base64Encoded!
   }
   
   private class func createRequest(method: String, endpoint: String, options: [String : AnyObject?]) -> NSMutableURLRequest! {
@@ -72,28 +120,6 @@ public extension ConcurClient {
     } else {
       return nil
     }
-  }
-  
-  internal class func getHTTPRequest(endpoint: String, options: [String : AnyObject?]) -> NSURLRequest! {
-    return self.createRequest("GET", endpoint: endpoint, options: options)
-  }
-  
-  internal class func postHTTPRequest(endpoint: String, options: [String : AnyObject?]) -> NSURLRequest! {
-    return self.createRequest("POST", endpoint: endpoint, options: options)
-  }
-  
-  internal class func putHTTPRequest(endpoint: String, options: [String : AnyObject?]) -> NSURLRequest! {
-    return self.createRequest("PUT", endpoint: endpoint, options: options)
-  }
-  
-  internal class func deleteHTTPRequest(endpoint: String, options: [String : AnyObject?]) -> NSURLRequest! {
-    return self.createRequest("DELETE", endpoint: endpoint, options: options)
-  }
-  
-  internal class func base64Encode(toEncode: String) -> String {
-    let utf8Encoded = toEncode.dataUsingEncoding(NSUTF8StringEncoding)
-    let base64Encoded = utf8Encoded?.base64EncodedStringWithOptions(NSDataBase64EncodingOptions.allZeros)
-    return base64Encoded!
   }
   
   private class func addHeaders() -> [String : String] {

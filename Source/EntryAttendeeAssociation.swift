@@ -37,86 +37,24 @@ public class EntryAttendeeAssociation: ConcurObject {
 
 public extension ConcurClient {
   
-  public func entryAttendeeAssociationGet(options: [String : AnyObject?], callback: (error: String!, returnValue: AnyObject!) -> Void) {
-    if self.AccessToken != nil {
-      let request = ConcurClient.getHTTPRequest("api/v3.0/expense/entryattendeeassociations", options: options)
-      Alamofire.request(request).responseJSON { (req, res, json, error) in
-        var jsonObject = JSON(json!)
-        if let error = jsonObject["Error"]["Message"].string {
-          callback(error: error, returnValue: nil)
-        } else if let error = jsonObject["Message"].string {
-          callback(error: error, returnValue: nil)
-        } else {
-          var associations = ConcurCollection<EntryAttendeeAssociation>(json: jsonObject)
-          callback(error: nil, returnValue: associations)
-        }
-      }
-    } else {
-      callback(error: "Access Token Missing", returnValue: nil)
-    }
+  public func entryAttendeeAssociationGet(options: [String : AnyObject?], callback: (error: String!, returnValue: ConcurCollection<EntryAttendeeAssociation>!) -> Void) {
+    let request = ConcurClient.getHTTPRequest("api/v3.0/expense/entryattendeeassociations", options: options)
+    ConcurClient.sendRequest(request, callback: callback)
   }
   
-  public func entryAttendeeAssociationPost(options: [String : AnyObject?], callback: (error: String!, returnValue: AnyObject!) -> Void) {
-    if self.AccessToken != nil {
-      let request = ConcurClient.postHTTPRequest("api/v3.0/expense/entryattendeeassociations", options: options)
-      Alamofire.request(request).responseJSON { (req, res, json, error) in
-        let jsonObject = JSON(json!)
-        if let error = jsonObject["Error"]["Message"].string {
-          callback(error: error, returnValue: nil)
-        } else if let error = jsonObject["Message"].string {
-          callback(error: error, returnValue: nil)
-        } else {
-          var association = EntryAttendeeAssociation(json: jsonObject)
-          callback(error: nil, returnValue: association)
-        }
-      }
-    } else {
-      callback(error: "Access Token Missing", returnValue: nil)
-    }
+  public func entryAttendeeAssociationPost(options: [String : AnyObject?], callback: (error: String!, returnValue: ConcurCollection<EntryAttendeeAssociation>!) -> Void) {
+    let request = ConcurClient.postHTTPRequest("api/v3.0/expense/entryattendeeassociations", options: options)
+    ConcurClient.sendRequest(request, callback: callback)
   }
   
-  public func entryAttendeeAssociationPut(options: [String : AnyObject?], callback: (error: String!) -> Void) {
-    if self.AccessToken != nil {
-      let request = ConcurClient.putHTTPRequest("api/v3.0/expense/entryattendeeassociations", options: options)
-      Alamofire.request(request).responseJSON { (req, res, json, error) in
-        if json != nil {
-          let jsonObject = JSON(json!)
-          if let error = jsonObject["Error"]["Message"].string {
-            callback(error: error)
-          } else if let error = jsonObject["Message"].string {
-            callback(error: error)
-          } else {
-            callback(error: nil)
-          }
-        } else {
-          callback(error: error?.description)
-        }
-      }
-    } else {
-      callback(error: "Access Token Missing")
-    }
+  public func entryAttendeeAssociationPut(options: [String : AnyObject?], callback: (error: String!, returnValue: ConcurCollection<EntryAttendeeAssociation>!) -> Void) {
+    let request = ConcurClient.putHTTPRequest("api/v3.0/expense/entryattendeeassociations", options: options)
+    ConcurClient.sendRequest(request, callback: callback)
   }
   
-  public func entryAttendeeAssociationDelete(options: [String : AnyObject?], callback: (error: String!) -> Void) {
-    if self.AccessToken != nil {
-      let request = ConcurClient.deleteHTTPRequest("api/v3.0/expense/entryattendeeassociations", options: options)
-      Alamofire.request(request).responseJSON { (req, res, json, error) in
-        if json != nil {
-          let jsonObject = JSON(json!)
-          if let error = jsonObject["Error"]["Message"].string {
-            callback(error: error)
-          } else if let error = jsonObject["Message"].string {
-            callback(error: error)
-          } else {
-            callback(error: nil)
-          }
-        } else {
-          callback(error: error?.description)
-        }
-      }
-    } else {
-      callback(error: "Access Token Missing")
-    }
+  public func entryAttendeeAssociationDelete(options: [String : AnyObject?], callback: (error: String!, returnValue: ConcurCollection<EntryAttendeeAssociation>!) -> Void) {
+    let request = ConcurClient.deleteHTTPRequest("api/v3.0/expense/entryattendeeassociations", options: options)
+    ConcurClient.sendRequest(request, callback: callback)
   }
   
 }

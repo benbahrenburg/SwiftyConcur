@@ -149,23 +149,9 @@ public class SCExpenseType {
 
 public extension ConcurClient {
   
-  public func expenseGroupConfigurationsGet(options: [String : AnyObject?], callback: (error: String!, returnValue: AnyObject!) -> Void) {
-    if self.AccessToken != nil {
-      let request = ConcurClient.getHTTPRequest("api/v3.0/expense/expensegroupconfigurations", options: options)
-      Alamofire.request(request).responseJSON { (req, res, json, error) in
-        var jsonObject = JSON(json!)
-        if let error = jsonObject["Error"]["Message"].string {
-          callback(error: error, returnValue: nil)
-        } else if let error = jsonObject["Message"].string {
-          callback(error: error, returnValue: nil)
-        } else {
-          var configurations = ConcurCollection<ExpenseGroupConfiguration>(json: jsonObject)
-          callback(error: nil, returnValue: configurations)
-        }
-      }
-    } else {
-      callback(error: "Access Token Missing", returnValue: nil)
-    }
+  public func expenseGroupConfigurationsGet(options: [String : AnyObject?], callback: (error: String!, returnValue: ConcurCollection<ExpenseGroupConfiguration>!) -> Void) {
+    let request = ConcurClient.getHTTPRequest("api/v3.0/expense/expensegroupconfigurations", options: options)
+    ConcurClient.sendRequest(request, callback: callback)
   }
   
 }
