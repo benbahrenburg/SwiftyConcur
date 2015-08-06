@@ -1,29 +1,29 @@
 PODS:
   - Alamofire (1.2.3)
   - OHHTTPStubs (4.1.0)
-  - SwiftyConcur (0.0.9):
+  - SwiftyConcur (0.0.10):
     - Alamofire (~> 1.2.3)
     - SwiftyJSON (~> 2.2.0)
   - SwiftyJSON (2.2.1)
 
 DEPENDENCIES:
   - OHHTTPStubs
-  - SwiftyConcur (from `https://github.com/concurlabs/SwiftyConcur.git`, tag `0.0.9`)
+  - SwiftyConcur (from `https://github.com/concurlabs/SwiftyConcur.git`, tag `0.0.10`)
 
 EXTERNAL SOURCES:
   SwiftyConcur:
     :git: https://github.com/concurlabs/SwiftyConcur.git
-    :tag: 0.0.9
+    :tag: 0.0.10
 
 CHECKOUT OPTIONS:
   SwiftyConcur:
     :git: https://github.com/concurlabs/SwiftyConcur.git
-    :tag: 0.0.9
+    :tag: 0.0.10
 
 SPEC CHECKSUMS:
   Alamofire: 5550bf0b575ed1a4bf9be572f9463e1015cc169e
   OHHTTPStubs: f3473ab21dbf0815253ac96b977d5c36f1daad09
-  SwiftyConcur: 16249e9e1af4d24db05852c982fd48e7e20ef431
+  SwiftyConcur: 24c07052b816fafd3be8ec1d1f14f3ea59cf46a3
   SwiftyJSON: ae2d0a3d68025d136602a33c4ee215091ced3e33
 
-COCOAPODS: 0.37.2
+COCOAPODS: 0.38.2
