@@ -25,6 +25,10 @@ public class ConcurClient {
   
   public func setAccessToken(accessToken: ConcurAccessToken) {
     self.AccessToken = accessToken
+    ConcurClient.authString = "OAuth ".stringByAppendingString(self.AccessToken.Token)
+    if let token = accessToken.InstanceUrl {
+      ConcurClient.instanceUrl = token
+    }
   }
   
   public func refreshToken(callback: (error: String!, accessToken: ConcurAccessToken!) -> Void) {
@@ -51,7 +55,7 @@ public class ConcurClient {
         }
       }
     } else {
-      callback(error: "Consumer Key, Consumer Secret or Refresh Token missing", accessToken: nil)
+      callback(error: "Consumer Key: \(self.ConsumerKey)\nConsumer Secret: \(self.ConsumerSecret)\nRefresh Token: \(self.AccessToken.RefreshToken)", accessToken: nil)
     }
   }
   

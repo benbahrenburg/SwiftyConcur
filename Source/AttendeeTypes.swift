@@ -35,86 +35,24 @@ public class AttendeeType: ConcurObject {
 
 public extension ConcurClient {
   
-  public func attendeeTypesGet(options: [String : AnyObject?], callback: (error: String!, returnValue: AnyObject!) -> Void) {
-    if self.AccessToken != nil {
-      let request = ConcurClient.getHTTPRequest("api/v3.0/expense/attendeetypes", options: options)
-      Alamofire.request(request).responseJSON { (req, res, json, error) in
-        var jsonObject = JSON(json!)
-        if let error = jsonObject["Error"]["Message"].string {
-          callback(error: error, returnValue: nil)
-        } else if let error = jsonObject["Message"].string {
-          callback(error: error, returnValue: nil)
-        } else {
-          var attendeeTypes = ConcurCollection<AttendeeType>(json: jsonObject)
-          callback(error: nil, returnValue: attendeeTypes)
-        }
-      }
-    } else {
-      callback(error: "Access Token Missing", returnValue: nil)
-    }
+  public func attendeeTypesGet(options: [String : AnyObject?], callback: (error: String!, returnValue: ConcurCollection<AttendeeType>!) -> Void) {
+    let request = ConcurClient.getHTTPRequest("api/v3.0/expense/attendeetypes", options: options)
+    ConcurClient.sendRequest(request, callback: callback)
   }
   
-  public func attendeeTypesPost(options: [String : AnyObject?], callback: (error: String!, returnValue: AnyObject!) -> Void) {
-    if self.AccessToken != nil {
-      let request = ConcurClient.postHTTPRequest("api/v3.0/expense/attendeetypes", options: options)
-      Alamofire.request(request).responseJSON { (req, res, json, error) in
-        let jsonObject = JSON(json!)
-        if let error = jsonObject["Error"]["Message"].string {
-          callback(error: error, returnValue: nil)
-        } else if let error = jsonObject["Message"].string {
-          callback(error: error, returnValue: nil)
-        } else {
-          var attendeeType = AttendeeType(json: jsonObject)
-          callback(error: nil, returnValue: attendeeType)
-        }
-      }
-    } else {
-      callback(error: "Access Token Missing", returnValue: nil)
-    }
+  public func attendeeTypesPost(options: [String : AnyObject?], callback: (error: String!, returnValue: ConcurCollection<AttendeeType>!) -> Void) {
+    let request = ConcurClient.postHTTPRequest("api/v3.0/expense/attendeetypes", options: options)
+    ConcurClient.sendRequest(request, callback: callback)
   }
   
-  public func attendeeTypesPut(options: [String : AnyObject?], callback: (error: String!) -> Void) {
-    if self.AccessToken != nil {
-      let request = ConcurClient.putHTTPRequest("api/v3.0/expense/attendeetypes", options: options)
-      Alamofire.request(request).responseJSON { (req, res, json, error) in
-        if json != nil {
-          let jsonObject = JSON(json!)
-          if let error = jsonObject["Error"]["Message"].string {
-            callback(error: error)
-          } else if let error = jsonObject["Message"].string {
-            callback(error: error)
-          } else {
-            callback(error: nil)
-          }
-        } else {
-          callback(error: error?.description)
-        }
-      }
-    } else {
-      callback(error: "Access Token Missing")
-    }
+  public func attendeeTypesPut(options: [String : AnyObject?], callback: (error: String!, returnValue: ConcurCollection<AttendeeType>!) -> Void) {
+    let request = ConcurClient.putHTTPRequest("api/v3.0/expense/attendeetypes", options: options)
+    ConcurClient.sendRequest(request, callback: callback)
   }
   
-  public func attendeeTypesDelete(options: [String : AnyObject?], callback: (error: String!) -> Void) {
-    if self.AccessToken != nil {
-      let request = ConcurClient.deleteHTTPRequest("api/v3.0/expense/attendeetypes", options: options)
-      Alamofire.request(request).responseJSON { (req, res, json, error) in
-        if json != nil {
-          let jsonObject = JSON(json!)
-          if let error = jsonObject["Error"]["Message"].string {
-            callback(error: error)
-          } else if let error = jsonObject["Message"].string {
-            callback(error: error)
-          } else {
-            callback(error: nil)
-          }
-        } else {
-          callback(error: error?.description)
-        }
-      }
-    } else {
-      callback(error: "Access Token Missing")
-    }
+  public func attendeeTypesDelete(options: [String : AnyObject?], callback: (error: String!, returnValue: ConcurCollection<AttendeeType>!) -> Void) {
+    let request = ConcurClient.deleteHTTPRequest("api/v3.0/expense/attendeetypes", options: options)
+    ConcurClient.sendRequest(request, callback: callback)
   }
   
 }
