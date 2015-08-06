@@ -32,7 +32,7 @@ public class ConcurClient {
   }
   
   public func refreshToken(callback: (error: String!, accessToken: ConcurAccessToken!) -> Void) {
-    if self.ConsumerKey != nil && self.ConsumerSecret != nil && self.AccessToken.RefreshToken != nil {
+    if self.ConsumerKey != nil && self.ConsumerSecret != nil && self.AccessToken != nil && self.AccessToken.RefreshToken != nil {
       var options: [String : AnyObject?] = [
         "Parameters" : [
           "refresh_token" : self.AccessToken.RefreshToken,
@@ -55,7 +55,18 @@ public class ConcurClient {
         }
       }
     } else {
-      callback(error: "Consumer Key: \(self.ConsumerKey)\nConsumer Secret: \(self.ConsumerSecret)\nRefresh Token: \(self.AccessToken.RefreshToken)", accessToken: nil)
+      if self.ConsumerKey == nil {
+        callback(error: "Consumer Key missing", accessToken: nil)
+      }
+      else if self.ConsumerSecret == nil {
+        callback(error: "Consumer Secret missing", accessToken: nil)
+      }
+      else if self.AccessToken == nil {
+        callback(error: "Access Token missing", accessToken: nil)
+      }
+      else if self.AccessToken.RefreshToken == nil {
+        callback(error: "Refresh Token missing", accessToken: nil)
+      }
     }
   }
   
