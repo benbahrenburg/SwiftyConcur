@@ -10,7 +10,7 @@ To get started with SwiftyConcur, you can add it your project using CocoaPods:
 platform :ios, '8.0'
 use_frameworks!
 
-pod 'SwiftyConcur', :git => 'https://github.com/concurlabs/SwiftyConcur.git', :tag => '0.0.9'
+pod 'SwiftyConcur', :git => 'https://github.com/concurlabs/SwiftyConcur.git', :tag => '0.0.10'
 ``` 
 
 ## Tests
