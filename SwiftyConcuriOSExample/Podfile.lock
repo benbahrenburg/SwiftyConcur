@@ -8,17 +8,7 @@ PODS:
 
 DEPENDENCIES:
   - OHHTTPStubs
-  - SwiftyConcur (from `https://github.com/concurlabs/SwiftyConcur.git`, tag `0.0.11`)
-
-EXTERNAL SOURCES:
-  SwiftyConcur:
-    :git: https://github.com/concurlabs/SwiftyConcur.git
-    :tag: 0.0.11
-
-CHECKOUT OPTIONS:
-  SwiftyConcur:
-    :git: https://github.com/concurlabs/SwiftyConcur.git
-    :tag: 0.0.11
+  - SwiftyConcur
 
 SPEC CHECKSUMS:
   Alamofire: 5550bf0b575ed1a4bf9be572f9463e1015cc169e
