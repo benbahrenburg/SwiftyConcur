@@ -3,7 +3,7 @@ Pod::Spec.new do |spec|
   spec.version          = '0.0.11'
   spec.license          = 'Apache 2.0' 
   spec.homepage         = 'https://github.com/concurlabs/SwiftyConcur'
-  spec.authors          = 'Concur Technologies'
+  spec.authors          = 'Concur Concept Lab'
   spec.summary          = 'Swift SDK for the Concur APIs'
   spec.source           = { :git => 'https://github.com/concurlabs/SwiftyConcur.git', :tag => '0.0.11' }
   spec.source_files     = 'Source/*.swift'
