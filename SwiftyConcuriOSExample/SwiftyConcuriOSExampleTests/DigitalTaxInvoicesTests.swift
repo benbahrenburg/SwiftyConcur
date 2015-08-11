@@ -28,7 +28,6 @@ class DigitalTaxInvoicesTests: XCTestCase {
       }
       return true
       }) { _ in
-        let error : NSError?
         let response : NSMutableDictionary = [
           :
         ]
@@ -56,7 +55,6 @@ class DigitalTaxInvoicesTests: XCTestCase {
       }
       return true
       }) { _ in
-        let error : NSError?
         let response : NSMutableDictionary = [
           :
         ]
@@ -85,7 +83,6 @@ class DigitalTaxInvoicesTests: XCTestCase {
       }
       return true
       }) { _ in
-        let error : NSError?
         let response : NSMutableDictionary = [
           :
         ]
@@ -114,7 +111,6 @@ class DigitalTaxInvoicesTests: XCTestCase {
       }
       return true
       }) { _ in
-        let error : NSError?
         let response : NSMutableDictionary = [
           :
         ]
@@ -143,7 +139,6 @@ class DigitalTaxInvoicesTests: XCTestCase {
       }
       return true
       }) { _ in
-        let error : NSError?
         let response : NSMutableDictionary = [
           :
         ]
@@ -172,7 +167,6 @@ class DigitalTaxInvoicesTests: XCTestCase {
       }
       return true
       }) { _ in
-        let error : NSError?
         let response : NSMutableDictionary = [
           :
         ]
@@ -201,7 +195,6 @@ class DigitalTaxInvoicesTests: XCTestCase {
       }
       return true
       }) { _ in
-        let error : NSError?
         let response : NSMutableDictionary = [
           :
         ]
@@ -233,7 +226,6 @@ class DigitalTaxInvoicesTests: XCTestCase {
       }
       return true
       }) { _ in
-        let error : NSError?
         let response : NSMutableDictionary = [
           :
         ]
@@ -254,44 +246,135 @@ class DigitalTaxInvoicesTests: XCTestCase {
       }
     })
     
-    waitForExpectationsWithTimeout(60, handler: nil)
+    waitForExpectationsWithTimeout(2, handler: nil)
   }
   
-//  func testDigitalTaxInvoicesPutRequestBody() {
-//    let expectation = expectationWithDescription("should create correct body for PUT requests")
-//    OHHTTPStubs.stubRequestsPassingTest({ request in
-//      var error : NSError?
-//      if request.HTTPBodyStream == nil {
-//        return false
-//      }
-//      request.HTTPBodyStream!.open()
-//      let jsonObject = NSJSONSerialization.JSONObjectWithStream(request.HTTPBodyStream!, options: NSJSONReadingOptions.allZeros, error: &error) as! [String : AnyObject?]
-//      if jsonObject["Status"] == nil || jsonObject["Status"] as! String != "VALID" {
-//        return false
-//      }
-//      return true
-//      }) { _ in
-//        let error : NSError?
-//        let response : NSMutableDictionary = [
-//          :
-//        ]
-//        return OHHTTPStubsResponse(JSONObject: response, statusCode: 200, headers: nil)
-//    }
-//    
-//    var options : [String : AnyObject?] = [
-//      "Body" : [
-//        "Status" : "VALID"
-//      ],
-//      "id" : "INVOICEID"
-//    ]
-//    
-//    self.client.digitalTaxInvoicesPut(options, callback: { (error, returnVal) in
-//      if error == nil {
-//        expectation.fulfill()
-//      }
-//    })
-//    
-//    waitForExpectationsWithTimeout(2, handler: nil)
-//  }
+  func testDigitalTaxInvoicesPutRequestBody() {
+    let expectation = expectationWithDescription("should create correct body for PUT requests")
+    OHHTTPStubs.stubRequestsPassingTest({ request in
+      if let bodyData = NSURLProtocol.propertyForKey("BodyData", inRequest: request) as! NSData! {
+        var error: NSError?
+        let dictionary = NSJSONSerialization.JSONObjectWithData(bodyData, options: NSJSONReadingOptions.allZeros, error: &error) as! [String : AnyObject]
+        if dictionary["Status"] as! String == "VALID" {
+          return true
+        } else {
+          return false
+        }
+      }
+      return false
+      }) { _ in
+        let error : NSError?
+        let response : NSMutableDictionary = [
+          :
+        ]
+        return OHHTTPStubsResponse(JSONObject: response, statusCode: 200, headers: nil)
+    }
+    
+    var options : [String : AnyObject?] = [
+      "Body" : [
+        "Status" : "VALID"
+      ],
+      "id" : "INVOICEID"
+    ]
+    
+    self.client.digitalTaxInvoicesPut(options, callback: { (error, returnVal) in
+      if error == nil {
+        expectation.fulfill()
+      }
+    })
+    
+    waitForExpectationsWithTimeout(2, handler: nil)
+  }
+  
+  func testDigitalTaxInvoicesGetAllResponse() {
+    let expectation = expectationWithDescription("should obtain correct response for GET all requests")
+    OHHTTPStubs.stubRequestsPassingTest({ request in
+      return true
+      }) { _ in
+        let response : NSMutableDictionary = [
+          "Items" : [
+            [
+              "ConcurReceiptID" : "string",
+              "ID" : "string",
+              "URI" : "string"
+            ],
+            [
+              "ConcurReceiptID" : "string",
+              "ID" : "string",
+              "URI" : "string"
+            ]
+          ],
+          "NextPage" : "PAGEURL"
+        ]
+        return OHHTTPStubsResponse(JSONObject: response, statusCode: 200, headers: nil)
+    }
+    
+    var options : [String : AnyObject?] = [
+      :
+    ]
+    
+    self.client.digitalTaxInvoicesGet(options, callback: { (error, returnVal) in
+      if error == nil {
+        if returnVal.Items.count == 2 && returnVal.NextPage == "PAGEURL" {
+          expectation.fulfill()
+        }
+      }
+    })
+    
+    waitForExpectationsWithTimeout(2, handler: nil)
+  }
+  
+  func testDigitalTaxInvoicesGetSingleResponse() {
+    let expectation = expectationWithDescription("should obtain correct response for GET single requests")
+    OHHTTPStubs.stubRequestsPassingTest({ request in
+      return true
+      }) { _ in
+        let response : NSMutableDictionary = [
+          "ConcurReceiptID" : "string",
+          "AccountID" : "string",
+          "DocumentID" : "string",
+          "ReceiptData" : "PAGEURL"
+        ]
+        return OHHTTPStubsResponse(JSONObject: response, statusCode: 200, headers: nil)
+    }
+    
+    var options : [String : AnyObject?] = [
+      "id" : "INVOICEID"
+    ]
+    
+    self.client.digitalTaxInvoicesGet(options, callback: { (error, returnVal) in
+      if error == nil {
+        if returnVal.Items.count == 1 && returnVal.NextPage == nil {
+          expectation.fulfill()
+        }
+      }
+    })
+    
+    waitForExpectationsWithTimeout(2, handler: nil)
+  }
+  
+  func testDigitalTaxInvoicesPutSingleResponse() {
+    let expectation = expectationWithDescription("should obtain correct response for GET single requests")
+    OHHTTPStubs.stubRequestsPassingTest({ request in
+      return true
+      }) { _ in
+        let response : NSMutableDictionary = [
+          :
+        ]
+        return OHHTTPStubsResponse(JSONObject: response, statusCode: 200, headers: nil)
+    }
+    
+    var options : [String : AnyObject?] = [
+      "id" : "INVOICEID"
+    ]
+    
+    self.client.digitalTaxInvoicesPut(options, callback: { (error, returnVal) in
+      if error == nil {
+        expectation.fulfill()
+      }
+    })
+    
+    waitForExpectationsWithTimeout(2, handler: nil)
+  }
   
 }
