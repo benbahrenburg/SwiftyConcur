@@ -2,7 +2,7 @@ import XCTest
 import SwiftyConcur
 import OHHTTPStubs
 
-class UtilitiesTests: XCTestCase {
+class NativeFlowTests: XCTestCase {
   
   var client: ConcurClient!
   
