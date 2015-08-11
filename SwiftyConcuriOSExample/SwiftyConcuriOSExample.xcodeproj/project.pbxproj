@@ -112,9 +112,9 @@
 		536D5A3F1B506523003B9ECC /* SwiftyConcuriOSExampleTests */ = {
 			isa = PBXGroup;
 			children = (
+				A5DF88921B7A484C00378755 /* DigitalTaxInvoicesTests.swift */,
 				532492981B58170700735F6B /* NativeFlowTests.swift */,
 				536D5A401B506523003B9ECC /* Supporting Files */,
-				A5DF88921B7A484C00378755 /* DigitalTaxInvoicesTests.swift */,
 			);
 			path = SwiftyConcuriOSExampleTests;
 			sourceTree = "<group>";

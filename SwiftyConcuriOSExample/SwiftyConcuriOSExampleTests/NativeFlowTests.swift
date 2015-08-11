@@ -19,7 +19,7 @@ class NativeFlowTests: XCTestCase {
     super.tearDown()
   }
   
-  func testNativeFlowHeadersRequest() {
+  func testNativeFlowRequestHeaders() {
     let expectation = expectationWithDescription("should contain correct headers")
     OHHTTPStubs.stubRequestsPassingTest({ request in
       // Check headers for existence and correctness
@@ -30,7 +30,7 @@ class NativeFlowTests: XCTestCase {
       return true
     }) { _ in
       let error : NSError?
-      let response = [
+      let response : NSMutableDictionary = [
         "Access_Token" : [
           "Expiration_date" : "7/17/2016 9:59:11 PM",
           "Instance_Url" : "https://www.concursolutions.com/",
@@ -49,7 +49,7 @@ class NativeFlowTests: XCTestCase {
     waitForExpectationsWithTimeout(2, handler: nil)
   }
   
-  func testNativeFlowURLRequest() {
+  func testNativeFlowRequestURL() {
     let expectation = expectationWithDescription("should contain correct url")
     OHHTTPStubs.stubRequestsPassingTest({ request in
       // Check URL for existence and correctness
@@ -59,7 +59,7 @@ class NativeFlowTests: XCTestCase {
       return true
       }) { _ in
         let error : NSError?
-        let response = [
+        let response : NSMutableDictionary = [
           "Access_Token" : [
             "Expiration_date" : "7/17/2016 9:59:11 PM",
             "Instance_Url" : "https://www.concursolutions.com/",
@@ -78,7 +78,7 @@ class NativeFlowTests: XCTestCase {
     waitForExpectationsWithTimeout(2, handler: nil)
   }
   
-  func testNativeFlowMethodRequest() {
+  func testNativeFlowRequestMethod() {
     let expectation = expectationWithDescription("should contain correct method")
     OHHTTPStubs.stubRequestsPassingTest({ request in
       // Check method for existence and correctness
@@ -88,7 +88,7 @@ class NativeFlowTests: XCTestCase {
       return true
       }) { _ in
         let error : NSError?
-        let response = [
+        let response : NSMutableDictionary = [
           "Access_Token" : [
             "Expiration_date" : "7/17/2016 9:59:11 PM",
             "Instance_Url" : "https://www.concursolutions.com/",
@@ -113,7 +113,7 @@ class NativeFlowTests: XCTestCase {
       return true
       }) { _ in
         let error : NSError?
-        let response = [
+        let response : NSMutableDictionary = [
           "Access_Token" : [
             "Expiration_date" : "7/17/2016 9:59:11 PM",
             "Instance_Url" : "https://www.concursolutions.com/",
