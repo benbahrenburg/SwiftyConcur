@@ -14,6 +14,7 @@
 		536D5A341B506523003B9ECC /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 536D5A331B506523003B9ECC /* Images.xcassets */; };
 		536D5A371B506523003B9ECC /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 536D5A351B506523003B9ECC /* LaunchScreen.xib */; };
 		74B3D0371A36F0C60BBAE2BA /* Pods_SwiftyConcuriOSExample.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1D202B87FE6101A3B6CF56C9 /* Pods_SwiftyConcuriOSExample.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
+		A5DF88931B7A484C00378755 /* DigitalTaxInvoicesTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5DF88921B7A484C00378755 /* DigitalTaxInvoicesTests.swift */; };
 		AA8343D6F93208106CF6A723 /* Pods_SwiftyConcuriOSExampleTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 468D5D2747DCE5B59342CE09 /* Pods_SwiftyConcuriOSExampleTests.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
 /* End PBXBuildFile section */
 
@@ -43,6 +44,7 @@
 		536D5A411B506523003B9ECC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		855F5D05F296F47AD8EFC925 /* Pods-SwiftyConcuriOSExampleTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SwiftyConcuriOSExampleTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-SwiftyConcuriOSExampleTests/Pods-SwiftyConcuriOSExampleTests.debug.xcconfig"; sourceTree = "<group>"; };
 		9B2F352C601042F6BEF347A8 /* Pods-SwiftyConcuriOSExample.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SwiftyConcuriOSExample.debug.xcconfig"; path = "Pods/Target Support Files/Pods-SwiftyConcuriOSExample/Pods-SwiftyConcuriOSExample.debug.xcconfig"; sourceTree = "<group>"; };
+		A5DF88921B7A484C00378755 /* DigitalTaxInvoicesTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DigitalTaxInvoicesTests.swift; sourceTree = "<group>"; };
 		E320A905985CF25F7BFBCC61 /* Pods-SwiftyConcuriOSExample.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SwiftyConcuriOSExample.release.xcconfig"; path = "Pods/Target Support Files/Pods-SwiftyConcuriOSExample/Pods-SwiftyConcuriOSExample.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -110,6 +112,7 @@
 		536D5A3F1B506523003B9ECC /* SwiftyConcuriOSExampleTests */ = {
 			isa = PBXGroup;
 			children = (
+				A5DF88921B7A484C00378755 /* DigitalTaxInvoicesTests.swift */,
 				532492981B58170700735F6B /* NativeFlowTests.swift */,
 				536D5A401B506523003B9ECC /* Supporting Files */,
 			);
@@ -352,6 +355,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A5DF88931B7A484C00378755 /* DigitalTaxInvoicesTests.swift in Sources */,
 				532492991B58170700735F6B /* NativeFlowTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
