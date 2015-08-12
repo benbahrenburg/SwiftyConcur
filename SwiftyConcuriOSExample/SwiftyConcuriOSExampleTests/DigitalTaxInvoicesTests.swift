@@ -353,7 +353,7 @@ class DigitalTaxInvoicesTests: XCTestCase {
     waitForExpectationsWithTimeout(2, handler: nil)
   }
   
-  func testDigitalTaxInvoicesPutSingleResponse() {
+  func testDigitalTaxInvoicesPutResponse() {
     let expectation = expectationWithDescription("should obtain correct response for GET single requests")
     OHHTTPStubs.stubRequestsPassingTest({ request in
       return true
