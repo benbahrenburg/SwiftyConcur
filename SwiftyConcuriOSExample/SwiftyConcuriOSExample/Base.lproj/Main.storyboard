@@ -16,14 +16,14 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Mv6-gN-JkH">
-                                <rect key="frame" x="87.5" y="318.5" width="200" height="30"/>
+                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Mv6-gN-JkH">
+                                <rect key="frame" x="30" y="318.5" width="315" height="30"/>
                                 <color key="backgroundColor" red="0.0" green="0.66274509803921566" blue="0.94901960784313721" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="200" id="har-Zh-v22"/>
+                                    <constraint firstAttribute="height" constant="45" id="eSR-iC-GLs"/>
                                 </constraints>
                                 <size key="titleShadowOffset" width="1" height="1"/>
-                                <state key="normal" title="Connect With Concur">
+                                <state key="normal">
                                     <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                     <color key="titleShadowColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 </state>
@@ -40,10 +40,15 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstAttribute="centerY" secondItem="Mv6-gN-JkH" secondAttribute="centerY" id="7JF-q9-W8A"/>
+                            <constraint firstItem="Mv6-gN-JkH" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leading" constant="30" id="fQ2-fG-4tO"/>
                             <constraint firstAttribute="centerX" secondItem="Mv6-gN-JkH" secondAttribute="centerX" id="qm9-hi-dZ4"/>
+                            <constraint firstAttribute="trailing" secondItem="Mv6-gN-JkH" secondAttribute="trailing" constant="30" id="wok-jm-DZb"/>
                         </constraints>
                     </view>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
+                    <connections>
+                        <outlet property="connectButton" destination="Mv6-gN-JkH" id="1NO-t5-Hw2"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="x5A-6p-PRh" sceneMemberID="firstResponder"/>
             </objects>
