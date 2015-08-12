@@ -1,7 +1,7 @@
 PODS:
   - Alamofire (1.2.3)
   - OHHTTPStubs (4.1.0)
-  - SwiftyConcur (0.0.11):
+  - SwiftyConcur (0.0.12):
     - Alamofire (~> 1.2.3)
     - SwiftyJSON (~> 2.2.0)
   - SwiftyJSON (2.2.1)
@@ -13,7 +13,7 @@ DEPENDENCIES:
 SPEC CHECKSUMS:
   Alamofire: 5550bf0b575ed1a4bf9be572f9463e1015cc169e
   OHHTTPStubs: f3473ab21dbf0815253ac96b977d5c36f1daad09
-  SwiftyConcur: 8953b7eeacd22958cca2f25f8f3e2205f7140c3b
+  SwiftyConcur: 18d8097a5315c21ba05d282f929b0204364bebc8
   SwiftyJSON: ae2d0a3d68025d136602a33c4ee215091ced3e33
 
 COCOAPODS: 0.38.2
