@@ -354,7 +354,7 @@ class DigitalTaxInvoicesTests: XCTestCase {
   }
   
   func testDigitalTaxInvoicesPutResponse() {
-    let expectation = expectationWithDescription("should obtain correct response for GET single requests")
+    let expectation = expectationWithDescription("should obtain correct response for PUT requests")
     OHHTTPStubs.stubRequestsPassingTest({ request in
       return true
       }) { _ in

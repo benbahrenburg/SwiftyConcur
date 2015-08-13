@@ -580,4 +580,177 @@ class EntryAttendeeAssociationsTests: XCTestCase {
     waitForExpectationsWithTimeout(2, handler: nil)
   }
   
+  func testEntryAttendeeAssociationsGetAllResponse() {
+    let expectation = expectationWithDescription("should obtain correct response for GET all requests")
+    OHHTTPStubs.stubRequestsPassingTest({ request in
+      return true
+      }) { _ in
+        let response : NSMutableDictionary = [
+          "Items" : [
+            [
+              "Amount" : "decimal",
+              "AssociatedAttendeeCount" : "int",
+              "AttendeeID" : "string",
+              "Custom1" : "string",
+              "Custom2" : "string",
+              "Custom3" : "string",
+              "Custom4" : "string",
+              "Custom5" : "string",
+              "EntryID" : "string",
+              "ID" : "string",
+              "URI" : "string"
+            ],
+            [
+              "Amount" : "decimal",
+              "AssociatedAttendeeCount" : "int",
+              "AttendeeID" : "string",
+              "Custom1" : "string",
+              "Custom2" : "string",
+              "Custom3" : "string",
+              "Custom4" : "string",
+              "Custom5" : "string",
+              "EntryID" : "string",
+              "ID" : "string",
+              "URI" : "string"
+            ]
+          ],
+          "NextPage" : "PAGEURL"
+        ]
+        return OHHTTPStubsResponse(JSONObject: response, statusCode: 200, headers: nil)
+    }
+    
+    var options : [String : AnyObject?] = [
+      :
+    ]
+    
+    self.client.entryAttendeeAssociationGet(options, callback: { (error, returnVal) in
+      if error == nil {
+        if returnVal.Items.count == 2 && returnVal.NextPage == "PAGEURL" {
+          expectation.fulfill()
+        }
+      }
+    })
+    
+    waitForExpectationsWithTimeout(2, handler: nil)
+  }
+  
+  func testEntryAttendeeAssociationsGetSingleResponse() {
+    let expectation = expectationWithDescription("should obtain correct response for GET single requests")
+    OHHTTPStubs.stubRequestsPassingTest({ request in
+      return true
+      }) { _ in
+        let response : NSMutableDictionary = [
+          "Amount" : "decimal",
+          "AssociatedAttendeeCount" : "int",
+          "AttendeeID" : "string",
+          "Custom1" : "string",
+          "Custom2" : "string",
+          "Custom3" : "string",
+          "Custom4" : "string",
+          "Custom5" : "string",
+          "EntryID" : "string",
+          "ID" : "string",
+          "URI" : "string"
+        ]
+        return OHHTTPStubsResponse(JSONObject: response, statusCode: 200, headers: nil)
+    }
+    
+    var options : [String : AnyObject?] = [
+      "id" : "ASSOCIATIONID"
+    ]
+    
+    self.client.entryAttendeeAssociationGet(options, callback: { (error, returnVal) in
+      if error == nil {
+        if returnVal.Items.count == 1 && returnVal.NextPage == nil {
+          expectation.fulfill()
+        }
+      }
+    })
+    
+    waitForExpectationsWithTimeout(2, handler: nil)
+  }
+  
+  func testEntryAttendeeAssociationsPostResponse() {
+    let expectation = expectationWithDescription("should obtain correct response for POST requests")
+    OHHTTPStubs.stubRequestsPassingTest({ request in
+      return true
+      }) { _ in
+        let response : NSMutableDictionary = [
+          "ID" : "string",
+          "URI" : "string"
+        ]
+        return OHHTTPStubsResponse(JSONObject: response, statusCode: 200, headers: nil)
+    }
+    
+    var options : [String : AnyObject?] = [
+      "Amount" : "decimal",
+      "AssociatedAttendeeCount" : "int",
+      "AttendeeID" : "string",
+      "Custom1" : "string",
+      "Custom2" : "string",
+      "Custom3" : "string",
+      "Custom4" : "string",
+      "Custom5" : "string",
+      "EntryID" : "string"
+    ]
+    
+    self.client.entryAttendeeAssociationPost(options, callback: { (error, returnVal) in
+      if error == nil {
+        if returnVal.Items.count == 1 && returnVal.NextPage == nil {
+          expectation.fulfill()
+        }
+      }
+    })
+    
+    waitForExpectationsWithTimeout(2, handler: nil)
+  }
+  
+  func testEntryAttendeeAssociationsPutResponse() {
+    let expectation = expectationWithDescription("should obtain correct response for PUT requests")
+    OHHTTPStubs.stubRequestsPassingTest({ request in
+      return true
+      }) { _ in
+        let response : NSMutableDictionary = [
+          :
+        ]
+        return OHHTTPStubsResponse(JSONObject: response, statusCode: 200, headers: nil)
+    }
+    
+    var options : [String : AnyObject?] = [
+      "id" : "ASSOCIATIONID"
+    ]
+    
+    self.client.entryAttendeeAssociationPut(options, callback: { (error, returnVal) in
+      if error == nil {
+        expectation.fulfill()
+      }
+    })
+    
+    waitForExpectationsWithTimeout(2, handler: nil)
+  }
+  
+  func testEntryAttendeeAssociationsDeleteResponse() {
+    let expectation = expectationWithDescription("should obtain correct response for DELETE requests")
+    OHHTTPStubs.stubRequestsPassingTest({ request in
+      return true
+      }) { _ in
+        let response : NSMutableDictionary = [
+          :
+        ]
+        return OHHTTPStubsResponse(JSONObject: response, statusCode: 200, headers: nil)
+    }
+    
+    var options : [String : AnyObject?] = [
+      "id" : "ASSOCIATIONID"
+    ]
+    
+    self.client.entryAttendeeAssociationDelete(options, callback: { (error, returnVal) in
+      if error == nil {
+        expectation.fulfill()
+      }
+    })
+    
+    waitForExpectationsWithTimeout(2, handler: nil)
+  }
+  
 }
