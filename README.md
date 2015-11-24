@@ -7,7 +7,7 @@ Swift SDK for the Concur APIs.
 To get started with SwiftyConcur, you can add it your project using CocoaPods:
 
 ```
-platform :ios, '8.0'
+platform :ios, '9.0'
 use_frameworks!
 
 pod 'SwiftyConcur'
