@@ -23,13 +23,12 @@ class NativeFlowTests: XCTestCase {
     let expectation = expectationWithDescription("should contain correct headers")
     OHHTTPStubs.stubRequestsPassingTest({ request in
       // Check headers for existence and correctness
-      let headers: [String : String] = request.allHTTPHeaderFields as! [String : String]
-      if headers["Authorization"] == nil || headers["X-ConsumerKey"] == nil || headers["Accept"] != "application/json" || headers["User-Agent"] != "SwiftyConcur" || headers["Content-Type"] != "application/json" {
+        let headers: [String : String] = request.allHTTPHeaderFields!
+        if headers["Authorization"] == nil || headers["X-ConsumerKey"] == nil || headers["Accept"] != "application/json" || headers["User-Agent"] != "SwiftyConcur" || headers["Content-Type"] != "application/json" {
         return false
       }
       return true
     }) { _ in
-      let error : NSError?
       let response : NSMutableDictionary = [
         "Access_Token" : [
           "Expiration_date" : "7/17/2016 9:59:11 PM",
@@ -58,7 +57,6 @@ class NativeFlowTests: XCTestCase {
       }
       return true
       }) { _ in
-        let error : NSError?
         let response : NSMutableDictionary = [
           "Access_Token" : [
             "Expiration_date" : "7/17/2016 9:59:11 PM",
@@ -87,7 +85,6 @@ class NativeFlowTests: XCTestCase {
       }
       return true
       }) { _ in
-        let error : NSError?
         let response : NSMutableDictionary = [
           "Access_Token" : [
             "Expiration_date" : "7/17/2016 9:59:11 PM",
@@ -112,7 +109,6 @@ class NativeFlowTests: XCTestCase {
     OHHTTPStubs.stubRequestsPassingTest({ _ in
       return true
       }) { _ in
-        let error : NSError?
         let response : NSMutableDictionary = [
           "Access_Token" : [
             "Expiration_date" : "7/17/2016 9:59:11 PM",

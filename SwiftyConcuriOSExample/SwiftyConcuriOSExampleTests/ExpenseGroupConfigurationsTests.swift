@@ -34,7 +34,7 @@ class ExpenseGroupConfigurations: XCTestCase {
         return OHHTTPStubsResponse(JSONObject: response, statusCode: 200, headers: nil)
     }
     
-    var options : [String : AnyObject?] = [
+    let options : [String : AnyObject?] = [
       :
     ]
     
@@ -50,7 +50,7 @@ class ExpenseGroupConfigurations: XCTestCase {
   func testExpenseGroupConfigurationsGetRequestHeaders() {
     let expectation = expectationWithDescription("should contain correct headers for GET request")
     OHHTTPStubs.stubRequestsPassingTest({ request in
-      let headers: [String : String] = request.allHTTPHeaderFields as! [String : String]
+      let headers: [String : String] = request.allHTTPHeaderFields as [String : String]!
       if headers["Authorization"] == nil || headers["Accept"] != "application/json" || headers["User-Agent"] != "SwiftyConcur" || headers["Content-Type"] != "application/json" {
         return false
       }
@@ -62,7 +62,7 @@ class ExpenseGroupConfigurations: XCTestCase {
         return OHHTTPStubsResponse(JSONObject: response, statusCode: 200, headers: nil)
     }
     
-    var options : [String : AnyObject?] = [
+    let options : [String : AnyObject?] = [
       :
     ]
     
@@ -90,7 +90,7 @@ class ExpenseGroupConfigurations: XCTestCase {
         return OHHTTPStubsResponse(JSONObject: response, statusCode: 200, headers: nil)
     }
     
-    var options : [String : AnyObject?] = [
+    let options : [String : AnyObject?] = [
       :
     ]
     
@@ -118,7 +118,7 @@ class ExpenseGroupConfigurations: XCTestCase {
         return OHHTTPStubsResponse(JSONObject: response, statusCode: 200, headers: nil)
     }
     
-    var options : [String : AnyObject?] = [
+    let options : [String : AnyObject?] = [
       "id" : "CONFIGID"
     ]
     
@@ -146,7 +146,7 @@ class ExpenseGroupConfigurations: XCTestCase {
         return OHHTTPStubsResponse(JSONObject: response, statusCode: 200, headers: nil)
     }
     
-    var options : [String : AnyObject?] = [
+    let options : [String : AnyObject?] = [
       "Parameters" : [
         "offset" : "string",
         "limit" : "10",
@@ -178,7 +178,7 @@ class ExpenseGroupConfigurations: XCTestCase {
         return OHHTTPStubsResponse(JSONObject: response, statusCode: 200, headers: nil)
     }
     
-    var options : [String : AnyObject?] = [
+    let options : [String : AnyObject?] = [
       "Parameters" : [
         "offset" : "string",
         "limit" : "10",
@@ -297,7 +297,7 @@ class ExpenseGroupConfigurations: XCTestCase {
         return OHHTTPStubsResponse(JSONObject: response, statusCode: 200, headers: nil)
     }
     
-    var options : [String : AnyObject?] = [
+    let options : [String : AnyObject?] = [
       :
     ]
     
@@ -364,7 +364,7 @@ class ExpenseGroupConfigurations: XCTestCase {
         return OHHTTPStubsResponse(JSONObject: response, statusCode: 200, headers: nil)
     }
     
-    var options : [String : AnyObject?] = [
+    let options : [String : AnyObject?] = [
       "id" : "INVOICEID"
     ]
     

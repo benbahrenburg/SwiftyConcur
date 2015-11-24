@@ -34,7 +34,7 @@ class DigitalTaxInvoicesTests: XCTestCase {
         return OHHTTPStubsResponse(JSONObject: response, statusCode: 200, headers: nil)
     }
     
-    var options : [String : AnyObject?] = [
+    let options : [String : AnyObject?] = [
       :
     ]
     
@@ -61,7 +61,7 @@ class DigitalTaxInvoicesTests: XCTestCase {
         return OHHTTPStubsResponse(JSONObject: response, statusCode: 200, headers: nil)
     }
     
-    var options : [String : AnyObject?] = [
+    let options : [String : AnyObject?] = [
       :
     ]
     
@@ -77,7 +77,7 @@ class DigitalTaxInvoicesTests: XCTestCase {
   func testDigitalTaxInvoicesGetRequestHeaders() {
     let expectation = expectationWithDescription("should contain correct headers for GET request")
     OHHTTPStubs.stubRequestsPassingTest({ request in
-      let headers: [String : String] = request.allHTTPHeaderFields as! [String : String]
+      let headers: [String : String] = request.allHTTPHeaderFields as [String : String]!
       if headers["Authorization"] == nil || headers["Accept"] != "application/json" || headers["User-Agent"] != "SwiftyConcur" || headers["Content-Type"] != "application/json" {
         return false
       }
@@ -89,7 +89,7 @@ class DigitalTaxInvoicesTests: XCTestCase {
         return OHHTTPStubsResponse(JSONObject: response, statusCode: 200, headers: nil)
     }
     
-    var options : [String : AnyObject?] = [
+    let options : [String : AnyObject?] = [
       :
     ]
     
@@ -105,7 +105,7 @@ class DigitalTaxInvoicesTests: XCTestCase {
   func testDigitalTaxInvoicesPutRequestHeaders() {
     let expectation = expectationWithDescription("should contain correct headers for PUT request")
     OHHTTPStubs.stubRequestsPassingTest({ request in
-      let headers: [String : String] = request.allHTTPHeaderFields as! [String : String]
+      let headers: [String : String] = request.allHTTPHeaderFields as [String : String]!
       if headers["Authorization"] == nil || headers["Accept"] != "application/json" || headers["User-Agent"] != "SwiftyConcur" || headers["Content-Type"] != "application/json" {
         return false
       }
@@ -117,7 +117,7 @@ class DigitalTaxInvoicesTests: XCTestCase {
         return OHHTTPStubsResponse(JSONObject: response, statusCode: 200, headers: nil)
     }
     
-    var options : [String : AnyObject?] = [
+    let options : [String : AnyObject?] = [
       :
     ]
     
@@ -145,7 +145,7 @@ class DigitalTaxInvoicesTests: XCTestCase {
         return OHHTTPStubsResponse(JSONObject: response, statusCode: 200, headers: nil)
     }
     
-    var options : [String : AnyObject?] = [
+    let options : [String : AnyObject?] = [
       :
     ]
     
@@ -173,7 +173,7 @@ class DigitalTaxInvoicesTests: XCTestCase {
         return OHHTTPStubsResponse(JSONObject: response, statusCode: 200, headers: nil)
     }
     
-    var options : [String : AnyObject?] = [
+    let options : [String : AnyObject?] = [
       "id" : "INVOICEID"
     ]
     
@@ -201,7 +201,7 @@ class DigitalTaxInvoicesTests: XCTestCase {
         return OHHTTPStubsResponse(JSONObject: response, statusCode: 200, headers: nil)
     }
     
-    var options : [String : AnyObject?] = [
+    let options : [String : AnyObject?] = [
       "id" : "INVOICEID",
       "Body" : [
         "Status" : "VALID"
@@ -232,7 +232,7 @@ class DigitalTaxInvoicesTests: XCTestCase {
         return OHHTTPStubsResponse(JSONObject: response, statusCode: 200, headers: nil)
     }
     
-    var options : [String : AnyObject?] = [
+    let options : [String : AnyObject?] = [
       "Parameters" : [
         "offset" : "string",
         "limit" : "25",
@@ -253,8 +253,7 @@ class DigitalTaxInvoicesTests: XCTestCase {
     let expectation = expectationWithDescription("should create correct body for PUT requests")
     OHHTTPStubs.stubRequestsPassingTest({ request in
       if let bodyData = NSURLProtocol.propertyForKey("BodyData", inRequest: request) as! NSData! {
-        var error: NSError?
-        let dictionary = NSJSONSerialization.JSONObjectWithData(bodyData, options: NSJSONReadingOptions.allZeros, error: &error) as! [String : AnyObject]
+        let dictionary = try! NSJSONSerialization.JSONObjectWithData(bodyData, options: NSJSONReadingOptions()) as! [String : AnyObject]
         if dictionary["Status"] as! String == "VALID" {
           return true
         } else {
@@ -263,14 +262,13 @@ class DigitalTaxInvoicesTests: XCTestCase {
       }
       return false
       }) { _ in
-        let error : NSError?
         let response : NSMutableDictionary = [
           :
         ]
         return OHHTTPStubsResponse(JSONObject: response, statusCode: 200, headers: nil)
     }
     
-    var options : [String : AnyObject?] = [
+    let options : [String : AnyObject?] = [
       "Body" : [
         "Status" : "VALID"
       ],
@@ -309,7 +307,7 @@ class DigitalTaxInvoicesTests: XCTestCase {
         return OHHTTPStubsResponse(JSONObject: response, statusCode: 200, headers: nil)
     }
     
-    var options : [String : AnyObject?] = [
+    let options : [String : AnyObject?] = [
       :
     ]
     
@@ -338,7 +336,7 @@ class DigitalTaxInvoicesTests: XCTestCase {
         return OHHTTPStubsResponse(JSONObject: response, statusCode: 200, headers: nil)
     }
     
-    var options : [String : AnyObject?] = [
+    let options : [String : AnyObject?] = [
       "id" : "INVOICEID"
     ]
     
@@ -364,7 +362,7 @@ class DigitalTaxInvoicesTests: XCTestCase {
         return OHHTTPStubsResponse(JSONObject: response, statusCode: 200, headers: nil)
     }
     
-    var options : [String : AnyObject?] = [
+    let options : [String : AnyObject?] = [
       "id" : "INVOICEID"
     ]
     

@@ -34,7 +34,7 @@ class EntryAttendeeAssociationsTests: XCTestCase {
         return OHHTTPStubsResponse(JSONObject: response, statusCode: 200, headers: nil)
     }
     
-    var options : [String : AnyObject?] = [
+    let options : [String : AnyObject?] = [
       :
     ]
     
@@ -61,7 +61,7 @@ class EntryAttendeeAssociationsTests: XCTestCase {
         return OHHTTPStubsResponse(JSONObject: response, statusCode: 200, headers: nil)
     }
     
-    var options : [String : AnyObject?] = [
+    let options : [String : AnyObject?] = [
       :
     ]
     
@@ -88,7 +88,7 @@ class EntryAttendeeAssociationsTests: XCTestCase {
         return OHHTTPStubsResponse(JSONObject: response, statusCode: 200, headers: nil)
     }
     
-    var options : [String : AnyObject?] = [
+    let options : [String : AnyObject?] = [
       :
     ]
     
@@ -115,7 +115,7 @@ class EntryAttendeeAssociationsTests: XCTestCase {
         return OHHTTPStubsResponse(JSONObject: response, statusCode: 200, headers: nil)
     }
     
-    var options : [String : AnyObject?] = [
+    let options : [String : AnyObject?] = [
       :
     ]
     
@@ -131,7 +131,7 @@ class EntryAttendeeAssociationsTests: XCTestCase {
   func testEntryAttendeeAssociationsGetRequestHeaders() {
     let expectation = expectationWithDescription("should contain correct headers for GET request")
     OHHTTPStubs.stubRequestsPassingTest({ request in
-      let headers: [String : String] = request.allHTTPHeaderFields as! [String : String]
+      let headers: [String : String] = request.allHTTPHeaderFields as [String : String]!
       if headers["Authorization"] == nil || headers["Accept"] != "application/json" || headers["User-Agent"] != "SwiftyConcur" || headers["Content-Type"] != "application/json" {
         return false
       }
@@ -143,7 +143,7 @@ class EntryAttendeeAssociationsTests: XCTestCase {
         return OHHTTPStubsResponse(JSONObject: response, statusCode: 200, headers: nil)
     }
     
-    var options : [String : AnyObject?] = [
+    let options : [String : AnyObject?] = [
       :
     ]
     
@@ -159,7 +159,7 @@ class EntryAttendeeAssociationsTests: XCTestCase {
   func testEntryAttendeeAssociationsPostRequestHeaders() {
     let expectation = expectationWithDescription("should contain correct headers for POST request")
     OHHTTPStubs.stubRequestsPassingTest({ request in
-      let headers: [String : String] = request.allHTTPHeaderFields as! [String : String]
+      let headers: [String : String] = request.allHTTPHeaderFields as [String : String]!
       if headers["Authorization"] == nil || headers["Accept"] != "application/json" || headers["User-Agent"] != "SwiftyConcur" || headers["Content-Type"] != "application/json" {
         return false
       }
@@ -171,7 +171,7 @@ class EntryAttendeeAssociationsTests: XCTestCase {
         return OHHTTPStubsResponse(JSONObject: response, statusCode: 200, headers: nil)
     }
     
-    var options : [String : AnyObject?] = [
+    let options : [String : AnyObject?] = [
       :
     ]
     
@@ -187,7 +187,7 @@ class EntryAttendeeAssociationsTests: XCTestCase {
   func testEntryAttendeeAssociationsPutRequestHeaders() {
     let expectation = expectationWithDescription("should contain correct headers for PUT request")
     OHHTTPStubs.stubRequestsPassingTest({ request in
-      let headers: [String : String] = request.allHTTPHeaderFields as! [String : String]
+      let headers: [String : String] = request.allHTTPHeaderFields as [String : String]!
       if headers["Authorization"] == nil || headers["Accept"] != "application/json" || headers["User-Agent"] != "SwiftyConcur" || headers["Content-Type"] != "application/json" {
         return false
       }
@@ -199,7 +199,7 @@ class EntryAttendeeAssociationsTests: XCTestCase {
         return OHHTTPStubsResponse(JSONObject: response, statusCode: 200, headers: nil)
     }
     
-    var options : [String : AnyObject?] = [
+    let options : [String : AnyObject?] = [
       :
     ]
     
@@ -215,7 +215,7 @@ class EntryAttendeeAssociationsTests: XCTestCase {
   func testEntryAttendeeAssociationsDeleteRequestHeaders() {
     let expectation = expectationWithDescription("should contain correct headers for DELETE request")
     OHHTTPStubs.stubRequestsPassingTest({ request in
-      let headers: [String : String] = request.allHTTPHeaderFields as! [String : String]
+      let headers: [String : String] = request.allHTTPHeaderFields as [String : String]!
       if headers["Authorization"] == nil || headers["Accept"] != "application/json" || headers["User-Agent"] != "SwiftyConcur" || headers["Content-Type"] != "application/json" {
         return false
       }
@@ -227,7 +227,7 @@ class EntryAttendeeAssociationsTests: XCTestCase {
         return OHHTTPStubsResponse(JSONObject: response, statusCode: 200, headers: nil)
     }
     
-    var options : [String : AnyObject?] = [
+    let options : [String : AnyObject?] = [
       :
     ]
     
@@ -255,7 +255,7 @@ class EntryAttendeeAssociationsTests: XCTestCase {
         return OHHTTPStubsResponse(JSONObject: response, statusCode: 200, headers: nil)
     }
     
-    var options : [String : AnyObject?] = [
+    let options : [String : AnyObject?] = [
       :
     ]
     
@@ -283,7 +283,7 @@ class EntryAttendeeAssociationsTests: XCTestCase {
         return OHHTTPStubsResponse(JSONObject: response, statusCode: 200, headers: nil)
     }
     
-    var options : [String : AnyObject?] = [
+    let options : [String : AnyObject?] = [
       "id" : "ASSOCIATIONID"
     ]
     
@@ -311,7 +311,7 @@ class EntryAttendeeAssociationsTests: XCTestCase {
         return OHHTTPStubsResponse(JSONObject: response, statusCode: 200, headers: nil)
     }
     
-    var options : [String : AnyObject?] = [
+    let options : [String : AnyObject?] = [
       :
     ]
     
@@ -339,7 +339,7 @@ class EntryAttendeeAssociationsTests: XCTestCase {
         return OHHTTPStubsResponse(JSONObject: response, statusCode: 200, headers: nil)
     }
     
-    var options : [String : AnyObject?] = [
+    let options : [String : AnyObject?] = [
       "id" : "ASSOCIATIONID"
     ]
     
@@ -367,7 +367,7 @@ class EntryAttendeeAssociationsTests: XCTestCase {
         return OHHTTPStubsResponse(JSONObject: response, statusCode: 200, headers: nil)
     }
     
-    var options : [String : AnyObject?] = [
+    let options : [String : AnyObject?] = [
       "id" : "ASSOCIATIONID"
     ]
     
@@ -395,7 +395,7 @@ class EntryAttendeeAssociationsTests: XCTestCase {
         return OHHTTPStubsResponse(JSONObject: response, statusCode: 200, headers: nil)
     }
     
-    var options : [String : AnyObject?] = [
+    let options : [String : AnyObject?] = [
       "Parameters" : [
         "offset" : "string",
         "limit" : "25",
@@ -428,7 +428,7 @@ class EntryAttendeeAssociationsTests: XCTestCase {
         return OHHTTPStubsResponse(JSONObject: response, statusCode: 200, headers: nil)
     }
     
-    var options : [String : AnyObject?] = [
+    let options : [String : AnyObject?] = [
       "Parameters" : [
         "user" : "string"
       ],
@@ -459,7 +459,7 @@ class EntryAttendeeAssociationsTests: XCTestCase {
         return OHHTTPStubsResponse(JSONObject: response, statusCode: 200, headers: nil)
     }
     
-    var options : [String : AnyObject?] = [
+    let options : [String : AnyObject?] = [
       "Parameters" : [
         "user" : "string"
       ]
@@ -489,7 +489,7 @@ class EntryAttendeeAssociationsTests: XCTestCase {
         return OHHTTPStubsResponse(JSONObject: response, statusCode: 200, headers: nil)
     }
     
-    var options : [String : AnyObject?] = [
+    let options : [String : AnyObject?] = [
       "Parameters" : [
         "user" : "string"
       ],
@@ -520,7 +520,7 @@ class EntryAttendeeAssociationsTests: XCTestCase {
         return OHHTTPStubsResponse(JSONObject: response, statusCode: 200, headers: nil)
     }
     
-    var options : [String : AnyObject?] = [
+    let options : [String : AnyObject?] = [
       "Parameters" : [
         "user" : "string"
       ],
@@ -540,8 +540,7 @@ class EntryAttendeeAssociationsTests: XCTestCase {
     let expectation = expectationWithDescription("should create correct body for POST requests")
     OHHTTPStubs.stubRequestsPassingTest({ request in
       if let bodyData = NSURLProtocol.propertyForKey("BodyData", inRequest: request) as! NSData! {
-        var error: NSError?
-        let dictionary = NSJSONSerialization.JSONObjectWithData(bodyData, options: NSJSONReadingOptions.allZeros, error: &error) as! [String : AnyObject]
+        let dictionary = try! NSJSONSerialization.JSONObjectWithData(bodyData, options: NSJSONReadingOptions()) as! [String : AnyObject]
         if dictionary["Amount"] as! String == "double" && dictionary["AssociatedAttendeeCount"] as! String == "int" && dictionary["AttendeeID"] as! String == "string" && dictionary["Custom1"] as! String == "string" && dictionary["Custom2"] as! String == "string" && dictionary["Custom3"] as! String == "string" && dictionary["Custom4"] as! String == "string" && dictionary["Custom5"] as! String == "string" && dictionary["EntryID"] as! String == "string" {
           return true
         } else {
@@ -550,14 +549,13 @@ class EntryAttendeeAssociationsTests: XCTestCase {
       }
       return false
       }) { _ in
-        let error : NSError?
         let response : NSMutableDictionary = [
           :
         ]
         return OHHTTPStubsResponse(JSONObject: response, statusCode: 200, headers: nil)
     }
     
-    var options : [String : AnyObject?] = [
+    let options : [String : AnyObject?] = [
       "Body" : [
         "Amount" : "double",
         "AssociatedAttendeeCount" : "int",
@@ -619,7 +617,7 @@ class EntryAttendeeAssociationsTests: XCTestCase {
         return OHHTTPStubsResponse(JSONObject: response, statusCode: 200, headers: nil)
     }
     
-    var options : [String : AnyObject?] = [
+    let options : [String : AnyObject?] = [
       :
     ]
     
@@ -655,7 +653,7 @@ class EntryAttendeeAssociationsTests: XCTestCase {
         return OHHTTPStubsResponse(JSONObject: response, statusCode: 200, headers: nil)
     }
     
-    var options : [String : AnyObject?] = [
+    let options : [String : AnyObject?] = [
       "id" : "ASSOCIATIONID"
     ]
     
@@ -682,7 +680,7 @@ class EntryAttendeeAssociationsTests: XCTestCase {
         return OHHTTPStubsResponse(JSONObject: response, statusCode: 200, headers: nil)
     }
     
-    var options : [String : AnyObject?] = [
+    let options : [String : AnyObject?] = [
       "Amount" : "decimal",
       "AssociatedAttendeeCount" : "int",
       "AttendeeID" : "string",
@@ -716,7 +714,7 @@ class EntryAttendeeAssociationsTests: XCTestCase {
         return OHHTTPStubsResponse(JSONObject: response, statusCode: 200, headers: nil)
     }
     
-    var options : [String : AnyObject?] = [
+    let options : [String : AnyObject?] = [
       "id" : "ASSOCIATIONID"
     ]
     
@@ -740,7 +738,7 @@ class EntryAttendeeAssociationsTests: XCTestCase {
         return OHHTTPStubsResponse(JSONObject: response, statusCode: 200, headers: nil)
     }
     
-    var options : [String : AnyObject?] = [
+    let options : [String : AnyObject?] = [
       "id" : "ASSOCIATIONID"
     ]
     

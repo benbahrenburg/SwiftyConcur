@@ -13,11 +13,11 @@
 		536D5A321B506523003B9ECC /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 536D5A301B506523003B9ECC /* Main.storyboard */; };
 		536D5A341B506523003B9ECC /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 536D5A331B506523003B9ECC /* Images.xcassets */; };
 		536D5A371B506523003B9ECC /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 536D5A351B506523003B9ECC /* LaunchScreen.xib */; };
-		74B3D0371A36F0C60BBAE2BA /* Pods_SwiftyConcuriOSExample.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1D202B87FE6101A3B6CF56C9 /* Pods_SwiftyConcuriOSExample.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
+		74B3D0371A36F0C60BBAE2BA /* Pods_SwiftyConcuriOSExample.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1D202B87FE6101A3B6CF56C9 /* Pods_SwiftyConcuriOSExample.framework */; };
 		A5AAD83A1B8247BB00F0F083 /* ExpenseGroupConfigurationsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5AAD8391B8247BB00F0F083 /* ExpenseGroupConfigurationsTests.swift */; };
 		A5AE3A821B7BCFE600EDF0B9 /* EntryAttendeeAssociationsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5AE3A811B7BCFE600EDF0B9 /* EntryAttendeeAssociationsTests.swift */; };
 		A5DF88931B7A484C00378755 /* DigitalTaxInvoicesTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5DF88921B7A484C00378755 /* DigitalTaxInvoicesTests.swift */; };
-		AA8343D6F93208106CF6A723 /* Pods_SwiftyConcuriOSExampleTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 468D5D2747DCE5B59342CE09 /* Pods_SwiftyConcuriOSExampleTests.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
+		AA8343D6F93208106CF6A723 /* Pods_SwiftyConcuriOSExampleTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 468D5D2747DCE5B59342CE09 /* Pods_SwiftyConcuriOSExampleTests.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -203,7 +203,9 @@
 		536D5A1F1B506523003B9ECC /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 0640;
+				LastSwiftMigration = 0700;
+				LastSwiftUpdateCheck = 0700;
+				LastUpgradeCheck = 0700;
 				ORGANIZATIONNAME = Concur;
 				TargetAttributes = {
 					536D5A261B506523003B9ECC = {
@@ -419,6 +421,7 @@
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_NO_COMMON_BLOCKS = YES;
@@ -491,6 +494,7 @@
 				);
 				INFOPLIST_FILE = SwiftyConcuriOSExample/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.concur.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Debug;
@@ -507,6 +511,7 @@
 				);
 				INFOPLIST_FILE = SwiftyConcuriOSExample/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.concur.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Release;
@@ -526,6 +531,7 @@
 				);
 				INFOPLIST_FILE = SwiftyConcuriOSExampleTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.concur.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/SwiftyConcuriOSExample.app/SwiftyConcuriOSExample";
 			};
@@ -542,6 +548,7 @@
 				);
 				INFOPLIST_FILE = SwiftyConcuriOSExampleTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.concur.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/SwiftyConcuriOSExample.app/SwiftyConcuriOSExample";
 			};
