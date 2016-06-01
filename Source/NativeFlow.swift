@@ -18,18 +18,18 @@ public extension ConcurClient {
       ]
       var request = ConcurClient.getHTTPRequest("net2/oauth2/accesstoken.ashx", options: options)
       
-      Alamofire.request(request).responseJSON { (req, res, json, error) in
-        if error == nil {
-          var jsonObject = JSON(json!)
-          if let err = jsonObject["Error"]["Message"].string {
-            callback(error: err, accessToken: nil)
+      Alamofire.request(request).responseJSON { response in
+        if response.result.isSuccess {
+          var jsonObject = JSON(response.result.value!)
+          if let error = jsonObject["Error"]["Message"].string {
+            callback(error: error, accessToken: nil)
           } else {
             jsonObject = jsonObject["Access_Token"]
             var token = ConcurAccessToken(json: jsonObject)
             callback(error: nil, accessToken: token)
           }
         } else {
-          callback(error: error?.description, accessToken: nil)
+          callback(error: response.result.error?.description, accessToken: nil)
         }
       }
     } else {

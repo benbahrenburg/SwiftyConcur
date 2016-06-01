@@ -41,9 +41,9 @@ public class ConcurClient {
         ]
       ]
       var request = ConcurClient.postHTTPRequest("net2/oauth2/getaccesstoken.ashx", options: options)
-      Alamofire.request(request).responseJSON { (req, res, json, error) in
-        if error == nil {
-          var jsonObject = JSON(json!)
+      Alamofire.request(request).responseJSON { response in
+        if response.result.isSuccess {
+          var jsonObject = JSON(response.result.value!)
           if let err = jsonObject["Error"]["Message"].string {
             callback(error: err, accessToken: nil)
           } else {
@@ -51,7 +51,7 @@ public class ConcurClient {
             callback(error: nil, accessToken: ConcurAccessToken(json: jsonObject))
           }
         } else {
-          callback(error: error?.description, accessToken: nil)
+          callback(error: response.result.error?.description, accessToken: nil)
         }
       }
     } else {

@@ -9,7 +9,7 @@ public class ConcurCollection<T: ConcurObject> {
   internal init(json: JSON) {
     var objects: [T] = []
     if json["Items"] != nil {
-      for (index: String, subJson: JSON) in json["Items"] {
+      for (index, subJson) : (String, JSON) in json["Items"] {
         var object = T(json: subJson)
         objects.append(object)
       }
@@ -24,10 +24,12 @@ public class ConcurCollection<T: ConcurObject> {
   public func getMoreItems(callback: (moreItems: ConcurCollection<T>!) -> Void) {
     if self.NextPage != nil {
       let request = ConcurClient.getMoreItems(self.NextPage)
-      Alamofire.request(request).responseJSON { (req, res, json, error) in
-        var jsonObject = JSON(json!)
-        var newCollection = ConcurCollection<T>(json: jsonObject)
-        callback(moreItems: newCollection)
+      Alamofire.request(request).responseJSON { response in
+        if let json = response.result.value {
+          var jsonObject = JSON(json)
+          var newCollection = ConcurCollection<T>(json: jsonObject)
+          callback(moreItems: newCollection)
+        }
       }
     } else {
       callback(moreItems: nil)

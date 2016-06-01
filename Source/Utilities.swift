@@ -41,16 +41,16 @@ public extension ConcurClient {
   
   internal class func base64Encode(toEncode: String) -> String {
     let utf8Encoded = toEncode.dataUsingEncoding(NSUTF8StringEncoding)
-    let base64Encoded = utf8Encoded?.base64EncodedStringWithOptions(NSDataBase64EncodingOptions.allZeros)
+    let base64Encoded = utf8Encoded?.base64EncodedStringWithOptions(NSDataBase64EncodingOptions())
     return base64Encoded!
   }
   
   internal class func sendRequest<T>(request: NSURLRequest, callback: (error: String!, returnValue: ConcurCollection<T>!) -> Void) {
     if self.authString != nil {
-      Alamofire.request(request).responseJSON { (req, res, json, error) in
-        if error == nil {
-          if json != nil {
-            var jsonObject = JSON(json!)
+      Alamofire.request(request).responseJSON { response in
+        if response.result.isSuccess {
+          if let json = response.result.value {
+            var jsonObject = JSON(json)
             if let error = jsonObject["Error"]["Message"].string {
               callback(error: error, returnValue: nil)
             } else if let error = jsonObject["Message"].string {
@@ -62,7 +62,7 @@ public extension ConcurClient {
             callback(error: nil, returnValue: nil)
           }
         } else {
-          callback(error: error?.description, returnValue: nil)
+          callback(error: response.result.error?.description, returnValue: nil)
         }
       }
     } else {
@@ -99,8 +99,8 @@ public extension ConcurClient {
       // Encodes the body dictionary into NSData
       if let body = options["Body"] as? [String : AnyObject] {
         var error: NSError?
-        var bodyData = NSJSONSerialization.dataWithJSONObject(body, options: NSJSONWritingOptions.allZeros, error: &error)
-        NSURLProtocol.setProperty(bodyData!, forKey: "BodyData", inRequest: request)
+        var bodyData = try! NSJSONSerialization.dataWithJSONObject(body, options: NSJSONWritingOptions())
+        NSURLProtocol.setProperty(bodyData, forKey: "BodyData", inRequest: request)
         request.HTTPBody = bodyData
       }
       
