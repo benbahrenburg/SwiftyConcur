@@ -1,5 +1,5 @@
 PODS:
-  - Alamofire (1.2.3)
+  - Alamofire (3.4.0)
   - OHHTTPStubs (5.0.0):
     - OHHTTPStubs/Default (= 5.0.0)
   - OHHTTPStubs/Core (5.0.0)
@@ -13,20 +13,20 @@ PODS:
   - OHHTTPStubs/NSURLSession (5.0.0):
     - OHHTTPStubs/Core
   - OHHTTPStubs/OHPathHelpers (5.0.0)
-  - SwiftyConcur (0.0.13):
-    - Alamofire (~> 1.2.3)
-    - SwiftyJSON (~> 2.2.0)
-  - SwiftyJSON (2.2.1)
+  - SwiftyConcur (0.1.1):
+    - Alamofire (~> 3.4)
+    - SwiftyJSON (~> 2.3.1)
+  - SwiftyJSON (2.3.2)
 
 DEPENDENCIES:
   - OHHTTPStubs
   - SwiftyConcur
 
 SPEC CHECKSUMS:
-  Alamofire: 5550bf0b575ed1a4bf9be572f9463e1015cc169e
+  Alamofire: c19a627cefd6a95f840401c49ab1f124e07f54ee
   OHHTTPStubs: a5d2e9eea07869d42ec03338325f398bc520e159
-  SwiftyConcur: 6418f2da7f9fb4edb5230e539e8b2de2ea3e1c9a
-  SwiftyJSON: ae2d0a3d68025d136602a33c4ee215091ced3e33
+  SwiftyConcur: e21e59b0bdcf8e636ad7351144b74755e2b3851c
+  SwiftyJSON: 04ccea08915aa0109039157c7974cf0298da292a
 
 PODFILE CHECKSUM: a54bffef52d4454b19ecb6a2c3494b7a28096932
 
