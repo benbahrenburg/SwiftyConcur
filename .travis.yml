@@ -1,6 +1,6 @@
 language: objective-c
 xcode_workspace: SwiftyConcuriOSExample/SwiftyConcuriOSExample.xcworkspace
-xcode_scheme: SwiftyConcur
+xcode_scheme: SwiftyConcurExample
 podfile: SwiftyConcuriOSExample/Podfile
 osx_image: xcode7.3
 xcode_sdk: iphonesimulator9.3
