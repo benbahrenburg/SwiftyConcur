@@ -152,6 +152,8 @@ public extension ConcurClient {
   public func expenseGroupConfigurationsGet(options: [String : AnyObject?]) -> (error: String?, returnValue: ConcurCollection<ExpenseGroupConfiguration>?) {
     if let request = ConcurClient.getHTTPRequest(endpoint: "api/v3.0/expense/expensegroupconfigurations", options: options) {
       return ConcurClient.sendRequest(request: request)
+    } else {
+      return (error: "Could not create HTTP request", returnValue: nil)
     }
   }
   

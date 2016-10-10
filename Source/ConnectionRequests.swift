@@ -36,24 +36,32 @@ public extension ConcurClient {
   public func connectionRequestsGet(options: [String : AnyObject?]) -> (error: String?, returnValue: ConcurCollection<ConnectionRequest>?) {
     if let request = ConcurClient.getHTTPRequest(endpoint: "api/v3.0/common/connectionrequests", options: options) {
       return ConcurClient.sendRequest(request: request)
+    } else {
+      return (error: "Could not create HTTP request", returnValue: nil)
     }
   }
   
   public func connectionRequestsPost(options: [String : AnyObject?]) -> (error: String?, returnValue: ConcurCollection<ConnectionRequest>?) {
     if let request = ConcurClient.postHTTPRequest(endpoint: "api/v3.0/common/connectionrequests", options: options) {
       return ConcurClient.sendRequest(request: request)
+    } else {
+      return (error: "Could not create HTTP request", returnValue: nil)
     }
   }
   
   public func connectionRequestsPut(options: [String : AnyObject?]) -> (error: String?, returnValue: ConcurCollection<ConnectionRequest>?) {
     if let request = ConcurClient.putHTTPRequest(endpoint: "api/v3.0/common/connectionrequests", options: options) {
       return ConcurClient.sendRequest(request: request)
+    } else {
+      return (error: "Could not create HTTP request", returnValue: nil)
     }
   }
   
   public func connectionRequestsDelete(options: [String : AnyObject?]) -> (error: String?, returnValue: ConcurCollection<ConnectionRequest>?) {
     if let request = ConcurClient.deleteHTTPRequest(endpoint: "api/v3.0/common/connectionrequests", options: options) {
       return ConcurClient.sendRequest(request: request)
+    } else {
+      return (error: "Could not create HTTP request", returnValue: nil)
     }
   }
   

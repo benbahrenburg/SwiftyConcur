@@ -47,24 +47,32 @@ public extension ConcurClient {
   public func quickExpensesGet(options: [String : AnyObject?]) -> (error: String?, returnValue: ConcurCollection<QuickExpense>?) {
     if let request = ConcurClient.getHTTPRequest(endpoint: "api/v3.0/expense/quickexpenses", options: options) {
       return ConcurClient.sendRequest(request: request)
+    } else {
+      return (error: "Could not create HTTP request", returnValue: nil)
     }
   }
   
   public func quickExpensesPost(options: [String : AnyObject?]) -> (error: String?, returnValue: ConcurCollection<QuickExpense>?) {
     if let request = ConcurClient.postHTTPRequest(endpoint: "api/v3.0/expense/quickexpenses", options: options) {
       return ConcurClient.sendRequest(request: request)
+    } else {
+      return (error: "Could not create HTTP request", returnValue: nil)
     }
   }
   
   public func quickExpensesPut(options: [String : AnyObject?]) -> (error: String?, returnValue: ConcurCollection<QuickExpense>?) {
     if let request = ConcurClient.putHTTPRequest(endpoint: "api/v3.0/expense/quickexpenses", options: options) {
       return ConcurClient.sendRequest(request: request)
+    } else {
+      return (error: "Could not create HTTP request", returnValue: nil)
     }
   }
   
   public func quickExpensesDelete(options: [String : AnyObject?]) -> (error: String?, returnValue: ConcurCollection<QuickExpense>?) {
     if let request = ConcurClient.deleteHTTPRequest(endpoint: "api/v3.0/expense/quickexpenses", options: options) {
       return ConcurClient.sendRequest(request: request)
+    } else {
+      return (error: "Could not create HTTP request", returnValue: nil)
     }
   }
   

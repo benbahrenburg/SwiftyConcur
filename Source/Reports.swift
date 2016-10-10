@@ -138,18 +138,24 @@ public extension ConcurClient {
   public func reportsGet(options: [String : AnyObject?]) -> (error: String?, returnValue: ConcurCollection<Report>?) {
     if let request = ConcurClient.getHTTPRequest(endpoint: "api/v3.0/expense/entries", options: options) {
       return ConcurClient.sendRequest(request: request)
+    } else {
+      return (error: "Could not create HTTP request", returnValue: nil)
     }
   }
   
   public func reportsPost(options: [String : AnyObject?]) -> (error: String?, returnValue: ConcurCollection<Report>?) {
     if let request = ConcurClient.postHTTPRequest(endpoint: "api/v3.0/expense/entries", options: options) {
       return ConcurClient.sendRequest(request: request)
+    } else {
+      return (error: "Could not create HTTP request", returnValue: nil)
     }
   }
   
   public func reportsPut(options: [String : AnyObject?]) -> (error: String?, returnValue: ConcurCollection<Report>?) {
     if let request = ConcurClient.putHTTPRequest(endpoint: "api/v3.0/expense/entries", options: options) {
       return ConcurClient.sendRequest(request: request)
+    } else {
+      return (error: "Could not create HTTP request", returnValue: nil)
     }
   }
   

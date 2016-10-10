@@ -160,24 +160,32 @@ public extension ConcurClient {
   public func itemizationsGet(options: [String : AnyObject?]) -> (error: String?, returnValue: ConcurCollection<Itemization>?) {
     if let request = ConcurClient.getHTTPRequest(endpoint: "api/v3.0/expense/itemizations", options: options) {
       return ConcurClient.sendRequest(request: request)
+    } else {
+      return (error: "Could not create HTTP request", returnValue: nil)
     }
   }
   
   public func itemizationsPost(options: [String : AnyObject?]) -> (error: String?, returnValue: ConcurCollection<Itemization>?) {
     if let request = ConcurClient.postHTTPRequest(endpoint: "api/v3.0/expense/itemizations", options: options) {
       return ConcurClient.sendRequest(request: request)
+    } else {
+      return (error: "Could not create HTTP request", returnValue: nil)
     }
   }
   
   public func itemizationsPut(options: [String : AnyObject?]) -> (error: String?, returnValue: ConcurCollection<Itemization>?) {
     if let request = ConcurClient.putHTTPRequest(endpoint: "api/v3.0/expense/itemizations", options: options) {
       return ConcurClient.sendRequest(request: request)
+    } else {
+      return (error: "Could not create HTTP request", returnValue: nil)
     }
   }
   
   public func itemizationsDelete(options: [String : AnyObject?]) -> (error: String?, returnValue: ConcurCollection<Itemization>?) {
     if let request = ConcurClient.deleteHTTPRequest(endpoint: "api/v3.0/expense/itemizations", options: options) {
       return ConcurClient.sendRequest(request: request)
+    } else {
+      return (error: "Could not create HTTP request", returnValue: nil)
     }
   }
   
