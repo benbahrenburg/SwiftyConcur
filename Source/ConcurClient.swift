@@ -31,7 +31,7 @@ public class ConcurClient {
     }
   }
   
-  public func refreshToken(callback: (error: String!, accessToken: ConcurAccessToken!) -> Void) {
+  public func refreshToken(callback: (_ error: String!, _ accessToken: ConcurAccessToken!) -> Void) {
     if self.ConsumerKey != nil && self.ConsumerSecret != nil && self.AccessToken != nil && self.AccessToken.RefreshToken != nil {
       var options: [String : AnyObject?] = [
         "Parameters" : [

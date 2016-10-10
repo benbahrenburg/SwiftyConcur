@@ -4,7 +4,7 @@ import SwiftyJSON
 public extension ConcurClient {
   
   // Get Access Token with Native Flow
-  public func getNativeFlowAccessToken(username: String, password: String, callback: (error: String!, accessToken: ConcurAccessToken!) -> Void) {
+  public func getNativeFlowAccessToken(username: String, password: String, callback: (_ error: String!, _ accessToken: ConcurAccessToken!) -> Void) {
     if self.ConsumerKey != nil {
       // Create authorization header string in the format of LoginID:Password, Base-64 encoded
       let authorizationString = username.stringByAppendingString(":").stringByAppendingString(password)
