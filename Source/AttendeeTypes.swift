@@ -13,7 +13,7 @@ public class AttendeeType: ConcurObject {
   private(set) public var Name: String!
   private(set) public var URI: String!
   
-  private init(allowAttendeeCountEditing: Bool!, allowManuallyEnteredAttendees: Bool!, attendeeFormId: String!, code: String!, connectorId: String!, duplicateSearchFields: [AnyObject]!, id: String!, name: String!, uri: String!) {
+  private init(allowAttendeeCountEditing: Bool!, allowManuallyEnteredAttendees: Bool!, attendeeFormId: String!, code: String!, connectorId: String!, duplicateSearchFields: [Any]!, id: String!, name: String!, uri: String!) {
     self.AllowAttendeeCountEditing = allowAttendeeCountEditing
     self.AllowManuallyEnteredAttendees = allowManuallyEnteredAttendees
     self.AttendeeFormID = attendeeFormId

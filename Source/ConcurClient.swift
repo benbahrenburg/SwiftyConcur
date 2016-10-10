@@ -33,7 +33,7 @@ public class ConcurClient {
   
   public func refreshToken() -> (error: String?, accessToken: ConcurAccessToken?) {
     if self.ConsumerKey != nil && self.ConsumerSecret != nil && self.AccessToken != nil && self.AccessToken.RefreshToken != nil {
-      var options: [String : AnyObject] = [
+      var options: [String : Any] = [
         "Parameters" : [
           "refresh_token" : self.AccessToken.RefreshToken,
           "client_id" : self.ConsumerKey,

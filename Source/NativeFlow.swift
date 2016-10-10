@@ -10,7 +10,7 @@ public extension ConcurClient {
       let authorizationString = username.appending(":").appending(password)
       let finalAuthorizationString = "Basic ".appending(ConcurClient.base64Encode(toEncode: authorizationString))
       
-      var options: [String : AnyObject?] = [
+      var options: [String : Any] = [
         "Headers" : [
           "Authorization" : finalAuthorizationString,
           "X-ConsumerKey" : self.ConsumerKey!
