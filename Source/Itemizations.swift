@@ -157,24 +157,24 @@ public class Itemization: ConcurObject {
 
 public extension ConcurClient {
   
-  public func itemizationsGet(options: [String : AnyObject?], callback: (error: String!, returnValue: ConcurCollection<Itemization>!) -> Void) {
+  public func itemizationsGet(options: [String : AnyObject?], callback: (_ error: String!, _ returnValue: ConcurCollection<Itemization>!) -> Void) {
     let request = ConcurClient.getHTTPRequest(endpoint: "api/v3.0/expense/itemizations", options: options)
-    ConcurClient.sendRequest(request, callback: callback)
+    ConcurClient.sendRequest(request: request, callback: callback)
   }
   
-  public func itemizationsPost(options: [String : AnyObject?], callback: (error: String!, returnValue: ConcurCollection<Itemization>!) -> Void) {
+  public func itemizationsPost(options: [String : AnyObject?], callback: (_ error: String!, _ returnValue: ConcurCollection<Itemization>!) -> Void) {
     let request = ConcurClient.postHTTPRequest(endpoint: "api/v3.0/expense/itemizations", options: options)
-    ConcurClient.sendRequest(request, callback: callback)
+    ConcurClient.sendRequest(request: request, callback: callback)
   }
   
-  public func itemizationsPut(options: [String : AnyObject?], callback: (error: String!, returnValue: ConcurCollection<Itemization>!) -> Void) {
+  public func itemizationsPut(options: [String : AnyObject?], callback: (_ error: String!, _ returnValue: ConcurCollection<Itemization>!) -> Void) {
     let request = ConcurClient.putHTTPRequest(endpoint: "api/v3.0/expense/itemizations", options: options)
-    ConcurClient.sendRequest(request, callback: callback)
+    ConcurClient.sendRequest(request: request, callback: callback)
   }
   
-  public func itemizationsDelete(options: [String : AnyObject?], callback: (error: String!, returnValue: ConcurCollection<Itemization>!) -> Void) {
+  public func itemizationsDelete(options: [String : AnyObject?], callback: (_ error: String!, _ returnValue: ConcurCollection<Itemization>!) -> Void) {
     let request = ConcurClient.deleteHTTPRequest(endpoint: "api/v3.0/expense/itemizations", options: options)
-    ConcurClient.sendRequest(request, callback: callback)
+    ConcurClient.sendRequest(request: request, callback: callback)
   }
   
 }

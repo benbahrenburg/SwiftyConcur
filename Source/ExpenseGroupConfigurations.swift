@@ -149,9 +149,9 @@ public class SCExpenseType {
 
 public extension ConcurClient {
   
-  public func expenseGroupConfigurationsGet(options: [String : AnyObject?], callback: (error: String!, returnValue: ConcurCollection<ExpenseGroupConfiguration>!) -> Void) {
+  public func expenseGroupConfigurationsGet(options: [String : AnyObject?], callback: (_ error: String!, _ returnValue: ConcurCollection<ExpenseGroupConfiguration>!) -> Void) {
     let request = ConcurClient.getHTTPRequest(endpoint: "api/v3.0/expense/expensegroupconfigurations", options: options)
-    ConcurClient.sendRequest(request, callback: callback)
+    ConcurClient.sendRequest(request: request, callback: callback)
   }
   
 }
