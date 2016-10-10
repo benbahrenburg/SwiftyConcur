@@ -71,7 +71,7 @@ public class Allocation: ConcurObject {
 
 public extension ConcurClient {
   
-  public func allocationsGet(options: [String : AnyObject?]) -> (error: String!, returnValue: ConcurCollection<Allocation>!) {
+  public func allocationsGet(options: [String : AnyObject?]) -> (error: String?, returnValue: ConcurCollection<Allocation>?) {
     if let request = ConcurClient.getHTTPRequest(endpoint: "api/v3.0/expense/allocations", options: options) {
       return ConcurClient.sendRequest(request: request)
     }

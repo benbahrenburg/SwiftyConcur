@@ -45,7 +45,7 @@ public extension ConcurClient {
     return base64Encoded!
   }
   
-  internal class func sendRequest<T>(request: NSURLRequest) -> (error: String!, returnValue: ConcurCollection<T>!) {
+  internal class func sendRequest<T>(request: NSURLRequest) -> (error: String?, returnValue: ConcurCollection<T>?) {
     if self.authString != nil {
       Alamofire.request(request).responseJSON { response in
         if response.result.isSuccess {
