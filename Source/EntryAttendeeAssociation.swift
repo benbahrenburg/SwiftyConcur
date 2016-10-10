@@ -37,27 +37,27 @@ public class EntryAttendeeAssociation: ConcurObject {
 
 public extension ConcurClient {
   
-  public func entryAttendeeAssociationGet(options: [String : AnyObject?], callback: (_ error: String, _ returnValue: ConcurCollection<EntryAttendeeAssociation>) -> Void) {
+  public func entryAttendeeAssociationGet(options: [String : AnyObject?]) -> (error: String!, returnValue: ConcurCollection<EntryAttendeeAssociation>!) {
     if let request = ConcurClient.getHTTPRequest(endpoint: "api/v3.0/expense/entryattendeeassociations", options: options) {
-      ConcurClient.sendRequest(request: request, callback: callback)
+      return ConcurClient.sendRequest(request: request)
     }
   }
   
-  public func entryAttendeeAssociationPost(options: [String : AnyObject?], callback: (_ error: String, _ returnValue: ConcurCollection<EntryAttendeeAssociation>) -> Void) {
+  public func entryAttendeeAssociationPost(options: [String : AnyObject?]) -> (error: String!, returnValue: ConcurCollection<EntryAttendeeAssociation>!) {
     if let request = ConcurClient.postHTTPRequest(endpoint: "api/v3.0/expense/entryattendeeassociations", options: options) {
-      ConcurClient.sendRequest(request: request, callback: callback)
+      return ConcurClient.sendRequest(request: request)
     }
   }
   
-  public func entryAttendeeAssociationPut(options: [String : AnyObject?], callback: (_ error: String, _ returnValue: ConcurCollection<EntryAttendeeAssociation>) -> Void) {
+  public func entryAttendeeAssociationPut(options: [String : AnyObject?]) -> (error: String!, returnValue: ConcurCollection<EntryAttendeeAssociation>!) {
     if let request = ConcurClient.putHTTPRequest(endpoint: "api/v3.0/expense/entryattendeeassociations", options: options) {
-      ConcurClient.sendRequest(request: request, callback: callback)
+      return ConcurClient.sendRequest(request: request)
     }
   }
   
-  public func entryAttendeeAssociationDelete(options: [String : AnyObject?], callback: (_ error: String, _ returnValue: ConcurCollection<EntryAttendeeAssociation>) -> Void) {
+  public func entryAttendeeAssociationDelete(options: [String : AnyObject?]) -> (error: String!, returnValue: ConcurCollection<EntryAttendeeAssociation>!) {
     if let request = ConcurClient.deleteHTTPRequest(endpoint: "api/v3.0/expense/entryattendeeassociations", options: options) {
-      ConcurClient.sendRequest(request: request, callback: callback)
+      return ConcurClient.sendRequest(request: request)
     }
   }
   

@@ -249,27 +249,27 @@ public class SCJourney {
 
 public extension ConcurClient {
   
-  public func entriesGet(options: [String : AnyObject?], callback: (_ error: String, _ returnValue: ConcurCollection<Entry>) -> Void) {
+  public func entriesGet(options: [String : AnyObject?]) -> (error: String!, returnValue: ConcurCollection<Entry>!) {
     if let request = ConcurClient.getHTTPRequest(endpoint: "api/v3.0/expense/entries", options: options) {
-      ConcurClient.sendRequest(request: request, callback: callback)
+      return ConcurClient.sendRequest(request: request)
     }
   }
   
-  public func entriesPost(options: [String : AnyObject?], callback: (_ error: String, _ returnValue: ConcurCollection<Entry>) -> Void) {
+  public func entriesPost(options: [String : AnyObject?]) -> (error: String!, returnValue: ConcurCollection<Entry>!) {
     if let request = ConcurClient.postHTTPRequest(endpoint: "api/v3.0/expense/entries", options: options) {
-      ConcurClient.sendRequest(request: request, callback: callback)
+      return ConcurClient.sendRequest(request: request)
     }
   }
   
-  public func entriesPut(options: [String : AnyObject?], callback: (_ error: String, _ returnValue: ConcurCollection<Entry>) -> Void) {
+  public func entriesPut(options: [String : AnyObject?]) -> (error: String!, returnValue: ConcurCollection<Entry>!) {
     if let request = ConcurClient.putHTTPRequest(endpoint: "api/v3.0/expense/entries", options: options) {
-      ConcurClient.sendRequest(request: request, callback: callback)
+      return ConcurClient.sendRequest(request: request)
     }
   }
   
-  public func entriesDelete(options: [String : AnyObject?], callback: (_ error: String, _ returnValue: ConcurCollection<Entry>) -> Void) {
+  public func entriesDelete(options: [String : AnyObject?]) -> (error: String!, returnValue: ConcurCollection<Entry>!) {
     if let request = ConcurClient.deleteHTTPRequest(endpoint: "api/v3.0/expense/entries", options: options) {
-      ConcurClient.sendRequest(request: request, callback: callback)
+      return ConcurClient.sendRequest(request: request)
     }
   }
   

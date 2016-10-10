@@ -4,7 +4,7 @@ import SwiftyJSON
 public extension ConcurClient {
   
   // Get Access Token with Native Flow
-  public func getNativeFlowAccessToken(username: String, password: String, callback: (_ error: String!, _ accessToken: ConcurAccessToken!) -> Void) {
+  public func getNativeFlowAccessToken(username: String, password: String) -> (error: String!, accessToken: ConcurAccessToken!) {
     if self.ConsumerKey != nil {
       // Create authorization header string in the format of LoginID:Password, Base-64 encoded
       let authorizationString = username.stringByAppendingString(":").stringByAppendingString(password)
@@ -22,18 +22,18 @@ public extension ConcurClient {
         if response.result.isSuccess {
           var jsonObject = JSON(response.result.value!)
           if let error = jsonObject["Error"]["Message"].string {
-            callback(error: error, accessToken: nil)
+            return (error: error, accessToken: nil)
           } else {
             jsonObject = jsonObject["Access_Token"]
             var token = ConcurAccessToken(json: jsonObject)
-            callback(error: nil, accessToken: token)
+            return (error: nil, accessToken: token)
           }
         } else {
-          callback(error: response.result.error?.description, accessToken: nil)
+          return (error: response.result.error?.description, accessToken: nil)
         }
       }
     } else {
-      callback(error: "Consumer Key Needed", accessToken: nil)
+      return (error: "Consumer Key Needed", accessToken: nil)
     }
   }
   
