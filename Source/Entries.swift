@@ -250,23 +250,27 @@ public class SCJourney {
 public extension ConcurClient {
   
   public func entriesGet(options: [String : AnyObject?], callback: (_ error: String, _ returnValue: ConcurCollection<Entry>) -> Void) {
-    let request = ConcurClient.getHTTPRequest("api/v3.0/expense/entries", options: options)
-    ConcurClient.sendRequest(request: request, callback: callback)
+    if let request = ConcurClient.getHTTPRequest("api/v3.0/expense/entries", options: options) {
+      ConcurClient.sendRequest(request: request, callback: callback)
+    }
   }
   
   public func entriesPost(options: [String : AnyObject?], callback: (_ error: String, _ returnValue: ConcurCollection<Entry>) -> Void) {
-    let request = ConcurClient.postHTTPRequest("api/v3.0/expense/entries", options: options)
-    ConcurClient.sendRequest(request: request, callback: callback)
+    if let request = ConcurClient.postHTTPRequest("api/v3.0/expense/entries", options: options) {
+      ConcurClient.sendRequest(request: request, callback: callback)
+    }
   }
   
   public func entriesPut(options: [String : AnyObject?], callback: (_ error: String, _ returnValue: ConcurCollection<Entry>) -> Void) {
-    let request = ConcurClient.putHTTPRequest("api/v3.0/expense/entries", options: options)
-    ConcurClient.sendRequest(request: request, callback: callback)
+    if let request = ConcurClient.putHTTPRequest("api/v3.0/expense/entries", options: options) {
+      ConcurClient.sendRequest(request: request, callback: callback)
+    }
   }
   
   public func entriesDelete(options: [String : AnyObject?], callback: (_ error: String, _ returnValue: ConcurCollection<Entry>) -> Void) {
-    let request = ConcurClient.deleteHTTPRequest("api/v3.0/expense/entries", options: options)
-    ConcurClient.sendRequest(request: request, callback: callback)
+    if let request = ConcurClient.deleteHTTPRequest("api/v3.0/expense/entries", options: options) {
+      ConcurClient.sendRequest(request: request, callback: callback)
+    }
   }
   
 }

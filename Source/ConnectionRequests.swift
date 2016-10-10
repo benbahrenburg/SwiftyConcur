@@ -34,23 +34,27 @@ public class ConnectionRequest: ConcurObject {
 public extension ConcurClient {
   
   public func connectionRequestsGet(options: [String : AnyObject?], callback: (_ error: String, _ returnValue: ConcurCollection<ConnectionRequest>) -> Void) {
-    let request = ConcurClient.getHTTPRequest(endpoint: "api/v3.0/common/connectionrequests", options: options)
-    ConcurClient.sendRequest(request: request, callback: callback)
+    if let request = ConcurClient.getHTTPRequest(endpoint: "api/v3.0/common/connectionrequests", options: options) {
+      ConcurClient.sendRequest(request: request, callback: callback)
+    }
   }
   
   public func connectionRequestsPost(options: [String : AnyObject?], callback: (_ error: String, _ returnValue: ConcurCollection<ConnectionRequest>) -> Void) {
-    let request = ConcurClient.postHTTPRequest(endpoint: "api/v3.0/common/connectionrequests", options: options)
-    ConcurClient.sendRequest(request: request, callback: callback)
+    if let request = ConcurClient.postHTTPRequest(endpoint: "api/v3.0/common/connectionrequests", options: options) {
+      ConcurClient.sendRequest(request: request, callback: callback)
+    }
   }
   
   public func connectionRequestsPut(options: [String : AnyObject?], callback: (_ error: String, _ returnValue: ConcurCollection<ConnectionRequest>) -> Void) {
-    let request = ConcurClient.putHTTPRequest(endpoint: "api/v3.0/common/connectionrequests", options: options)
-    ConcurClient.sendRequest(request: request, callback: callback)
+    if let request = ConcurClient.putHTTPRequest(endpoint: "api/v3.0/common/connectionrequests", options: options) {
+      ConcurClient.sendRequest(request: request, callback: callback)
+    }
   }
   
   public func connectionRequestsDelete(options: [String : AnyObject?], callback: (_ error: String, _ returnValue: ConcurCollection<ConnectionRequest>) -> Void) {
-    let request = ConcurClient.deleteHTTPRequest(endpoint: "api/v3.0/common/connectionrequests", options: options)
-    ConcurClient.sendRequest(request: request, callback: callback)
+    if let request = ConcurClient.deleteHTTPRequest(endpoint: "api/v3.0/common/connectionrequests", options: options) {
+      ConcurClient.sendRequest(request: request, callback: callback)
+    }
   }
   
 }
