@@ -99,10 +99,9 @@ public extension ConcurClient {
       
       // Encodes the body dictionary into NSData
       if let body = options["Body"] as? [String : AnyObject] {
-        var error: NSError?
-        var bodyData = try! JSONSerialization.data(withJSONObject: body, options: JSONSerialization.WritingOptions())
+        let bodyData = try! JSONSerialization.data(withJSONObject: body, options: JSONSerialization.WritingOptions())
         URLProtocol.setProperty(bodyData, forKey: "BodyData", in: request)
-        request.HTTPBody = bodyData
+        request.httpBody = bodyData
       }
       
       // Assigns default headers

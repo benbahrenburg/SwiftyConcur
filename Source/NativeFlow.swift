@@ -8,7 +8,7 @@ public extension ConcurClient {
     if self.ConsumerKey != nil {
       // Create authorization header string in the format of LoginID:Password, Base-64 encoded
       let authorizationString = username.appending(":").appending(password)
-      let finalAuthorizationString = "Basic ".appending(ConcurClient.base64Encode(authorizationString))
+      let finalAuthorizationString = "Basic ".appending(ConcurClient.base64Encode(toEncode: authorizationString))
       
       var options: [String : AnyObject?] = [
         "Headers" : [

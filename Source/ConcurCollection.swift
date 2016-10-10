@@ -23,7 +23,7 @@ public class ConcurCollection<T: ConcurObject> {
   
   public func getMoreItems() -> ConcurCollection<T>? {
     if self.NextPage != nil {
-      let request = ConcurClient.getMoreItems(self.NextPage)
+      let request = ConcurClient.getMoreItems(nextPage: self.NextPage)
       Alamofire.request(request).responseJSON { response in
         if let json = response.result.value {
           var jsonObject = JSON(json)

@@ -201,18 +201,18 @@ public class SCCustomField {
   
   private(set) public var Code: String!
   private(set) public var ListItemID: String!
-  private(set) public var Type: String!
+  private(set) public var FieldType: String!
   private(set) public var Value: String!
   
-  private init(code: String!, listItemId: String!, type: String!, value: String!) {
+  private init(code: String!, listItemId: String!, fieldType: String!, value: String!) {
     self.Code = code
     self.ListItemID = listItemId
-    self.Type = type
+    self.FieldType = fieldType
     self.Value = value
   }
   
   public convenience init(json: JSON) {
-    self.init(code: json["Code"].string, listItemId: json["ListItemID"].string, type: json["Type"].string, value: json["Value"].string)
+    self.init(code: json["Code"].string, listItemId: json["ListItemID"].string, fieldType: json["Type"].string, value: json["Value"].string)
   }
   
 }
