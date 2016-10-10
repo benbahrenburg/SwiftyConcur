@@ -23,19 +23,19 @@ public extension ConcurClient {
     }
   }
   
-  internal class func getHTTPRequest(endpoint: String, options: [String : AnyObject?]) -> NSMutableURLRequest! {
+  internal class func getHTTPRequest(endpoint: String, options: [String : Any]) -> NSMutableURLRequest! {
     return self.createRequest(method: "GET", endpoint: endpoint, options: options)
   }
   
-  internal class func postHTTPRequest(endpoint: String, options: [String : AnyObject?]) -> NSMutableURLRequest! {
+  internal class func postHTTPRequest(endpoint: String, options: [String : Any]) -> NSMutableURLRequest! {
     return self.createRequest(method: "POST", endpoint: endpoint, options: options)
   }
   
-  internal class func putHTTPRequest(endpoint: String, options: [String : AnyObject?]) -> NSMutableURLRequest! {
+  internal class func putHTTPRequest(endpoint: String, options: [String : Any]) -> NSMutableURLRequest! {
     return self.createRequest(method: "PUT", endpoint: endpoint, options: options)
   }
   
-  internal class func deleteHTTPRequest(endpoint: String, options: [String : AnyObject?]) -> NSMutableURLRequest! {
+  internal class func deleteHTTPRequest(endpoint: String, options: [String : Any]) -> NSMutableURLRequest! {
     return self.createRequest(method: "DELETE", endpoint: endpoint, options: options)
   }
   
@@ -70,7 +70,7 @@ public extension ConcurClient {
     }
   }
   
-  internal class func createRequest(method: String, endpoint: String, options: [String : AnyObject?]) -> NSMutableURLRequest! {
+  internal class func createRequest(method: String, endpoint: String, options: [String : Any]) -> NSMutableURLRequest! {
     // Adds endpoint to end of instance URL
     var urlString = self.instanceUrl.appending(endpoint)
     
