@@ -27,15 +27,15 @@ public class DigitalTaxInvoice: ConcurObject {
 
 public extension ConcurClient {
   
-  public func digitalTaxInvoicesGet(options: [String : AnyObject?], callback: (_ error: String, _ returnValue: ConcurCollection<DigitalTaxInvoice>) -> Void) {
+  public func digitalTaxInvoicesGet(options: [String : AnyObject?]) -> (error: String!, returnValue: ConcurCollection<DigitalTaxInvoice>!) {
     if let request = ConcurClient.getHTTPRequest(endpoint: "api/v3.0/expense/digitaltaxinvoices", options: options) {
-      ConcurClient.sendRequest(request: request, callback: callback)
+      return ConcurClient.sendRequest(request: request)
     }
   }
   
-  public func digitalTaxInvoicesPut(options: [String : AnyObject?], callback: (_ error: String, _ returnValue: ConcurCollection<DigitalTaxInvoice>) -> Void) {
+  public func digitalTaxInvoicesPut(options: [String : AnyObject?]) -> (error: String!, returnValue: ConcurCollection<DigitalTaxInvoice>!) {
     if let request = ConcurClient.putHTTPRequest(endpoint: "api/v3.0/expense/digitaltaxinvoices", options: options) {
-      ConcurClient.sendRequest(request: request, callback: callback)
+      return ConcurClient.sendRequest(request: request)
     }
   }
   

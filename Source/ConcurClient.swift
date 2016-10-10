@@ -31,7 +31,7 @@ public class ConcurClient {
     }
   }
   
-  public func refreshToken(callback: (_ error: String, _ accessToken: ConcurAccessToken) -> Void) {
+  public func refreshToken() -> (error: String!, accessToken: ConcurAccessToken!) {
     if self.ConsumerKey != nil && self.ConsumerSecret != nil && self.AccessToken != nil && self.AccessToken.RefreshToken != nil {
       var options: [String : AnyObject] = [
         "Parameters" : [
@@ -45,27 +45,27 @@ public class ConcurClient {
         if response.result.isSuccess {
           var jsonObject = JSON(response.result.value!)
           if let err = jsonObject["Error"]["Message"].string {
-            callback(error: err, accessToken: nil)
+            return (error: err, accessToken: nil)
           } else {
             jsonObject = jsonObject["Access_Token"]
-            callback(error: nil, accessToken: ConcurAccessToken(json: jsonObject))
+            return (error: nil, accessToken: ConcurAccessToken(json: jsonObject))
           }
         } else {
-          callback(error: response.result.error?.description, accessToken: nil)
+          return (error: response.result.error?.description, accessToken: nil)
         }
       }
     } else {
       if self.ConsumerKey == nil {
-        callback(error: "Consumer Key missing")
+        return (error: "Consumer Key missing", accessToken: nil)
       }
       else if self.ConsumerSecret == nil {
-        callback(error: "Consumer Secret missing")
+        return (error: "Consumer Secret missing", accessToken: nil)
       }
       else if self.AccessToken == nil {
-        callback(error: "Access Token missing")
+        return (error: "Access Token missing", accessToken: nil)
       }
       else if self.AccessToken.RefreshToken == nil {
-        callback(error: "Refresh Token missing")
+        return (error: "Refresh Token missing", accessToken: nil)
       }
     }
   }

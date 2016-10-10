@@ -157,27 +157,27 @@ public class Itemization: ConcurObject {
 
 public extension ConcurClient {
   
-  public func itemizationsGet(options: [String : AnyObject?], callback: (_ error: String, _ returnValue: ConcurCollection<Itemization>) -> Void) {
+  public func itemizationsGet(options: [String : AnyObject?]) -> (error: String!, returnValue: ConcurCollection<Itemization>!) {
     if let request = ConcurClient.getHTTPRequest(endpoint: "api/v3.0/expense/itemizations", options: options) {
-      ConcurClient.sendRequest(request: request, callback: callback)
+      return ConcurClient.sendRequest(request: request)
     }
   }
   
-  public func itemizationsPost(options: [String : AnyObject?], callback: (_ error: String, _ returnValue: ConcurCollection<Itemization>) -> Void) {
+  public func itemizationsPost(options: [String : AnyObject?]) -> (error: String!, returnValue: ConcurCollection<Itemization>!) {
     if let request = ConcurClient.postHTTPRequest(endpoint: "api/v3.0/expense/itemizations", options: options) {
-      ConcurClient.sendRequest(request: request, callback: callback)
+      return ConcurClient.sendRequest(request: request)
     }
   }
   
-  public func itemizationsPut(options: [String : AnyObject?], callback: (_ error: String, _ returnValue: ConcurCollection<Itemization>) -> Void) {
+  public func itemizationsPut(options: [String : AnyObject?]) -> (error: String!, returnValue: ConcurCollection<Itemization>!) {
     if let request = ConcurClient.putHTTPRequest(endpoint: "api/v3.0/expense/itemizations", options: options) {
-      ConcurClient.sendRequest(request: request, callback: callback)
+      return ConcurClient.sendRequest(request: request)
     }
   }
   
-  public func itemizationsDelete(options: [String : AnyObject?], callback: (_ error: String, _ returnValue: ConcurCollection<Itemization>) -> Void) {
+  public func itemizationsDelete(options: [String : AnyObject?]) -> (error: String!, returnValue: ConcurCollection<Itemization>!) {
     if let request = ConcurClient.deleteHTTPRequest(endpoint: "api/v3.0/expense/itemizations", options: options) {
-      ConcurClient.sendRequest(request: request, callback: callback)
+      return ConcurClient.sendRequest(request: request)
     }
   }
   

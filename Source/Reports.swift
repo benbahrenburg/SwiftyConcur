@@ -135,21 +135,21 @@ public class Report: ConcurObject {
 
 public extension ConcurClient {
   
-  public func reportsGet(options: [String : AnyObject?], callback: (_ error: String, _ returnValue: ConcurCollection<Report>) -> Void) {
+  public func reportsGet(options: [String : AnyObject?]) -> (error: String!, returnValue: ConcurCollection<Report>!) {
     if let request = ConcurClient.getHTTPRequest(endpoint: "api/v3.0/expense/entries", options: options) {
-      ConcurClient.sendRequest(request: request, callback: callback)
+      return ConcurClient.sendRequest(request: request)
     }
   }
   
-  public func reportsPost(options: [String : AnyObject?], callback: (_ error: String, _ returnValue: ConcurCollection<Report>) -> Void) {
+  public func reportsPost(options: [String : AnyObject?]) -> (error: String!, returnValue: ConcurCollection<Report>!) {
     if let request = ConcurClient.postHTTPRequest(endpoint: "api/v3.0/expense/entries", options: options) {
-      ConcurClient.sendRequest(request: request, callback: callback)
+      return ConcurClient.sendRequest(request: request)
     }
   }
   
-  public func reportsPut(options: [String : AnyObject?], callback: (_ error: String, _ returnValue: ConcurCollection<Report>) -> Void) {
+  public func reportsPut(options: [String : AnyObject?]) -> (error: String!, returnValue: ConcurCollection<Report>!) {
     if let request = ConcurClient.putHTTPRequest(endpoint: "api/v3.0/expense/entries", options: options) {
-      ConcurClient.sendRequest(request: request, callback: callback)
+      return ConcurClient.sendRequest(request: request)
     }
   }
   
