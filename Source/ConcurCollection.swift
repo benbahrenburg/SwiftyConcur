@@ -31,8 +31,6 @@ public class ConcurCollection<T: ConcurObject> {
           callback(moreItems: newCollection)
         }
       }
-    } else {
-      callback(moreItems: nil)
     }
   }
   
