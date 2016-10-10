@@ -23,19 +23,19 @@ public extension ConcurClient {
     }
   }
   
-  internal class func getHTTPRequest(endpoint: String, options: [String : AnyObject?]) -> NSURLRequest! {
+  internal class func getHTTPRequest(endpoint: String, options: [String : AnyObject?]) -> NSMutableURLRequest! {
     return self.createRequest(method: "GET", endpoint: endpoint, options: options)
   }
   
-  internal class func postHTTPRequest(endpoint: String, options: [String : AnyObject?]) -> NSURLRequest! {
+  internal class func postHTTPRequest(endpoint: String, options: [String : AnyObject?]) -> NSMutableURLRequest! {
     return self.createRequest(method: "POST", endpoint: endpoint, options: options)
   }
   
-  internal class func putHTTPRequest(endpoint: String, options: [String : AnyObject?]) -> NSURLRequest! {
+  internal class func putHTTPRequest(endpoint: String, options: [String : AnyObject?]) -> NSMutableURLRequest! {
     return self.createRequest(method: "PUT", endpoint: endpoint, options: options)
   }
   
-  internal class func deleteHTTPRequest(endpoint: String, options: [String : AnyObject?]) -> NSURLRequest! {
+  internal class func deleteHTTPRequest(endpoint: String, options: [String : AnyObject?]) -> NSMutableURLRequest! {
     return self.createRequest(method: "DELETE", endpoint: endpoint, options: options)
   }
   
@@ -76,17 +76,17 @@ public extension ConcurClient {
     
     // Adds ID to end of the url string if provided
     if let id = options["id"] as? String {
-      urlString = urlString.stringByAppendingString("/").stringByAppendingString(id)
+      urlString = urlString.appending("/").appending(id)
     }
     
     // If parameters are provided, adds ?key=value&key=value... to end of URL
     if let parameters = options["Parameters"] as? [String : String] {
-      urlString = urlString.stringByAppendingString("?")
+      urlString = urlString.appending("?")
       var currentParamCount = 0
       for (key, value) in parameters {
-        urlString = urlString.stringByAppendingString(key).stringByAppendingString("=").stringByAppendingString(value)
+        urlString = urlString.appending(key).appending("=").appending(value)
         if (currentParamCount + 1) != parameters.count {
-          urlString = urlString.stringByAppendingString("&")
+          urlString = urlString.appending("&")
           currentParamCount = currentParamCount + 1
         }
       }
