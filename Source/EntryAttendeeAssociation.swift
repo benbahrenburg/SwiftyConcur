@@ -38,25 +38,25 @@ public class EntryAttendeeAssociation: ConcurObject {
 public extension ConcurClient {
   
   public func entryAttendeeAssociationGet(options: [String : AnyObject?], callback: (_ error: String, _ returnValue: ConcurCollection<EntryAttendeeAssociation>) -> Void) {
-    if let request = ConcurClient.getHTTPRequest("api/v3.0/expense/entryattendeeassociations", options: options) {
+    if let request = ConcurClient.getHTTPRequest(endpoint: "api/v3.0/expense/entryattendeeassociations", options: options) {
       ConcurClient.sendRequest(request: request, callback: callback)
     }
   }
   
   public func entryAttendeeAssociationPost(options: [String : AnyObject?], callback: (_ error: String, _ returnValue: ConcurCollection<EntryAttendeeAssociation>) -> Void) {
-    if let request = ConcurClient.postHTTPRequest("api/v3.0/expense/entryattendeeassociations", options: options) {
+    if let request = ConcurClient.postHTTPRequest(endpoint: "api/v3.0/expense/entryattendeeassociations", options: options) {
       ConcurClient.sendRequest(request: request, callback: callback)
     }
   }
   
   public func entryAttendeeAssociationPut(options: [String : AnyObject?], callback: (_ error: String, _ returnValue: ConcurCollection<EntryAttendeeAssociation>) -> Void) {
-    if let request = ConcurClient.putHTTPRequest("api/v3.0/expense/entryattendeeassociations", options: options) {
+    if let request = ConcurClient.putHTTPRequest(endpoint: "api/v3.0/expense/entryattendeeassociations", options: options) {
       ConcurClient.sendRequest(request: request, callback: callback)
     }
   }
   
   public func entryAttendeeAssociationDelete(options: [String : AnyObject?], callback: (_ error: String, _ returnValue: ConcurCollection<EntryAttendeeAssociation>) -> Void) {
-    if let request = ConcurClient.deleteHTTPRequest("api/v3.0/expense/entryattendeeassociations", options: options) {
+    if let request = ConcurClient.deleteHTTPRequest(endpoint: "api/v3.0/expense/entryattendeeassociations", options: options) {
       ConcurClient.sendRequest(request: request, callback: callback)
     }
   }

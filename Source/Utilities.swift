@@ -24,19 +24,19 @@ public extension ConcurClient {
   }
   
   internal class func getHTTPRequest(endpoint: String, options: [String : AnyObject?]) -> NSURLRequest! {
-    return self.createRequest("GET", endpoint: endpoint, options: options)
+    return self.createRequest(method: "GET", endpoint: endpoint, options: options)
   }
   
   internal class func postHTTPRequest(endpoint: String, options: [String : AnyObject?]) -> NSURLRequest! {
-    return self.createRequest("POST", endpoint: endpoint, options: options)
+    return self.createRequest(method: "POST", endpoint: endpoint, options: options)
   }
   
   internal class func putHTTPRequest(endpoint: String, options: [String : AnyObject?]) -> NSURLRequest! {
-    return self.createRequest("PUT", endpoint: endpoint, options: options)
+    return self.createRequest(method: "PUT", endpoint: endpoint, options: options)
   }
   
   internal class func deleteHTTPRequest(endpoint: String, options: [String : AnyObject?]) -> NSURLRequest! {
-    return self.createRequest("DELETE", endpoint: endpoint, options: options)
+    return self.createRequest(method: "DELETE", endpoint: endpoint, options: options)
   }
   
   internal class func base64Encode(toEncode: String) -> String {
@@ -45,28 +45,28 @@ public extension ConcurClient {
     return base64Encoded!
   }
   
-  internal class func sendRequest<T>(request: NSURLRequest, callback: (_ error: String, _ returnValue: ConcurCollection<T>) -> Void) {
+  internal class func sendRequest<T>(request: NSURLRequest) -> (error: String!, returnValue: ConcurCollection<T>!) {
     if self.authString != nil {
       Alamofire.request(request).responseJSON { response in
         if response.result.isSuccess {
           if let json = response.result.value {
             var jsonObject = JSON(json)
             if let error = jsonObject["Error"]["Message"].string {
-              callback(error: error, returnValue: nil)
+              return (error: error, returnValue: nil)
             } else if let error = jsonObject["Message"].string {
-              callback(error: error, returnValue: nil)
+              return (error: error, returnValue: nil)
             } else {
-              callback(error: nil, returnValue: ConcurCollection<T>(json: jsonObject))
+              return (error: nil, returnValue: ConcurCollection<T>(json: jsonObject))
             }
           } else {
-            callback(error: nil, returnValue: nil)
+            return (error: nil, returnValue: nil)
           }
         } else {
-          callback(error: response.result.error?.description, returnValue: nil)
+          return (error: response.result.error?.description, returnValue: nil)
         }
       }
     } else {
-      callback(error: "Access Token Missing", returnValue: nil)
+      return (error: "Access Token Missing", returnValue: nil)
     }
   }
   
@@ -99,8 +99,8 @@ public extension ConcurClient {
       // Encodes the body dictionary into NSData
       if let body = options["Body"] as? [String : AnyObject] {
         var error: NSError?
-        var bodyData = try! NSJSONSerialization.dataWithJSONObject(body, options: NSJSONWritingOptions())
-        NSURLProtocol.setProperty(bodyData, forKey: "BodyData", inRequest: request)
+        var bodyData = try! JSONSerialization.dataWithJSONObject(body, options: NSJSONWritingOptions())
+        URLProtocol.setProperty(bodyData, forKey: "BodyData", inRequest: request)
         request.HTTPBody = bodyData
       }
       

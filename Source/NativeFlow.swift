@@ -16,7 +16,7 @@ public extension ConcurClient {
           "X-ConsumerKey" : self.ConsumerKey!
         ]
       ]
-      var request = ConcurClient.getHTTPRequest("net2/oauth2/accesstoken.ashx", options: options)
+      var request = ConcurClient.getHTTPRequest(endpoint: "net2/oauth2/accesstoken.ashx", options: options)
       
       Alamofire.request(request).responseJSON { response in
         if response.result.isSuccess {

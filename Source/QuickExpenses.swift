@@ -44,27 +44,27 @@ public class QuickExpense: ConcurObject {
 
 public extension ConcurClient {
   
-  public func quickExpensesGet(options: [String : AnyObject?], callback: (_ error: String, _ returnValue: ConcurCollection<QuickExpense>) -> Void) {
-    if let request = ConcurClient.getHTTPRequest("api/v3.0/expense/quickexpenses", options: options) {
-      ConcurClient.sendRequest(request: request, callback: callback)
+  public func quickExpensesGet(options: [String : AnyObject?]) -> (error: String!, returnValue: ConcurCollection<QuickExpense>!) {
+    if let request = ConcurClient.getHTTPRequest(endpoint: "api/v3.0/expense/quickexpenses", options: options) {
+      return ConcurClient.sendRequest(request: request)
     }
   }
   
-  public func quickExpensesPost(options: [String : AnyObject?], callback: (_ error: String, _ returnValue: ConcurCollection<QuickExpense>) -> Void) {
-    if let request = ConcurClient.postHTTPRequest("api/v3.0/expense/quickexpenses", options: options) {
-      ConcurClient.sendRequest(request: request, callback: callback)
+  public func quickExpensesPost(options: [String : AnyObject?]) -> (error: String!, returnValue: ConcurCollection<QuickExpense>!) {
+    if let request = ConcurClient.postHTTPRequest(endpoint: "api/v3.0/expense/quickexpenses", options: options) {
+      return ConcurClient.sendRequest(request: request)
     }
   }
   
-  public func quickExpensesPut(options: [String : AnyObject?], callback: (_ error: String, _ returnValue: ConcurCollection<QuickExpense>) -> Void) {
-    if let request = ConcurClient.putHTTPRequest("api/v3.0/expense/quickexpenses", options: options) {
-      ConcurClient.sendRequest(request: request, callback: callback)
+  public func quickExpensesPut(options: [String : AnyObject?]) -> (error: String!, returnValue: ConcurCollection<QuickExpense>!) {
+    if let request = ConcurClient.putHTTPRequest(endpoint: "api/v3.0/expense/quickexpenses", options: options) {
+      return ConcurClient.sendRequest(request: request)
     }
   }
   
-  public func quickExpensesDelete(options: [String : AnyObject?], callback: (_ error: String, _ returnValue: ConcurCollection<QuickExpense>) -> Void) {
-    if let request = ConcurClient.deleteHTTPRequest("api/v3.0/expense/quickexpenses", options: options) {
-      ConcurClient.sendRequest(request: request, callback: callback)
+  public func quickExpensesDelete(options: [String : AnyObject?]) -> (error: String!, returnValue: ConcurCollection<QuickExpense>!) {
+    if let request = ConcurClient.deleteHTTPRequest(endpoint: "api/v3.0/expense/quickexpenses", options: options) {
+      return ConcurClient.sendRequest(request: request)
     }
   }
   
