@@ -41,7 +41,7 @@ public extension ConcurClient {
   
   internal class func base64Encode(toEncode: String) -> String {
     let utf8Encoded = toEncode.data(using: String.Encoding.utf8)
-    let base64Encoded = utf8Encoded?.base64EncodedString(options: NSData.Base64EncodingOptiuons())
+    let base64Encoded = utf8Encoded?.base64EncodedString(options: NSData.Base64EncodingOptions())
     return base64Encoded!
   }
   
@@ -95,13 +95,13 @@ public extension ConcurClient {
     // Creates the URL and returns nil if there was an error creating it
     if let url = URL(string: urlString) {
       let request = NSMutableURLRequest(url: url)
-      request.HTTPMethod = method
+      request.httpMethod = method
       
       // Encodes the body dictionary into NSData
       if let body = options["Body"] as? [String : AnyObject] {
         var error: NSError?
         var bodyData = try! JSONSerialization.data(withJSONObject: body, options: JSONSerialization.WritingOptions())
-        URLProtocol.setProperty(bodyData, forKey: "BodyData", inRequest: request)
+        URLProtocol.setProperty(bodyData, forKey: "BodyData", in: request)
         request.HTTPBody = bodyData
       }
       

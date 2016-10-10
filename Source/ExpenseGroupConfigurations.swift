@@ -31,15 +31,15 @@ public class ExpenseGroupConfiguration: ConcurObject {
   
   public required convenience init(json: JSON) {
     var attendeeTypeArray: [SCAttendeeType]! = []
-    for (index, subJson) : (String, JSON) in json["AttendeeTypes"] {
+    for (_, subJson) : (String, JSON) in json["AttendeeTypes"] {
       attendeeTypeArray.append(SCAttendeeType(json: subJson))
     }
     var paymentTypeArray: [SCPaymentType]! = []
-    for (index, subJson) : (String, JSON) in json["PaymentTypes"] {
+    for (_, subJson) : (String, JSON) in json["PaymentTypes"] {
       paymentTypeArray.append(SCPaymentType(json: subJson))
     }
     var policyArray: [SCPolicy]! = []
-    for (index, subJson) : (String, JSON) in json["Policies"] {
+    for (_, subJson) : (String, JSON) in json["Policies"] {
       policyArray.append(SCPolicy(json: subJson))
     }
     self.init(allowUserDigitalTaxInvoice: json["AllowUserDigitalTaxInvoice"].bool, allowUserRegisterYodlee: json["AllowUserRegisterYodlee"].bool, attendeeListFormID: json["AttendeeListFormID"].string, attendeeListFormName: json["AttendeeListFormName"].string, attendeeTypes: attendeeTypeArray, cashAdvance: SCCashAdvance(json: json["CashAdvance"]), id: json["ID"].string, name: json["Name"].string, paymentTypes: paymentTypeArray, policies: policyArray, uri: json["URI"].string)
@@ -121,7 +121,7 @@ public class SCPolicy {
   
   public convenience init(json: JSON) {
     var expenseTypeArray: [SCExpenseType]! = []
-    for (index, subJson) : (String, JSON) in json["ExpenseTypes"] {
+    for (_, subJson) : (String, JSON) in json["ExpenseTypes"] {
       expenseTypeArray.append(SCExpenseType(json: subJson))
     }
     self.init(expenseTypes: expenseTypeArray, id: json["ID"].string, isDefault: json["IsDefault"].bool, isInheritable: json["IsInheritable"].bool, name: json["Name"].string)

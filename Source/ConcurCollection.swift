@@ -9,12 +9,12 @@ public class ConcurCollection<T: ConcurObject> {
   internal init(json: JSON) {
     var objects: [T] = []
     if json["Items"] != nil {
-      for (index, subJson) : (String, JSON) in json["Items"] {
-        var object = T(json: subJson)
+      for (_, subJson) : (String, JSON) in json["Items"] {
+        let object = T(json: subJson)
         objects.append(object)
       }
     } else {
-      var object = T(json: json)
+      let object = T(json: json)
       objects.append(object)
     }
     self.Items = objects
