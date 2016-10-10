@@ -23,19 +23,19 @@ public extension ConcurClient {
     }
   }
   
-  internal class func getHTTPRequest(endpoint: String, options: [String : Any]) -> NSMutableURLRequest! {
+  internal class func getHTTPRequest(endpoint: String, options: [String : Any]) -> URLRequest! {
     return self.createRequest(method: "GET", endpoint: endpoint, options: options)
   }
   
-  internal class func postHTTPRequest(endpoint: String, options: [String : Any]) -> NSMutableURLRequest! {
+  internal class func postHTTPRequest(endpoint: String, options: [String : Any]) -> URLRequest! {
     return self.createRequest(method: "POST", endpoint: endpoint, options: options)
   }
   
-  internal class func putHTTPRequest(endpoint: String, options: [String : Any]) -> NSMutableURLRequest! {
+  internal class func putHTTPRequest(endpoint: String, options: [String : Any]) -> URLRequest! {
     return self.createRequest(method: "PUT", endpoint: endpoint, options: options)
   }
   
-  internal class func deleteHTTPRequest(endpoint: String, options: [String : Any]) -> NSMutableURLRequest! {
+  internal class func deleteHTTPRequest(endpoint: String, options: [String : Any]) -> URLRequest! {
     return self.createRequest(method: "DELETE", endpoint: endpoint, options: options)
   }
   
@@ -45,7 +45,7 @@ public extension ConcurClient {
     return base64Encoded!
   }
   
-  internal class func sendRequest<T>(request: NSMutableURLRequest) -> (error: String?, returnValue: ConcurCollection<T>?) {
+  internal class func sendRequest<T>(request: URLRequest) -> (error: String?, returnValue: ConcurCollection<T>?) {
     if self.authString != nil {
       Alamofire.request(request).responseJSON { response in
         if response.result.isSuccess {
@@ -70,7 +70,7 @@ public extension ConcurClient {
     }
   }
   
-  internal class func createRequest(method: String, endpoint: String, options: [String : Any]) -> NSMutableURLRequest! {
+  internal class func createRequest(method: String, endpoint: String, options: [String : Any]) -> URLRequest! {
     // Adds endpoint to end of instance URL
     var urlString = self.instanceUrl.appending(endpoint)
     
@@ -94,14 +94,12 @@ public extension ConcurClient {
     
     // Creates the URL and returns nil if there was an error creating it
     if let url = URL(string: urlString) {
-      let request = NSMutableURLRequest(url: url)
+      let request = URLRequest(url: url)
       request.httpMethod = method
       
       // Encodes the body dictionary into NSData
       if let body = options["Body"] as? [String : AnyObject] {
-        let bodyData = try! JSONSerialization.data(withJSONObject: body, options: JSONSerialization.WritingOptions())
-        URLProtocol.setProperty(bodyData, forKey: "BodyData", in: request)
-        request.httpBody = bodyData
+        request.httpBody = try! JSONSerialization.data(withJSONObject: body, options: JSONSerialization.WritingOptions())
       }
       
       // Assigns default headers
