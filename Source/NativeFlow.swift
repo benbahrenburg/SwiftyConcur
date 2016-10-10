@@ -7,8 +7,8 @@ public extension ConcurClient {
   public func getNativeFlowAccessToken(username: String, password: String) -> (error: String?, accessToken: ConcurAccessToken?) {
     if self.ConsumerKey != nil {
       // Create authorization header string in the format of LoginID:Password, Base-64 encoded
-      let authorizationString = username.stringByAppendingString(":").stringByAppendingString(password)
-      let finalAuthorizationString = "Basic ".stringByAppendingString(ConcurClient.base64Encode(authorizationString))
+      let authorizationString = username.apennding(":").appending(password)
+      let finalAuthorizationString = "Basic ".appending(ConcurClient.base64Encode(authorizationString))
       
       var options: [String : AnyObject?] = [
         "Headers" : [

@@ -8,7 +8,7 @@ public extension ConcurClient {
   
   internal class func getMoreItems(nextPage: String) -> NSURLRequest! {
     var urlString = nextPage
-    if let url = NSURL(string: urlString) {
+    if let url = URL(string: urlString) {
       let request = NSMutableURLRequest(URL: url)
       request.HTTPMethod = "GET"
       for (header, value) in self.addHeaders() {
@@ -40,12 +40,12 @@ public extension ConcurClient {
   }
   
   internal class func base64Encode(toEncode: String) -> String {
-    let utf8Encoded = toEncode.dataUsingEncoding(NSUTF8StringEncoding)
-    let base64Encoded = utf8Encoded?.base64EncodedStringWithOptions(NSDataBase64EncodingOptions())
+    let utf8Encoded = toEncode.data(using: String.Encoding.utf8)
+    let base64Encoded = utf8Encoded?.base64EncodedStringWithOptions(NSData.Base64EncodingOptiuons())
     return base64Encoded!
   }
   
-  internal class func sendRequest<T>(request: NSURLRequest) -> (error: String?, returnValue: ConcurCollection<T>?) {
+  internal class func sendRequest<T>(request: NSMutableURLRequest) -> (error: String?, returnValue: ConcurCollection<T>?) {
     if self.authString != nil {
       Alamofire.request(request).responseJSON { response in
         if response.result.isSuccess {
@@ -72,7 +72,7 @@ public extension ConcurClient {
   
   internal class func createRequest(method: String, endpoint: String, options: [String : AnyObject?]) -> NSMutableURLRequest! {
     // Adds endpoint to end of instance URL
-    var urlString = self.instanceUrl.stringByAppendingString(endpoint)
+    var urlString = self.instanceUrl.appending(endpoint)
     
     // Adds ID to end of the url string if provided
     if let id = options["id"] as? String {
@@ -85,8 +85,9 @@ public extension ConcurClient {
       var currentParamCount = 0
       for (key, value) in parameters {
         urlString = urlString.stringByAppendingString(key).stringByAppendingString("=").stringByAppendingString(value)
-        if parameters.count != ++currentParamCount {
+        if (currentParamCount + 1) != parameters.count {
           urlString = urlString.stringByAppendingString("&")
+          currentParamCount = currentParamCount + 1
         }
       }
     }
@@ -99,7 +100,7 @@ public extension ConcurClient {
       // Encodes the body dictionary into NSData
       if let body = options["Body"] as? [String : AnyObject] {
         var error: NSError?
-        var bodyData = try! JSONSerialization.dataWithJSONObject(body, options: NSJSONWritingOptions())
+        var bodyData = try! JSONSerialization.dataWithJSONObject(body, options: JSONSerialization.WritingOptions())
         URLProtocol.setProperty(bodyData, forKey: "BodyData", inRequest: request)
         request.HTTPBody = bodyData
       }
