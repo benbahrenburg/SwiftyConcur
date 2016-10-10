@@ -8,6 +8,11 @@ Pod::Spec.new do |spec|
   spec.source           = { :git => 'https://github.com/concurlabs/SwiftyConcur.git', :tag => '0.2.0' }
   spec.source_files     = 'Source/*.swift'
   spec.ios.deployment_target = '9.0'
-  spec.dependency 'Alamofire', '~> 3.5.1'
+
+  spec.dependency 'Alamofire', '~> 4.0.1'
   spec.dependency 'SwiftyJSON', '~> 3.1.1'
+
+  spec.pod_target_xcconfig = {
+    'SWIFT_VERSION' => '3.0',
+  }
 end

@@ -72,7 +72,7 @@ public class Allocation: ConcurObject {
 public extension ConcurClient {
   
   public func allocationsGet(options: [String : AnyObject?], callback: (error: String!, returnValue: ConcurCollection<Allocation>!) -> Void) {
-    let request = ConcurClient.getHTTPRequest("api/v3.0/expense/allocations", options: options)
+    let request = ConcurClient.getHTTPRequest(endpoint: "api/v3.0/expense/allocations", options: options)
     ConcurClient.sendRequest(request, callback: callback)
   }
   

@@ -28,12 +28,12 @@ public class DigitalTaxInvoice: ConcurObject {
 public extension ConcurClient {
   
   public func digitalTaxInvoicesGet(options: [String : AnyObject?], callback: (error: String!, returnValue: ConcurCollection<DigitalTaxInvoice>!) -> Void) {
-    let request = ConcurClient.getHTTPRequest("api/v3.0/expense/digitaltaxinvoices", options: options)
+    let request = ConcurClient.getHTTPRequest(endpoint: "api/v3.0/expense/digitaltaxinvoices", options: options)
     ConcurClient.sendRequest(request, callback: callback)
   }
   
   public func digitalTaxInvoicesPut(options: [String : AnyObject?], callback: (error: String!, returnValue: ConcurCollection<DigitalTaxInvoice>!) -> Void) {
-    let request = ConcurClient.putHTTPRequest("api/v3.0/expense/digitaltaxinvoices", options: options)
+    let request = ConcurClient.putHTTPRequest(endpoint: "api/v3.0/expense/digitaltaxinvoices", options: options)
     ConcurClient.sendRequest(request, callback: callback)
   }
   

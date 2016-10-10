@@ -5,6 +5,21 @@
       location = "container:"
       name = "Source">
       <FileRef
+         location = "group:Source/Allocations.swift">
+      </FileRef>
+      <FileRef
+         location = "group:Source/Attendees.swift">
+      </FileRef>
+      <FileRef
+         location = "group:Source/DigitalTaxInvoices.swift">
+      </FileRef>
+      <FileRef
+         location = "group:Source/Itemizations.swift">
+      </FileRef>
+      <FileRef
+         location = "group:Source/Reports.swift">
+      </FileRef>
+      <FileRef
          location = "group:Source/AttendeeTypes.swift">
       </FileRef>
       <FileRef
