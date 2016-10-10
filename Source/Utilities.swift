@@ -7,10 +7,10 @@ public extension ConcurClient {
   internal static var authString: String!
   
   internal class func getMoreItems(nextPage: String) -> NSURLRequest! {
-    var urlString = nextPage
+    let urlString = nextPage
     if let url = URL(string: urlString) {
-      let request = NSMutableURLRequest(URL: url)
-      request.HTTPMethod = "GET"
+      let request = NSMutableURLRequest(url: url)
+      request.httpMethod = "GET"
       for (header, value) in self.addHeaders() {
         request.setValue(value, forHTTPHeaderField: header)
       }
@@ -41,7 +41,7 @@ public extension ConcurClient {
   
   internal class func base64Encode(toEncode: String) -> String {
     let utf8Encoded = toEncode.data(using: String.Encoding.utf8)
-    let base64Encoded = utf8Encoded?.base64EncodedStringWithOptions(NSData.Base64EncodingOptiuons())
+    let base64Encoded = utf8Encoded?.base64EncodedString(options: NSData.Base64EncodingOptiuons())
     return base64Encoded!
   }
   
@@ -93,14 +93,14 @@ public extension ConcurClient {
     }
     
     // Creates the URL and returns nil if there was an error creating it
-    if let url = NSURL(string: urlString) {
-      let request = NSMutableURLRequest(URL: url)
+    if let url = URL(string: urlString) {
+      let request = NSMutableURLRequest(url: url)
       request.HTTPMethod = method
       
       // Encodes the body dictionary into NSData
       if let body = options["Body"] as? [String : AnyObject] {
         var error: NSError?
-        var bodyData = try! JSONSerialization.dataWithJSONObject(body, options: JSONSerialization.WritingOptions())
+        var bodyData = try! JSONSerialization.data(withJSONObject: body, options: JSONSerialization.WritingOptions())
         URLProtocol.setProperty(bodyData, forKey: "BodyData", inRequest: request)
         request.HTTPBody = bodyData
       }
