@@ -35,25 +35,25 @@ public class AttendeeType: ConcurObject {
 
 public extension ConcurClient {
   
-  public func attendeeTypesGet(options: [String : AnyObject?]) -> (error: String!, returnValue: ConcurCollection<AttendeeType>!) {
+  public func attendeeTypesGet(options: [String : AnyObject?]) -> (error: String?, returnValue: ConcurCollection<AttendeeType>?) {
     if let request = ConcurClient.getHTTPRequest(endpoint: "api/v3.0/expense/attendeetypes", options: options) {
       return ConcurClient.sendRequest(request: request)
     }
   }
   
-  public func attendeeTypesPost(options: [String : AnyObject?]) -> (error: String!, returnValue: ConcurCollection<AttendeeType>!) {
+  public func attendeeTypesPost(options: [String : AnyObject?]) -> (error: String?, returnValue: ConcurCollection<AttendeeType>?) {
     if let request = ConcurClient.postHTTPRequest(endpoint: "api/v3.0/expense/attendeetypes", options: options) {
       return ConcurClient.sendRequest(request: request)
     }
   }
   
-  public func attendeeTypesPut(options: [String : AnyObject?]) -> (error: String!, returnValue: ConcurCollection<AttendeeType>!) {
+  public func attendeeTypesPut(options: [String : AnyObject?]) -> (error: String?, returnValue: ConcurCollection<AttendeeType>?) {
     if let request = ConcurClient.putHTTPRequest(endpoint: "api/v3.0/expense/attendeetypes", options: options) {
       return ConcurClient.sendRequest(request: request)
     }
   }
   
-  public func attendeeTypesDelete(options: [String : AnyObject?]) -> (error: String!, returnValue: ConcurCollection<AttendeeType>!) {
+  public func attendeeTypesDelete(options: [String : AnyObject?]) -> (error: String?, returnValue: ConcurCollection<AttendeeType>?) {
     if let request = ConcurClient.deleteHTTPRequest(endpoint: "api/v3.0/expense/attendeetypes", options: options) {
       return ConcurClient.sendRequest(request: request)
     }

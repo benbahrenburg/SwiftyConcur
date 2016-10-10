@@ -249,25 +249,25 @@ public class SCJourney {
 
 public extension ConcurClient {
   
-  public func entriesGet(options: [String : AnyObject?]) -> (error: String!, returnValue: ConcurCollection<Entry>!) {
+  public func entriesGet(options: [String : AnyObject?]) -> (error: String?, returnValue: ConcurCollection<Entry>?) {
     if let request = ConcurClient.getHTTPRequest(endpoint: "api/v3.0/expense/entries", options: options) {
       return ConcurClient.sendRequest(request: request)
     }
   }
   
-  public func entriesPost(options: [String : AnyObject?]) -> (error: String!, returnValue: ConcurCollection<Entry>!) {
+  public func entriesPost(options: [String : AnyObject?]) -> (error: String?, returnValue: ConcurCollection<Entry>?) {
     if let request = ConcurClient.postHTTPRequest(endpoint: "api/v3.0/expense/entries", options: options) {
       return ConcurClient.sendRequest(request: request)
     }
   }
   
-  public func entriesPut(options: [String : AnyObject?]) -> (error: String!, returnValue: ConcurCollection<Entry>!) {
+  public func entriesPut(options: [String : AnyObject?]) -> (error: String?, returnValue: ConcurCollection<Entry>?) {
     if let request = ConcurClient.putHTTPRequest(endpoint: "api/v3.0/expense/entries", options: options) {
       return ConcurClient.sendRequest(request: request)
     }
   }
   
-  public func entriesDelete(options: [String : AnyObject?]) -> (error: String!, returnValue: ConcurCollection<Entry>!) {
+  public func entriesDelete(options: [String : AnyObject?]) -> (error: String?, returnValue: ConcurCollection<Entry>?) {
     if let request = ConcurClient.deleteHTTPRequest(endpoint: "api/v3.0/expense/entries", options: options) {
       return ConcurClient.sendRequest(request: request)
     }
