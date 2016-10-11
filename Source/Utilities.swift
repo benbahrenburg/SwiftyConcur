@@ -6,10 +6,10 @@ public extension ConcurClient {
   internal static var instanceUrl = "https://www.concursolutions.com/"
   internal static var authString: String!
   
-  internal class func getMoreItems(nextPage: String) -> NSURLRequest! {
+  internal class func getMoreItems(nextPage: String) -> URLRequest! {
     let urlString = nextPage
     if let url = URL(string: urlString) {
-      let request = NSMutableURLRequest(url: url)
+      var request = URLRequest(url: url)
       request.httpMethod = "GET"
       for (header, value) in self.addHeaders() {
         request.setValue(value, forHTTPHeaderField: header)
@@ -45,28 +45,28 @@ public extension ConcurClient {
     return base64Encoded!
   }
   
-  internal class func sendRequest<T>(request: URLRequest) -> (error: String?, returnValue: ConcurCollection<T>?) {
+  internal class func sendRequest<T>(request: URLRequest, callback: (error: String?, returnValue: ConcurCollection<T>?)) {
     if self.authString != nil {
       Alamofire.request(request).responseJSON { response in
         if response.result.isSuccess {
           if let json = response.result.value {
             var jsonObject = JSON(json)
             if let error = jsonObject["Error"]["Message"].string {
-              return (error: error, returnValue: nil)
+              callback(error: error, returnValue: nil)
             } else if let error = jsonObject["Message"].string {
-              return (error: error, returnValue: nil)
+              callback(error: error, returnValue: nil)
             } else {
-              return (error: nil, returnValue: ConcurCollection<T>(json: jsonObject))
+              callback (error: nil, returnValue: ConcurCollection<T>(json: jsonObject))
             }
           } else {
-            return (error: nil, returnValue: nil)
+            callback(error: nil, returnValue: nil)
           }
         } else {
-          return (error: response.result.error?.description, returnValue: nil)
+          callback(error: response.result.error?.description, returnValue: nil)
         }
       }
     } else {
-      return (error: "Access Token Missing", returnValue: nil)
+      callback(error: "Access Token Missing", returnValue: nil)
     }
   }
   
